@@ -1,0 +1,9 @@
+.images-slider {
+    height: 600px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.images-slider .slide {
+    height: 600px;
+}
