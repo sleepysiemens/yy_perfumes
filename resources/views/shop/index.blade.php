@@ -22,29 +22,29 @@
         <div class="flex items-center">
             <img src="https://yaninayakusheva.com/wp-content/uploads/2018/06/policy-1.png" alt="" class="mr-3">
             <div class="flex flex-col">
-                <span class="text-base my-0">Free Shipping</span>
-                <span class="text-sm my-0">Free shipping on all US order or order above $200</span>
+                <span class="text-base my-0">{{ __('Free Shipping') }}</span>
+                <span class="text-sm my-0 max-w-xs">{{ __('Free shipping on all US order or order above $200') }}</span>
             </div>
         </div>
         <div class="flex items-center">
             <img src="https://yaninayakusheva.com/wp-content/uploads/2018/06/policy-2.png" alt="" class="mr-3">
             <div class="flex flex-col">
-                <span class="text-base my-0">Support 24/7</span>
-                <span class="text-sm my-0">Contact us 24 hours a day, 7 days a week</span>
+                <span class="text-base my-0">{{ __('Support 24/7') }}</span>
+                <span class="text-sm my-0 max-w-md">{{ __('Contact us 24 hours a day, 7 days a week') }}</span>
             </div>
         </div>
         <div class="flex items-center">
             <img src="https://yaninayakusheva.com/wp-content/uploads/2018/06/policy-4.png" alt="" class="mr-3">
             <div class="flex flex-col">
-                <span class="text-base my-0">100% Payment Secure</span>
-                <span class="text-sm my-0">We ensure secure payment with PEV</span>
+                <span class="text-base my-0">{{ __('100% Payment Secure') }}</span>
+                <span class="text-sm my-0 max-w-md">{{ __('We ensure secure payment with PEV') }}</span>
             </div>
         </div>
     </div>
 
     <div class="my-8 text-center heading-title">
-        <div class="text-3xl font-medium mt-16">Latest Blog Posts</div>
-        <span>There are latest blog posts</span>
+        <div class="text-3xl font-medium mt-16">{{ __('Latest Blog Posts') }}</div>
+        <span>{{ __('There are latest blog posts') }}</span>
     </div>
 @endsection
 

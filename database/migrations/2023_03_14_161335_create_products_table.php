@@ -19,6 +19,9 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->foreignId('people_id')->nullable();
 
+            $table->string('img');
+
+            // RU
             $table->string('title');
             $table->text('short_description')->nullable();
             $table->longText('description')->nullable();
