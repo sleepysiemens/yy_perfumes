@@ -22,10 +22,7 @@ class CartService
     {
         $cart = Session::has('cart') ? Session::get('cart') : [];
         $cart[$product] = $count;
-//        Session::push('cart', [
-//            $product => $count
-//        ]);
-        Session::push('cart', 'adsdas');
+        Session::push('cart', $product);
         return Session::get('cart');
     }
 

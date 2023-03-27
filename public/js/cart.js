@@ -12,7 +12,7 @@ $(document).ready(function () {
             '/api/cart/push/' + productId + '/' + productCount,
             {},
             function (data) {
-                updateCartDiv();
+                // updateCartDiv();
                 console.log(data);
             }
         );
