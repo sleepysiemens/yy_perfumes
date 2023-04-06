@@ -38,9 +38,11 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($product)
     {
-        //
+        return view('shop.catalogue.show', [
+            'product' => Product::query()->where('slug', $product)->first(),
+        ]);
     }
 
     /**

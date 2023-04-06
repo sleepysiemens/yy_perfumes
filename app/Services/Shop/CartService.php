@@ -22,31 +22,30 @@ class CartService
     {
         $cart = Session::has('cart') ? Session::get('cart') : [];
         $cart[$product] = $count;
-        Session::push('cart', $product);
+        Session::put('cart', $cart);
         return Session::get('cart');
     }
 
     public function getCart()
     {
-        return Session::get('cart');
-//        $cart = Session::has('cart') ? Session::get('cart') : [];
-//        $total = 0;
-//        $cartQuantity = 0;
-//
-//        foreach ($cart as $item => $quantity) {
-//            $product = Product::query()->find($item);
-//
-//            if ($product) {
-//                $total += $product->getPrice();
-//                $cartQuantity += $quantity;
-//            }
-//        }
-//
-//        return [
-//            'cart' => Session::get('cart'),
-//            'total' => $total,
-//            'quantity' => $cartQuantity,
-//            'currency' => (new CurrencyService())->get()['symbol'],
-//        ];
+        $cart = Session::has('cart') ? Session::get('cart') : [];
+        $total = 0;
+        $cartQuantity = 0;
+
+        foreach ($cart as $item => $quantity) {
+            $product = Product::query()->find($item);
+
+            if ($product) {
+                $total += $product->getPrice() * $quantity;
+                $cartQuantity += $quantity;
+            }
+        }
+
+        return [
+            'cart' => Session::get('cart'),
+            'total' => $total,
+            'quantity' => $cartQuantity,
+            'currency' => (new CurrencyService())->get()['symbol'],
+        ];
     }
 }

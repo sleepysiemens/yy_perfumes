@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Stevebauman\Location\Facades\Location;
@@ -15,7 +16,9 @@ class Locale
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param Request $request
+     * @param Closure(Request): (Response) $next
+     * @return Response
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -26,6 +29,8 @@ class Locale
             // Определяем язык автоматом
             App::setLocale(Str::lower($this->getLocation()->countryCode));
         }
+
+        Config::set('app.name', __('Yanina Yakusheva Perfumes'));
 
         return $next($request);
     }

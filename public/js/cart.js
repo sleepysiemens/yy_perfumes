@@ -9,10 +9,11 @@ $(document).ready(function () {
         let productCount = 1;
 
         $.post(
-            '/api/cart/push/' + productId + '/' + productCount,
+            '/cart/push/' + productId + '/' + productCount,
             {},
             function (data) {
-                // updateCartDiv();
+                $('#cart-container *').remove();
+                updateCartDiv();
                 console.log(data);
             }
         );
@@ -20,12 +21,48 @@ $(document).ready(function () {
 
     function updateCartDiv(data) {
         $.get(
-            '/api/cart/get',
+            '/cart/get',
             {},
             function (data) {
-                console.log(data);
-                // var cart = JSON.parse(data);
-                // $('#cart-count').html(cart.quantity);
+                $('')
+
+                var cart = JSON.parse(data);
+                $('#cart-count').html(cart.quantity);
+
+                $('#cart-container *').remove();
+
+                // Вставляем добавленные товары
+                Object.entries(cart.cart).forEach(([element, quantity]) => {
+                    $.get(
+                        '/api/products/' + element + '/' + localStorage.getItem('lang'),
+                        {},
+                        function (data) {
+                            var item = data.data;
+                            $('#cart-container').append(`
+                                <div class="cart-item flex flex-row items-center mb-3">
+                                    <img src="/storage/products/${item.img}" class="mr-2 rounded-md" width="50px" height="50px" alt="">
+                                    <div class="flex flex-col">
+                                        <span>${item.title}</span>
+                                        <span class="text-slate-400 text-xs">${item.price}</span>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                    );
+                });
+
+                // Вставляем нижние итоги
+                $('#cart-totals *').remove();
+                $('#cart-totals').append(`<hr class="my-4">
+                                            <div class="flex">
+                                                <span class="w-1/2 whitespace-nowrap">Товаров:
+                                                    <span class="font-bold">${cart.quantity}</span>
+                                                </span>
+                                                <span class="w-1/2 whitespace-nowrap">Итого:
+                                                    <span class="font-bold">${cart.total}</span>
+                                                </span>
+                                            </div>
+                                         `);
             }
         );
 

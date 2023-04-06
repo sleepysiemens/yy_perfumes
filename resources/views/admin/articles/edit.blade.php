@@ -13,18 +13,18 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Создание статуса</h4>
-                    <a href="{{ route('products.index') }}">Назад к списку</a>
+                    <a href="{{ route('articles.index') }}">Назад к списку</a>
 
-                    <form action="{{ route('products.update', $product) }}" method="post">
+                    <form action="{{ route('articles.update', $article) }}" method="post">
                         @csrf
                         @method('PUT')
                         <h6 class="mb-2 mt-3">Информация</h6>
 
                         <div class="form-group mb-3">
-                            <label for="">Категория товара</label>
-                            <select name="category_id" class="form-control select2" id="">
-                                @foreach(\App\Models\Category::all() as $category)
-                                    <option value="{{ $category->id }}" @if ($product->category_id == $category->id) selected @endif>{{ $category->title }}</option>
+                            <label for="">Персонаж</label>
+                            <select name="person_id" class="form-control select2" id="">
+                                @foreach(\App\Models\Person::all() as $person)
+                                    <option value="{{ $person->id }}" @if ($person->people_id == $person->id) selected @endif>{{ $person->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -34,11 +34,11 @@
                                 <img src="{{ \App\Services\Content\FlagService::get('en') }}" width="17px" alt="">
                                 Название товара
                             </label>
-                            <input type="text" class="form-control" name="en_title" value="{{ $product->title['en'] ?? '' }}">
+                            <input type="text" class="form-control" name="en_title" value="{{ $article->title['en'] ?? '' }}">
                         </div>
                         <div class="from-group mb-3">
                             <label for="">Описание</label>
-                            <textarea name="en_description" class="form-control" id="" cols="30" rows="5">{{ $product->description['en'] ?? '' }}</textarea>
+                            <textarea name="en_description" class="form-control" id="" cols="30" rows="5">{{ $article->short_description['en'] ?? '' }}</textarea>
                         </div>
 
                         <div class="from-group mb-3">
@@ -46,26 +46,11 @@
                                 <img src="{{ \App\Services\Content\FlagService::get('ru') }}" width="17 px" alt="">
                                 Название товара
                             </label>
-                            <input type="text" class="form-control" name="ru_title" value="{{ $product->title['ru'] ?? '' }}">
+                            <input type="text" class="form-control" name="ru_title" value="{{ $article->title['ru'] ?? '' }}">
                         </div>
                         <div class="from-group mb-3">
                             <label for="">Описание</label>
-                            <textarea name="ru_description" class="form-control" id="" cols="30" rows="5">{{ $product->description['ru'] ?? '' }}</textarea>
-                        </div>
-
-                        <div class="from-group mb-3">
-                            <label for="">Цена $</label>
-                            <input type="text" class="form-control" name="cost" value="{{ $product->cost }}">
-                        </div>
-
-                        <div class="from-group mb-3">
-                            <label for="">Цена дилера $</label>
-                            <input type="text" class="form-control" name="cost_dealer" value="{{ $product->cost_dealer }}">
-                        </div>
-
-                        <div class="from-group mb-3">
-                            <label for="">Цена прем. дилера $</label>
-                            <input type="text" class="form-control" name="cost_vip_dealer" value="{{ $product->cost_vip_dealer }}">
+                            <textarea name="ru_description" class="form-control" id="" cols="30" rows="5">{{ $article->short_description['ru'] ?? '' }}</textarea>
                         </div>
 
                         <hr>
@@ -73,11 +58,11 @@
 
                         <div class="from-group mb-3">
                             <label for="">СЕО Название товара</label>
-                            <input type="text" class="form-control" name="seo_title" value="{{ $product->seo_title }}">
+                            <input type="text" class="form-control" name="seo_title" value="{{ $article->seo_title }}">
                         </div>
                         <div class="from-group">
                             <label for="">СЕО Описание</label>
-                            <textarea name="seo_description" class="form-control" id="" cols="30" rows="5">{{ $product->seo_description }}</textarea>
+                            <textarea name="seo_description" class="form-control" id="" cols="30" rows="5">{{ $article->seo_description }}</textarea>
                         </div>
 
                         <hr>
@@ -85,9 +70,19 @@
 
                         <div class="from-group">
                             <label for="">Отображение в адресе</label>
-                            <input type="text" class="form-control mb-2" name="slug" value="{{ $product->slug }}">
+                            <input type="text" class="form-control mb-2" name="slug" value="{{ $article->slug }}">
                             <span class="text-muted fs-6">Лучше оставить пустым, но можно указать, как будет отображаться в адресе.
                         Поле уникальное! Например: <b>duhy_luchshego_kachestva</b></span>
+                        </div>
+
+                        <div class="content mt-4">
+                            <h4><img src="{{ \App\Services\Content\FlagService::get('en') }}" width="17px" alt=""> Контент</h4>
+                            <textarea id="summernote" name="en_content">{{ $article->content['en'] }}</textarea>
+                        </div>
+
+                        <div class="content mt-4">
+                            <h4><img src="{{ \App\Services\Content\FlagService::get('ru') }}" width="17px" alt=""> Контент</h4>
+                            <textarea id="summernote_ru" name="ru_content">{{ $article->content['ru'] }}</textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary mt-3">Добавить</button>
@@ -99,5 +94,19 @@
 
     <script>
         $('.dropify').dropify();
+    </script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function (){
+            $('#summernote').summernote({
+                'height': '500'
+            });
+
+            $('#summernote_ru').summernote({
+                'height': '500'
+            });
+        });
     </script>
 @endsection

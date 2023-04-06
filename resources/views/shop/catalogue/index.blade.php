@@ -8,11 +8,11 @@
     <div class="flex lg:flex-row lg:justify-start sm:justify-center sm:flex-col mb-16">
         @foreach($products as $product)
             <div class="product lg:mx-4 sm:my-10">
-                <div class="product__img"
+                <a href="{{ route('catalogue.show', $product->slug) }}"><div class="product__img"
                     style="background: url('/storage/products/{{ $product->img }}');background-size: cover;background-position: center center;"
-                ></div>
+                    ></div></a>
                 <div class="product__title">
-                    {{ $product->getTitle() }}
+                    <a href="{{ route('catalogue.show', $product->slug) }}">{{ $product->getTitle() }}</a>
                 </div>
                 <div class="product__description">
                     {{ $product->getDescription() }}

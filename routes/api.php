@@ -22,5 +22,7 @@ Route::resources([
     'products' => \App\Http\Controllers\Api\Product\ProductController::class,
 ]);
 
+Route::get('/products/{product}/{lang}', 'App\Http\Controllers\Api\Product\ProductController@show');
+
 Route::post('/cart/push/{product}/{count}', 'App\Http\Controllers\Api\CartController@push');
 Route::get('/cart/get', 'App\Http\Controllers\Api\CartController@get');

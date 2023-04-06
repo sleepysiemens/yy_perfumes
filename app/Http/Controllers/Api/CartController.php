@@ -16,14 +16,14 @@ class CartController extends Controller
         $this->cartService = $cartService;
     }
 
-    public function push($item, $count)
+    public function push($item, $count, Request $request)
     {
         $this->cartService->push($item, $count);
-        return json_encode($this->cartService->getCart());
+        return json_encode($this->cartService->getCart(), JSON_UNESCAPED_UNICODE);
     }
 
     public function get()
     {
-        return json_encode($this->cartService->getCart());
+        return json_encode($this->cartService->getCart(), JSON_UNESCAPED_UNICODE);
     }
 }
