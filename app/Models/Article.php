@@ -44,29 +44,45 @@ class Article extends Model
 
     protected $guarded = [];
 
-    public function getTitle(): string
+    public function getTitle(): mixed
     {
+        if ($this->title == null) {
+            return '';
+        }
+
         return !empty($this->title[App::getLocale()])
             ? $this->title[App::getLocale()] // Если есть перевод на текущий язык, то выводим его
             : $this->title['en']; // Если нет, то выводим английское название
     }
 
-    public function getShortDescription(): string
+    public function getShortDescription(): mixed
     {
+        if ($this->short_description == null) {
+            return '';
+        }
+
         return !empty($this->short_description[App::getLocale()])
             ? $this->short_description[App::getLocale()] // Если есть перевод на текущий язык, то выводим его
             : $this->short_description['en']; // Если нет, то выводим английское название
     }
 
-    public function getDescription(): string
+    public function getDescription(): mixed
     {
+        if ($this->description == null) {
+            return '';
+        }
+
         return !empty($this->description[App::getLocale()])
             ? $this->description[App::getLocale()] // Если есть перевод на текущий язык, то выводим его
             : $this->description['en']; // Если нет, то выводим английское название
     }
 
-    public function getContent(): string
+    public function getContent(): mixed
     {
+        if ($this->content == null) {
+            return '';
+        }
+
         return !empty($this->content[App::getLocale()])
             ? $this->content[App::getLocale()] // Если есть перевод на текущий язык, то выводим его
             : $this->content['en']; // Если нет, то выводим английское название

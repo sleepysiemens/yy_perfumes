@@ -19,11 +19,19 @@
                 </div>
                 <div class="product__form flex items-center justify-between">
                     <p class="my-0">{{ $product->getFormatedPrice() }}</p>
-                    <button class="to-cart-btn"
-                            data-product-price="{{ $product->getPrice() }}"
-                            data-product-id="{{ $product->id }}">
-                        {{ __('Add to cart') }}
-                    </button>
+                    @if ((new \App\Services\Shop\CartService())->checkExists($product->id))
+                        <a href="{{ route('cart.view') }}">
+                            <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-gray-100 hover:bg-gray-300 active:scale-95 text-black duration-200 flex items-center">
+                                {{ __('Add to cart') }}
+                            </button>
+                        </a>
+                    @else
+                        <button class="to-cart-btn"
+                                data-product-price="{{ $product->getPrice() }}"
+                                data-product-id="{{ $product->id }}">
+                            {{ __('Add to cart') }}
+                        </button>
+                    @endif
                 </div>
             </div>
         @endforeach

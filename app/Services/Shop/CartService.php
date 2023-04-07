@@ -48,4 +48,17 @@ class CartService
             'currency' => (new CurrencyService())->get()['symbol'],
         ];
     }
+
+    public function checkExists($id): bool
+    {
+        $cart = Session::has('cart') ? Session::get('cart') : [];
+        return \Arr::exists($cart, $id);
+    }
+
+    public function remove($id)
+    {
+        $cart = Session::has('cart') ? Session::get('cart') : [];
+        unset($cart[$id]);
+        Session::put('cart', $cart);
+    }
 }

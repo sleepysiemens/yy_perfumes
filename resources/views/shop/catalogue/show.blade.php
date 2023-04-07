@@ -15,12 +15,20 @@
                 <h1 class="font-bold text-xl">{{ $product->getTitle() }}</h1>
                 <p class="mt-2">{{ $product->getFormatedPrice() }}</p>
                 <div class="flex items-center mt-4">
-                    <input type="text" class="border h-10 w-14 text-center outline-none focus:bg-slate-100 duration-200" min="1" max="100" value="1">
-                    <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white duration-200"
-                            data-product-price="{{ $product->getPrice() }}"
-                            data-product-id="{{ $product->id }}">
-                        {{ __('Add to cart') }}
-                    </button>
+                    @if ((new \App\Services\Shop\CartService())->checkExists($product->id))
+                        <a href="{{ route('cart.view') }}">
+                            <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-gray-100 hover:bg-gray-300 active:scale-95 text-black duration-200 flex items-center">
+                                {{ __('Add to cart') }}
+                            </button>
+                        </a>
+                    @else
+                        <input type="text" class="border h-10 w-14 text-center outline-none focus:bg-slate-100 duration-200" min="1" max="100" value="1">
+                        <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white duration-200"
+                                data-product-price="{{ $product->getPrice() }}"
+                                data-product-id="{{ $product->id }}">
+                            {{ __('Add to cart') }}
+                        </button>
+                    @endif
                 </div>
                 <hr class="my-5">
                 <!-- PERSON -->

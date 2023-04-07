@@ -54,8 +54,13 @@ Route::get('/locale/{locale}', function ($locale) {
 // Cart
 Route::post('/cart/push/{product}/{count}', 'App\Http\Controllers\Api\CartController@push');
 Route::get('/cart/get', 'App\Http\Controllers\Api\CartController@get')->name('cart.show');
+Route::get('/cart/remove/{id}', 'App\Http\Controllers\Api\CartController@remove')->name('cart.remove');
+Route::get('/cart/view', 'App\Http\Controllers\CartController@show')->name('cart.view');
+
+Route::view('/checkout', 'checkout')->name('checkout');
 
 // Persons
+Route::view('/philosophy', 'philosophy');
 Route::view('/ravenna/my-universe', 'person.ravenna.my-universe');
 Route::view('/william/my-universe', 'person.william.my-universe');
 Route::view('/aron/my-universe', 'person.aron.my-universe');

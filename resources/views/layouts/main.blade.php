@@ -74,10 +74,10 @@
                             </div>
                             <div id="cart-totals"></div>
                             <div class="flex flex-row justify-between mt-3 w-100">
-                                <a href="{{ route('cart.show') }}" class="whitespace-nowrap p-3 px-6 bg-slate-100 hover:bg-slate-200 active:scale-95 mr-3 rounded-md duration-200">
+                                <a href="{{ route('cart.view') }}" class="whitespace-nowrap p-3 px-6 bg-slate-100 hover:bg-slate-200 active:scale-95 mr-3 rounded-md duration-200">
                                     {{ __('To cart') }}
                                 </a>
-                                <a href="" class="whitespace-nowrap p-3 px-6 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white rounded-md duration-200">
+                                <a href="{{ route('checkout') }}" class="whitespace-nowrap p-3 px-6 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white rounded-md duration-200">
                                     {{ __('Checkout') }}
                                 </a>
                             </div>
@@ -92,12 +92,12 @@
         @include('components.header-links')
     </header>
 
-    <div class="container bg-white mx-auto" id="app-container">
+    <div class="container bg-white mx-auto min-h-[500px]" id="app-container">
         <div class="w-100 mx-auto py-5 px-8 container-body">
             @yield('content')
         </div>
 
-        <div class="bg-black mx-auto" id="app-container">
+        <div class="bg-black mx-auto mt-[300px]" id="app-container">
             <div class="w-100 mx-auto flex items-start py-5 px-8 container-body text-white">
                 <div class="w-1/3">
                     <a href="" class="text-white" rel="nofollow">Made by

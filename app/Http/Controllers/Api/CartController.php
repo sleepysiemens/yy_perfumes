@@ -26,4 +26,15 @@ class CartController extends Controller
     {
         return json_encode($this->cartService->getCart(), JSON_UNESCAPED_UNICODE);
     }
+
+    public function checkExists($id)
+    {
+        return $this->cartService->checkExists($id);
+    }
+
+    public function remove($id)
+    {
+        $this->cartService->remove($id);
+        return redirect()->route('cart.view');
+    }
 }
