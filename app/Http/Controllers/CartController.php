@@ -10,7 +10,7 @@ class CartController extends Controller
     public function show()
     {
         return view('cart.show', [
-            'cart' => \Session::get('cart')
+            'cart' => \Session::has('cart') ? \Session::get('cart') : []
         ]);
     }
 }

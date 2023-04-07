@@ -57,7 +57,7 @@ Route::get('/cart/get', 'App\Http\Controllers\Api\CartController@get')->name('ca
 Route::get('/cart/remove/{id}', 'App\Http\Controllers\Api\CartController@remove')->name('cart.remove');
 Route::get('/cart/view', 'App\Http\Controllers\CartController@show')->name('cart.view');
 
-Route::view('/checkout', 'checkout')->name('checkout');
+Route::view('/shop/checkout', 'checkout')->name('checkout');
 
 // Persons
 Route::view('/philosophy', 'philosophy');
