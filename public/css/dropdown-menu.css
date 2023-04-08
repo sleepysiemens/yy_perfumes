@@ -85,3 +85,9 @@ li:hover .sub-menu {
 .change-language a img {
     margin-right: 5px;
 }
+
+@media (max-width: 1200px) {
+    .menu-nav .with-sub::after {
+        margin-top: 0px;
+    }
+}

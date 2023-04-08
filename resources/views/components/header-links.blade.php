@@ -1,4 +1,4 @@
-<ul class="menu-nav flex items-center list-none">
+<ul class="menu-nav flex items-center list-none lg:text-md md:text-base">
     <li>
         <a href="/">{{ __('Home') }}</a>
     </li>
@@ -6,7 +6,7 @@
         <a href="/philosophy">{{ __('Philosophy') }}</a>
     </li>
     <li class="with-sub">
-        <a href="">{{ __('Ravenna') }}</a>
+        <a href="javascript:void(0);">{{ __('Ravenna') }}</a>
 
         <ul class="sub-menu">
             <li>
@@ -15,7 +15,7 @@
         </ul>
     </li>
     <li class="with-sub">
-        <a href="">{{ __('William') }}</a>
+        <a href="javascript:void(0);">{{ __('William') }}</a>
 
         <ul class="sub-menu">
             <li>
@@ -24,7 +24,7 @@
         </ul>
     </li>
     <li class="with-sub">
-        <a href="">{{ __('Aron') }}</a>
+        <a href="javascript:void(0);">{{ __('Aron') }}</a>
 
         <ul class="sub-menu">
             <li>
@@ -33,7 +33,7 @@
         </ul>
     </li>
     <li class="with-sub">
-        <a href="">{{ __('Gideon') }}</a>
+        <a href="javascript:void(0);">{{ __('Gideon') }}</a>
 
         <ul class="sub-menu">
             <li>

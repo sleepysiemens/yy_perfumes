@@ -48,48 +48,61 @@
     </div>
 
     <header class="header container mx-auto">
-        <div class="flex justify-end" style="transform: translateY(100px);position: relative;z-index: 100000;">
-            <ul class="mr-3">
-                <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.271 18.3457C4.271 18.3457 6.50002 15.5 12 15.5C17.5 15.5 19.7291 18.3457 19.7291 18.3457" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </li>
-            </ul>
-            <ul>
-                <li class="" style="transform: translateY(-6px);">
-                    <a href="">
+        <div class="top-menu" style="transform: translateY(100px);position: relative;z-index: 100000;">
+            <a href="javascript:openMobileMenu();" class="burger-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 18H10" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M4 12L16 12" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M4 6L20 6" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </a>
+            <div class="flex items-start">
+                <ul class="mr-3">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.271 18.3457C4.271 18.3457 6.50002 15.5 12 15.5C17.5 15.5 19.7291 18.3457 19.7291 18.3457" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="" style="transform: translateY(-6px);">
+                        <a href="">
                         <span class="cart-container">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="40px" height="40px" viewBox="0 0 32 32"><title/>
                                 <path d="M22,8H10a1,1,0,0,0-.983.816l-3,16A1,1,0,0,0,7,26H25a1,1,0,0,0,.983-1.184l-3-16A1,1,0,0,0,22,8ZM8.205,24,10.83,10H21.17l2.625,14ZM20,12.5a4,4,0,0,1-8,0,1,1,0,0,1,2,0,2,2,0,0,0,4,0,1,1,0,0,1,2,0Z"/></svg>
                             <span id="cart-count">0</span>
                         </span>
-                    </a>
-                    @if (count(\Illuminate\Support\Facades\Session::get('cart', [])) > 0)
-                        <ul class="sub-menu px-5 py-5" style="margin-top: 2px;margin-left: -200px;">
-                            <div id="cart-container">
-                                <!-- Cart items -->
-                            </div>
-                            <div id="cart-totals"></div>
-                            <div class="flex flex-row justify-between mt-3 w-100">
-                                <a href="{{ route('cart.view') }}" class="whitespace-nowrap p-3 px-6 bg-slate-100 hover:bg-slate-200 active:scale-95 mr-3 rounded-md duration-200">
-                                    {{ __('To cart') }}
-                                </a>
-                                <a href="{{ route('checkout') }}" class="whitespace-nowrap p-3 px-6 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white rounded-md duration-200">
-                                    {{ __('Checkout') }}
-                                </a>
-                            </div>
-                        </ul>
-                    @endif
-                </li>
-            </ul>
+                        </a>
+                        @if (count(\Illuminate\Support\Facades\Session::get('cart', [])) > 0)
+                            <ul class="sub-menu px-5 py-5" style="margin-top: 2px;margin-left: -200px;">
+                                <div id="cart-container">
+                                    <!-- Cart items -->
+                                </div>
+                                <div id="cart-totals"></div>
+                                <div class="flex flex-row justify-between mt-3 w-100">
+                                    <a href="{{ route('cart.view') }}" class="whitespace-nowrap p-3 px-6 bg-slate-100 hover:bg-slate-200 active:scale-95 mr-3 rounded-md duration-200">
+                                        {{ __('To cart') }}
+                                    </a>
+                                    <a href="{{ route('checkout') }}" class="whitespace-nowrap p-3 px-6 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white rounded-md duration-200">
+                                        {{ __('Checkout') }}
+                                    </a>
+                                </div>
+                            </ul>
+                        @endif
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="flex items-center justify-center py-8 w-100 mx-auto">
-            <img src="{{ asset('images/logo.png') }}" alt="">
+        <div class="flex items-center justify-center py-8 w-100 mx-auto relative">
+            <a href="/">
+                <img src="{{ asset('images/logo.png') }}" alt="">
+            </a>
         </div>
-        @include('components.header-links')
+        <div class="bottom-menu">
+            @include('components.header-links')
+        </div>
     </header>
 
     <div class="container bg-white mx-auto min-h-[500px]" id="app-container">
@@ -98,8 +111,8 @@
         </div>
 
         <div class="bg-black mx-auto mt-[300px]" id="app-container">
-            <div class="w-100 mx-auto flex items-start py-5 px-8 container-body text-white">
-                <div class="w-1/3">
+            <div class="w-100 mx-auto flex items-start flex-wrap py-5 px-8 container-body text-white">
+                <div class="lg:w-1/4 lg:my-0 md:w-1/2 my-5">
                     <a href="" class="text-white" rel="nofollow">Made by
                         <svg xmlns="http://www.w3.org/2000/svg" width="150" height="40" viewBox="0 0 120 14" fill="none" style="margin-top: -13px;">
                             <g clip-path="url(#clip0_2_181)">
@@ -123,18 +136,18 @@
                     </a>
                     <p class="font-medium text-xs ">Copyright © yaninayakusheva.com. All Rights Reserved.</p>
                 </div>
-                <div class="w-1/3 flex flex-col">
+                <div class="lg:w-1/4 lg:my-0 md:w-1/2 flex  my-5 flex-col w-full">
                     <b class="mb-2">Information</b>
                     <a href="" class="mb-1">Privacy Policy</a>
                     <a href="" class="mb-1">Terms and conditions</a>
                     <a href="" class="mb-1">Contact</a>
                 </div>
-                <div class="w-1/3 flex flex-col">
+                <div class="lg:w-1/4 lg:my-0 md:w-1/2 my-5 flex flex-col">
                     <b class="mb-2">Our Offers</b>
                     <a href="" class="mb-1">News</a>
                     <a href="" class="mb-1">Shop</a>
                 </div>
-                <div class="w-1/3 flex flex-col">
+                <div class="lg:w-1/4 lg:my-0 md:w-1/2 my-5 flex flex-col">
                     <b class="mb-2">Newsletter</b>
                     <p class="text-sm">Enjoy our newsletter to stay updated with the latest news and special sales. Let’s your email address here!</p>
                     <div class="flex">
