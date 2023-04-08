@@ -6,7 +6,6 @@
 
 @php
     $cartTotals = (new \App\Services\Shop\CartService())->getCart();
-//    dd($cartTotals);
 @endphp
 
 @section('content')
@@ -21,7 +20,7 @@
     @if (count($cart) > 0)
         @foreach ($cart as $item => $itemArray)
             @php
-                $product = $item != 'undefined' ? \App\Models\Product::find($item) : null;
+                $product = $item != 'undefined' && isset($item) ? \App\Models\Product::find($item) : null;
             @endphp
 
             @if ($product)
@@ -34,6 +33,9 @@
                                 <div class="flex items-center justify-center p-1 px-3 rounded-md ml-3 text-sm bg-gray-200">{{ $itemArray }}</div>
                             </div>
                             <p class="text-md">{{ $product->getDescription() }}</p>
+                            <span class="font-semibold">
+                                {{ $product->getFormatedPrice() }}
+                            </span>
                         </div>
                     </div>
                     <div class="flex pr-3 flex-col">

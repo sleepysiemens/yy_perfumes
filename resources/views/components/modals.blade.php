@@ -1,4 +1,4 @@
-<div class="modals" style="position: relative;z-index: 99999999;margin-top: -10%;">
+<div class="modals" style="display:block;position: relative;z-index: 99999999;margin-top: -10%;">
         <aside id="change-language" class="avgrund-popup">
             <h2 class="heading flex items-center">
                 <img src="https://cdn-icons-png.flaticon.com/512/9693/9693532.png" style="margin-right: 5px;" width="25px" alt="">

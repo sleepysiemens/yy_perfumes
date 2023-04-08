@@ -42,9 +42,21 @@
         </div>
     </div>
 
-    <div class="my-8 text-center heading-title">
-        <div class="text-3xl font-medium mt-16">{{ __('Latest Blog Posts') }}</div>
+    <div class="my-8 text-center heading-title mb-12">
+        <div class="text-3xl font-medium mt-16 mb-1">{{ __('Latest Blog Posts') }}</div>
         <span>{{ __('There are latest blog posts') }}</span>
+    </div>
+    <div class="flex flex-wrap justify-between">
+        @foreach(\App\Models\Article::all() as $article)
+            <a href="{{ route('post.show', $article->id) }}">
+                <div class="w-96 article" style="background: url('/storage/articles/{{ $article->image }}');
+                background-position: center center;background-size: cover;">
+                    <div class="article__bottom">
+                        <div class="font-medium">{{ $article->getTitle() }}</div>
+                    </div>
+                </div>
+            </a>
+        @endforeach
     </div>
 @endsection
 

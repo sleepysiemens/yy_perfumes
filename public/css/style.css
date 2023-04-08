@@ -154,3 +154,31 @@ body {
     -moz-border-radius: 100%;
     border-radius: 100%;
 }
+
+.article {
+    height: 400px;
+    width: 300px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    transition: .2s ease;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.article .article__bottom {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.7));
+    height: 150px;
+    width: 100%;
+    padding-top: 90px;
+    padding-left: 25px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.article:hover {
+    transform: translate(5px, -5px);
+    cursor: pointer;
+}

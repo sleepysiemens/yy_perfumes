@@ -37,8 +37,15 @@ Route::prefix('/shop')->group(function () {
 
     Route::resources([
         'catalogue' => \App\Http\Controllers\Shop\ProductController::class,
+        'order' => \App\Http\Controllers\OrderController::class,
     ]);
+
+    Route::view('/checkout/success', 'checkout.success')->name('checkout.success');
 });
+
+Route::resources([
+    'post' => \App\Http\Controllers\PostController::class,
+]);
 
 Auth::routes();
 

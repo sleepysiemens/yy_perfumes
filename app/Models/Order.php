@@ -40,4 +40,10 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'basket' => 'array'
+    ];
+
+    protected $guarded = [];
 }

@@ -33,7 +33,7 @@ class CartService
         $cartQuantity = 0;
 
         foreach ($cart as $item => $quantity) {
-            $product = Product::query()->find($item);
+            $product = $item != 'undefined' && isset($item) ? \App\Models\Product::find($item) : null;
 
             if ($product) {
                 $total += $product->getPrice() * $quantity;
