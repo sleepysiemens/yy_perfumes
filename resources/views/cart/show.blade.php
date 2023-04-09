@@ -48,16 +48,18 @@
             @endif
         @endforeach
 
-        <div class="flex justify-between">
-            <div class="flex items-start">
+        <div class="flex justify-between flex-wrap">
+            <div class="flex items-start sm:w-fit sm:mb-0 mb-4 w-full">
                 <span class="">{{ __('Total') }}:</span>
                 <span class="font-bold ml-2">{{ $cartTotals['currency'] }} {{ $cartTotals['total'] }}</span>
             </div>
-            <a href="{{ route('checkout') }}">
-                <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-zinc-900 hover:bg-zinc-700 active:scale-95 text-white duration-200 flex items-center">
-                    {{ __('Continue checkout') }}
-                </button>
-            </a>
+            <div class="sm:w-fit w-full">
+                <a href="{{ route('checkout') }}">
+                    <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-zinc-900 hover:bg-zinc-700 active:scale-95 text-white duration-200 flex items-center">
+                        {{ __('Continue checkout') }}
+                    </button>
+                </a>
+            </div>
         </div>
     @else
         <h2 class="font-bold text-2xl mt-4 mb-1">В корзине еще нет товаров</h2>
