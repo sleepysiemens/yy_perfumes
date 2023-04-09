@@ -92,29 +92,27 @@
                 </ul>
                 <ul>
                     <li class="" style="transform: translateY(-6px);">
-                        <a href="">
+                        <a href="{{ route('cart.view') }}">
                         <span class="cart-container">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="40px" height="40px" viewBox="0 0 32 32"><title/>
                                 <path d="M22,8H10a1,1,0,0,0-.983.816l-3,16A1,1,0,0,0,7,26H25a1,1,0,0,0,.983-1.184l-3-16A1,1,0,0,0,22,8ZM8.205,24,10.83,10H21.17l2.625,14ZM20,12.5a4,4,0,0,1-8,0,1,1,0,0,1,2,0,2,2,0,0,0,4,0,1,1,0,0,1,2,0Z"/></svg>
                             <span id="cart-count">0</span>
                         </span>
                         </a>
-                        @if (count(\Illuminate\Support\Facades\Session::get('cart', [])) > 0)
-                            <ul class="sub-menu px-5 py-5" style="margin-top: 2px;margin-left: -200px;">
-                                <div id="cart-container">
-                                    <!-- Cart items -->
-                                </div>
-                                <div id="cart-totals"></div>
-                                <div class="flex flex-row justify-between mt-3 w-100">
-                                    <a href="{{ route('cart.view') }}" class="whitespace-nowrap p-3 px-6 bg-slate-100 hover:bg-slate-200 active:scale-95 mr-3 rounded-md duration-200">
-                                        {{ __('To cart') }}
-                                    </a>
-                                    <a href="{{ route('checkout') }}" class="whitespace-nowrap p-3 px-6 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white rounded-md duration-200">
-                                        {{ __('Checkout') }}
-                                    </a>
-                                </div>
-                            </ul>
-                        @endif
+                        <ul class="sub-menu px-5 py-5" style="margin-top: 2px;margin-left: -200px;">
+                            <div id="cart-container">
+                                <p class="font-semibold">В корзине еще нет товаров</p>
+                            </div>
+                            <div id="cart-totals"></div>
+                            <div class="flex flex-row justify-between mt-3 w-100">
+                                <a href="{{ route('cart.view') }}" class="whitespace-nowrap p-3 px-6 bg-slate-100 hover:bg-slate-200 active:scale-95 mr-3 rounded-md duration-200">
+                                    {{ __('To cart') }}
+                                </a>
+                                <a href="{{ route('checkout') }}" class="whitespace-nowrap p-3 px-6 bg-slate-900 hover:bg-slate-700 active:scale-95 text-white rounded-md duration-200">
+                                    {{ __('Checkout') }}
+                                </a>
+                            </div>
+                        </ul>
                     </li>
                 </ul>
             </div>

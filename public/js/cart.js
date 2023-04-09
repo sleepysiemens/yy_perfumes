@@ -24,21 +24,28 @@ $(document).ready(function () {
             '/cart/get',
             {},
             function (data) {
-                $('')
-
                 var cart = JSON.parse(data);
                 $('#cart-count').html(cart.quantity);
 
                 $('#cart-container *').remove();
 
-                // Вставляем добавленные товары
-                Object.entries(cart.cart).forEach(([element, quantity]) => {
-                    $.get(
-                        '/api/products/' + element + '/' + localStorage.getItem('lang'),
-                        {},
-                        function (data) {
-                            var item = data.data;
-                            $('#cart-container').append(`
+                // Если товаров нет
+                console.log(cart.cart);
+                // <p className="font-semibold">В корзине еще нет товаров</p>
+                if (cart.cart === null) {
+                    $('#cart-container').append(`
+                                <p className="font-semibold">В корзине еще нет товаров</p>
+                            `);
+                } else {
+                    // Вставляем добавленные товары
+                    Object.entries(cart.cart).forEach(([element, quantity]) => {
+                        $.get(
+                            '/api/products/' + element + '/' + localStorage.getItem('lang'),
+                            {},
+                            function (data) {
+                                var item = data.data;
+
+                                $('#cart-container').append(`
                                 <div class="cart-item flex flex-row items-center mb-3">
                                     <img src="/storage/products/${item.img}" class="mr-2 rounded-md" width="50px" height="50px" alt="">
                                     <div class="flex flex-col">
@@ -47,9 +54,10 @@ $(document).ready(function () {
                                     </div>
                                 </div>
                             `);
-                        }
-                    );
-                });
+                            }
+                        );
+                    });
+                }
 
                 // Вставляем нижние итоги
                 $('#cart-totals *').remove();
