@@ -11,10 +11,10 @@
                 <a href="{{ route('catalogue.show', $product->slug) }}"><div class="product__img"
                     style="background: url('/storage/products/{{ $product->img }}');background-size: cover;background-position: center center;"
                     ></div></a>
-                <div class="product__title">
+                <div class="product__title mt-5">
                     <a href="{{ route('catalogue.show', $product->slug) }}">{{ $product->getTitle() }}</a>
                 </div>
-                <div class="product__description">
+                <div class="product__description my-4 mt-1">
                     {{ $product->getDescription() }}
                 </div>
                 <div class="product__form flex items-center justify-between">
