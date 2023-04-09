@@ -4,6 +4,7 @@ namespace App\Services\Shop;
 
 use App\Models\Product;
 use App\Services\Product\ProductService;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
 
 class CartService
@@ -58,7 +59,7 @@ class CartService
     public function remove($id)
     {
         $cart = Session::has('cart') ? Session::get('cart') : [];
-        unset($cart[$id]);
+        Arr::forget($cart, $id);
         Session::put('cart', $cart);
     }
 }
