@@ -341,9 +341,23 @@ article {
     }
 }
 
-@media (max-width: 890px) {
-    .sub-menu {
+.mobile-menu-nav {
+    transform: translateX(-100%);
+    transition: .7s ease;
+}
 
+@media (max-width: 890px) {
+    body {
+        transition: .7s ease;
+    }
+
+    .mobile-menu-nav.opened {
+        display: block;
+        transform: translateX(-71%);
+    }
+
+    body.opened-menu {
+        transform: translateX(50%);
     }
 }
 

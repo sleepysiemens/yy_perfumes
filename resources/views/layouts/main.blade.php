@@ -41,6 +41,11 @@
 <body class="antialiased">
 <div class="">
     <div class="mobile-menu-nav">
+        <div class="absolute mr-5 mt-5" style="right:0;">
+            <a href="javascript:openMobileMenu();">
+                <i class="fa fa-times text-2xl"></i>
+            </a>
+        </div>
         <div class="flex justify-center mb-5 mt-3">
             <a href="/">
                 <img src="{{ asset('images/logo.png') }}" alt="">
