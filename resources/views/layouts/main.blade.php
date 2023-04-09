@@ -40,7 +40,26 @@
 </head>
 <body class="antialiased">
 <div class="">
-    <div class="drop-header bg-white" id="drop-header">
+    <div class="mobile-menu-nav">
+        <div class="flex justify-center mb-5 mt-3">
+            <a href="/">
+                <img src="{{ asset('images/logo.png') }}" alt="">
+            </a>
+        </div>
+        <ul>
+            @include('components.links')
+        </ul>
+        <p class="mt-5 font-medium">+359879891667</p>
+        <p class="mb-3 font-medium">+79054070065</p>
+        <p class="my-3 font-medium">2a1@yandex.ru</p>
+
+        <div class="flex items-center mt-5">
+            <a class="facebook social-icon mr-5" href="https://www.facebook.com/profile.php?id=100004700704305" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a class="instagram social-icon" href="https://www.instagram.com/yaninayakusheva/" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <div class="drop-header" id="drop-header">
         <div class="inner flex sm:justify-between items-center">
             <a href="/"><img src="{{ asset('images/logo.png') }}" alt=""></a>
             @include('components.header-links')
@@ -95,7 +114,7 @@
                 </ul>
             </div>
         </div>
-        <div class="flex items-center justify-center py-8 w-100 mx-auto relative">
+        <div class="flex items-center logo-block justify-center py-8 w-100 mx-auto relative">
             <a href="/">
                 <img src="{{ asset('images/logo.png') }}" alt="">
             </a>
