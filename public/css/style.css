@@ -230,10 +230,17 @@ article {
     outline: 2px dashed rgba(0,0,0,1);
 }
 
-.product {
-    width: 277px;
-    height: 300px;
-}
+/*.product {*/
+/*    width: 277px;*/
+/*    height: 300px;*/
+/*}*/
+
+/*@media (max-width: 430px) {*/
+/*    .product {*/
+/*        width: 100%;*/
+/*        height: 300px;*/
+/*    }*/
+/*}*/
 
 .product .product__img {
     width: 100%;

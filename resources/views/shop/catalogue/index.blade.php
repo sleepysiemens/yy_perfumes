@@ -5,9 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="flex lg:flex-row lg:justify-start sm:justify-center sm:flex-col mb-16">
+    <div class="flex lg:flex-row flex-wrap lg:justify-start sm:justify-center sm:flex-row flex-col mb-16">
         @foreach($products as $product)
-            <div class="product lg:mx-4 sm:my-10">
+            <div class="product xl:w-1/4 sm:w-2/5 w-full md:mx-4 sm:my-10 md:mb-0 mb-28">
                 <a href="{{ route('catalogue.show', $product->slug) }}"><div class="product__img"
                     style="background: url('/storage/products/{{ $product->img }}');background-size: cover;background-position: center center;"
                     ></div></a>

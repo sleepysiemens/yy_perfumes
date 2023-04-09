@@ -9,9 +9,9 @@
         <div class="breadcrumb mb-6">
             <a href="{{ route('catalogue.index') }}" class="underline hover:no-underline">{{ __('Shop') }}</a> / {{ $product->getTitle() }}
         </div>
-        <div class="flex lg:flex-row lg:justify-start sm:justify-center sm:flex-row">
-            <img src="/storage/products/{{ $product->img }}" width="300px" alt="">
-            <div class="flex flex-col ml-12">
+        <div class="flex lg:flex-row flex-wrap sm:flex-row flex-col sm:justify-start justify-start sm:flex-row">
+            <img src="/storage/products/{{ $product->img }}" class="sm:mb-0 mb-5" width="300px" alt="">
+            <div class="flex flex-col sm:ml-12">
                 <h1 class="font-bold text-xl">{{ $product->getTitle() }}</h1>
                 <p class="mt-2">{{ $product->getFormatedPrice() }}</p>
                 <div class="flex items-center mt-4">
@@ -44,26 +44,26 @@
 
         <hr class="my-10 mb-8">
 
-        <div class="my-8 flex sm:justify-around">
-            <div class="flex items-center">
+        <div class="my-8 flex sm:justify-around flex-wrap mt-8">
+            <div class="flex items-center lg:w-1/3 w-full my-3">
                 <img src="https://yaninayakusheva.com/wp-content/uploads/2018/06/policy-1.png" alt="" class="mr-3">
                 <div class="flex flex-col">
-                    <span class="text-base my-0">Бесплатная доставка</span>
-                    <span class="text-sm my-0 max-w-xs">Бесплатная доставка при любом заказе в США или на сумму свыше 200 долларов</span>
+                    <span class="text-base my-0">{{ __('Free Shipping') }}</span>
+                    <span class="text-sm my-0 max-w-xs">{{ __('Free shipping on all US order or order above $200') }}</span>
                 </div>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center lg:w-1/3 w-full my-3">
                 <img src="https://yaninayakusheva.com/wp-content/uploads/2018/06/policy-2.png" alt="" class="mr-3">
                 <div class="flex flex-col">
-                    <span class="text-base my-0">Поддержка 24/7</span>
-                    <span class="text-sm my-0 max-w-md">Поддержка на связи круглосуточно</span>
+                    <span class="text-base my-0">{{ __('Support 24/7') }}</span>
+                    <span class="text-sm my-0 max-w-md">{{ __('Contact us 24 hours a day, 7 days a week') }}</span>
                 </div>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center lg:w-1/3 w-full my-3">
                 <img src="https://yaninayakusheva.com/wp-content/uploads/2018/06/policy-4.png" alt="" class="mr-3">
                 <div class="flex flex-col">
-                    <span class="text-base my-0">100% Платежная безопасность</span>
-                    <span class="text-sm my-0 max-w-md">Мы обеспечиваем безопасную оплату с помощью PEV</span>
+                    <span class="text-base my-0">{{ __('100% Payment Secure') }}</span>
+                    <span class="text-sm my-0 max-w-md">{{ __('We ensure secure payment with PEV') }}</span>
                 </div>
             </div>
         </div>
