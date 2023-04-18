@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Catalogue;
 use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -31,7 +32,35 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $img = $request->file('product_img');
+
+        $imageName = time() . '_' . Str::slug($img->getFilename()) . "." . $img->extension();
+
+        // Public Folder
+        $img->move(public_path('storage/products'), $imageName);
+
+        Product::query()->create([
+            'category_id' => $request->input('category_id'),
+            'img' => $imageName,
+            'title' => [
+                'en' => $request->input('en_title'),
+                'ru' => $request->input('ru_title'),
+            ],
+            'short_description' => [
+//                'en' => $request->input('en_title'),
+//                'ru' => $request->input('ru_title'),
+            ],
+            'description' => [
+                'en' => $request->input('en_description'),
+                'ru' => $request->input('ru_description'),
+            ],
+            'cost' => $request->input('cost'),
+            'cost_dealer' => $request->input('cost_dealer'),
+            'cost_vip_dealer' => $request->input('cost_vip_dealer'),
+            'slug' => $request->input('slug') ?? Str::slug($request->input('en_title')),
+        ]);
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -47,7 +76,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -55,7 +84,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update([
+            'category_id' => $request->input('category_id'),
+            'title' => [
+                'en' => $request->input('en_title'),
+                'ru' => $request->input('ru_title'),
+            ],
+            'description' => [
+                'en' => $request->input('en_description'),
+                'ru' => $request->input('ru_description'),
+            ],
+            'cost' => $request->input('cost'),
+            'cost_dealer' => $request->input('cost_dealer'),
+            'cost_vip_dealer' => $request->input('cost_vip_dealer'),
+            'slug' => $request->input('slug') ?? Str::slug($request->input('en_title')),
+        ]);
+
+        return redirect()->back()->with('success', 'Товар успешно изменен');
     }
 
     /**
@@ -63,6 +108,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->back();
     }
 }

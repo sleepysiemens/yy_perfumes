@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         $this->call([
-            UserSeeder::class
+            UserSeeder::class,
+            CurrencySeeder::class,
         ]);
     }
 }

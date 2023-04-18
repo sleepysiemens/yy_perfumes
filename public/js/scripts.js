@@ -10,4 +10,9 @@ function myFunction() {
     }
 }
 
+function openMobileMenu() {
+    $('.mobile-menu-nav').toggleClass('opened');
+    $('body').toggleClass('opened-menu');
+}
+
 console.log(1);
