@@ -28,7 +28,7 @@
             <div class="w-[175px] h-[222px] bg-[#D2CCC3] mr-3"></div>
         </div>
     </div>
-    <div class="container mx-auto mt-[213px]">
+    <div class="container mx-auto mt-[350px]">
         <div class="flex items-start justify-start">
             <div class="block bg-[#E7E7E7] h-[375px] w-[375px]"></div>
             <div class="w-1/2 ml-8">
@@ -45,7 +45,7 @@
                     юмористические вставки или слова, которые даже отдалённо не напоминают латынь.</p>
             </div>
         </div>
-        <img src="{{ asset('images/flacon.png') }}" class="absolute right-0 mt-[-28 0px]" alt="">
+        <img src="{{ asset('images/flacon.png') }}" class="absolute right-0 mt-[-280px]" alt="">
     </div>
     <div class="container mx-auto flex justify-center flex-col items-center mt-[217px]">
         <h2 class="font-medium text-2xl">Some big title</h2>
@@ -97,7 +97,7 @@
             <a href="" class="py-1 px-4 border border-[#000] w-fit text-sm">Перейти в магазин</a>
         </div>
     </div>
-    <div class="container mx-auto flex justify-center mt-[85px]">
+    <div class="container mx-auto flex justify-center mt-[250px]">
         <div class="w-[375px] h-[222px]">
             <div class="border-[3px] mt-[-33px] ml-[-36px] border-[#D2CCC3] w-[375px] h-[222px] absolute"></div>
             <div class="h-full w-full bg-[#BEBEBE]"></div>
