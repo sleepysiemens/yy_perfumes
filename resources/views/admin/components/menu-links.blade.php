@@ -65,7 +65,7 @@
         </a>
         <ul class="menu-sub">
             <li class="menu-item">
-                <a href="ui-accordion.html" class="menu-link">
+                <a href="{{ route('orders.index') }}" class="menu-link">
                     <div data-i18n="Accordion">Все</div>
                 </a>
             </li>

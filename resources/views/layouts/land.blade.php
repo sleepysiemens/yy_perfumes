@@ -19,56 +19,27 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dropdown-menu.css') }}">
 </head>
-<body class="antialiased">
+<body class="antialiased bg-white">
 <div class="">
-    <header class="header container mx-auto">
-        <div class="flex items-center justify-center py-8 w-100 mx-auto">
+    <header class="header container flex justify-center items-center mx-auto py-8 text-md">
+        <div class="w-1/2 flex justify-end">
+            <a href="" class="mr-4">Home</a>
+            <a href="" class="mr-4">Shop</a>
+            <a href="" class="mr-4">Ravenna</a>
+            <a href="" class="">William</a>
+        </div>
+        <div class="w-fit mx-5 mt-[-10px] flex justify-center items-start">
             <img src="{{ asset('images/logo.png') }}" alt="">
         </div>
-        <ul class="menu-nav flex items-center list-none">
-            <li>
-                <a href="">Home</a>
-            </li>
-            <li>
-                <a href="">Philosophy</a>
-            </li>
-            <li class="with-sub">
-                <a href="">Ravenna</a>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a href="">My universe</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="with-sub">
-                <a href="">William</a>
-
-                <ul class="sub-menu">
-                    <li>
-                        <a href="">My universe</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="">Aron</a>
-            </li>
-            <li>
-                <a href="">Gideon</a>
-            </li>
-            <li>
-                <a href="">Shop</a>
-            </li>
-            <li>
-                <a href="">Perfumer</a>
-            </li>
-            <li>
-                <a href="">Store locator</a>
-            </li>
-        </ul>
+        <div class="w-1/2 flex justify-start">
+            <a href="" class="mr-4">Gideon</a>
+            <a href="" class="mr-4">Aron</a>
+            <a href="" class="mr-4">Perfumer</a>
+            <a href="" class="">Philosophy</a>
+        </div>
     </header>
 
-    <div class="container mx-auto">
+    <div class="mx-auto">
         <div class="bg-white w-100 mx-auto">
             @yield('content')
         </div>

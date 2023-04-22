@@ -20,5 +20,6 @@ Route::prefix('/yy-admin')->group(function () {
         'statuses' => \App\Http\Controllers\Admin\Order\OrderStatusController::class,
         'products' => \App\Http\Controllers\Admin\Catalogue\ProductController::class,
         'articles' => \App\Http\Controllers\Admin\ArticleController::class,
+        'orders' => \App\Http\Controllers\Admin\OrderController::class,
     ]);
 });

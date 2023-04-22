@@ -13,6 +13,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -35,6 +37,33 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Orders') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Shop contact') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Bids') }}</a>
+                        </li>
+                        <li class="nav-item dropdown mr-5">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                CRM
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="">
+                                    {{ __('Payments') }}
+                                </a>
+                                <a class="dropdown-item" href="">
+                                    {{ __('Torg 12') }}
+                                </a>
+                                <a class="dropdown-item" href="">
+                                    {{ __('Deliveries') }}
+                                </a>
+                            </div>
+                        </li>
+                        <div style="width: 30px;"></div>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -76,5 +105,13 @@
             @yield('content')
         </main>
     </div>
+
+    <style>
+        nav li {
+            margin: 0 3px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @stack('scripts')
 </body>
 </html>

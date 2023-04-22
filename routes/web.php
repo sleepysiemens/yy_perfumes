@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 // TODO: Доделать лендинг и убрать редирект
-//Route::get('/', function () {
-//    return view('land.home');
-//});
+Route::get('/', function () {
+    return view('land.home');
+});
 
-Route::redirect('/', '/shop/');
+//Route::redirect('/', '/shop/');
 
 Route::get('/test', function () {
     dd(\Illuminate\Support\Facades\Session::get('cart'));
@@ -74,3 +74,14 @@ Route::view('/aron/my-universe', 'person.aron.my-universe');
 Route::view('/gideon/my-universe', 'person.gideon.my-universe');
 Route::view('/perfumer', 'perfumer');
 Route::view('/store-locator', 'store-locator');
+
+Route::view('profile/become-dealer', 'profile.become-dealer')->name('become-dealer');
+
+Route::group([
+    'prefix' => 'dealer',
+    'middleware' => 'dealer',
+    'as' => 'dealer.'
+], function () {
+    Route::get('dashboard', 'App\Http\Controllers\Dealer\DashboardController@index')->name('dashboard');
+    Route::view('orders', 'dealer.orders.index')->name('orders.index');
+});

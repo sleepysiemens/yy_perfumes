@@ -46,4 +46,14 @@ class Order extends Model
     ];
 
     protected $guarded = [];
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(OrderStatus::class, 'order_status_id');
+    }
 }

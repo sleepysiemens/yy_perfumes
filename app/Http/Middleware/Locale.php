@@ -27,7 +27,8 @@ class Locale
             App::setLocale($lang);
         } else {
             // Определяем язык автоматом
-            App::setLocale(Str::lower($this->getLocation()->countryCode));
+            $locale = $this->getLocation() == false ? 'en' : $this->getLocation()->countryCode;
+            App::setLocale(Str::lower($locale));
         }
 
         Config::set('app.name', __('Yanina Yakusheva Perfumes'));

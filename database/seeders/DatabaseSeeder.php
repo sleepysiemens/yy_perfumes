@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Category;
+use App\Models\DeliveryMethod;
+use App\Models\OrderStatus;
+use App\Models\Person;
+use App\Models\Product;
 use Database\Factories\CategoryFactory;
 use Illuminate\Database\Seeder;
 
@@ -29,5 +33,22 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CurrencySeeder::class,
         ]);
+
+        DeliveryMethod::create([
+            'title' => 'Shipping'
+        ]);
+
+        OrderStatus::create([
+            'title' => 'Created',
+            'primary' => true,
+        ]);
+
+        Person::create([
+            'name' => 'Ravenna'
+        ]);
+
+        Product::factory()
+            ->count(4)
+            ->create();
     }
 }

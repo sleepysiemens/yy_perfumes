@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Http\Controllers\Controller;
 use App\Models\OrderStatus;
 use App\Services\Shop\CartService;
+use App\Services\User\UserService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -44,10 +45,11 @@ class OrderController extends Controller
 
         Order::query()->create([
             'name' => $request->input('name'),
-            'email' => $request->input('email'),
+            'email' => UserService::userIsRegistered($request->input('email'), $request->all())->email,
             'phone' => '',
-            'order_status_id' => OrderStatus::query()->where('primary', true)->first()->id,
+            'order_status_id' => OrderStatus::first()->id,
             'delivery_method_id' => DeliveryMethod::first()->id,
+            'user_id' => UserService::userIsRegistered($request->input('email'), $request->all())->id,
             'basket' => $cart,
             'total' => $cart['total'],
             'country' => $request->input('country'),
