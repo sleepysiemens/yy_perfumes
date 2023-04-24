@@ -83,5 +83,8 @@ Route::group([
     'as' => 'dealer.'
 ], function () {
     Route::get('dashboard', 'App\Http\Controllers\Dealer\DashboardController@index')->name('dashboard');
-    Route::view('orders', 'dealer.orders.index')->name('orders.index');
+
+    Route::resources([
+        'orders' => 'App\Http\Controllers\Dealer\OrderController',
+    ]);
 });

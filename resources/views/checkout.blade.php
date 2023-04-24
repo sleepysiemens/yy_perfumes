@@ -27,8 +27,18 @@
                     <input type="email" name="email" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Enter email') }}">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="" class="font-medium">{{ __('Country') }}</label>
-                    <input type="text" name="country" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Country') }}">
+                    <label for="" class="font-medium">{{ __('Select shop') }}</label>
+                    <select name="shop" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
+                        @foreach(\App\Models\Shop::all() as $shop)
+                            <option value="{{ $shop->id }}" @if(App::getLocale() == $shop->country) selected @endif>
+                                @if($shop->name != '')
+                                    {{ $shop->name }} |
+                                @endif
+                                {{ config('countries.countries')[$shop->country]  }},
+                                {{ $shop->address }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group mt-3">
                     <label for="" class="font-medium">{{ __('Address') }}</label>

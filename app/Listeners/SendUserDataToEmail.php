@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\UserRegistration;
+use App\Events\UserRegister;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -19,8 +19,8 @@ class SendUserDataToEmail
     /**
      * Handle the event.
      */
-    public function handle(UserRegistration $event): void
+    public function handle(UserRegister $event): void
     {
-        
+
     }
 }

@@ -52,7 +52,12 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function status()
+    public function shop(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Shop::class);
+    }
+
+    public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(OrderStatus::class, 'order_status_id');
     }

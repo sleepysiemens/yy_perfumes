@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreated;
 use App\Http\Requests\Order\OrderCreateRequest;
 use App\Models\DeliveryMethod;
 use App\Models\Order;
 use App\Http\Controllers\Controller;
 use App\Models\OrderStatus;
+use App\Models\Shop;
 use App\Services\Shop\CartService;
 use App\Services\User\UserService;
 use Illuminate\Http\Request;
@@ -42,19 +44,23 @@ class OrderController extends Controller
     public function store(OrderCreateRequest $request)
     {
         $cart = $this->cartService->getCart();
+        $shop = Shop::query()->find($request->input('shop'));
 
-        Order::query()->create([
+        $order = Order::query()->create([
             'name' => $request->input('name'),
             'email' => UserService::userIsRegistered($request->input('email'), $request->all())->email,
             'phone' => '',
+            'shop_id' => $shop->id,
             'order_status_id' => OrderStatus::first()->id,
             'delivery_method_id' => DeliveryMethod::first()->id,
             'user_id' => UserService::userIsRegistered($request->input('email'), $request->all())->id,
             'basket' => $cart,
             'total' => $cart['total'],
-            'country' => $request->input('country'),
+            'country' => $shop->country,
             'address' => $request->input('address'),
         ]);
+
+        event(new OrderCreated($order));
 
         return redirect()->route('checkout.success');
     }

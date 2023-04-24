@@ -42,6 +42,8 @@
                     }
                 }
             });
+
+            ctx.canvas.parentNode.style.height = '128px';
         });
     </script>
 @endpush
