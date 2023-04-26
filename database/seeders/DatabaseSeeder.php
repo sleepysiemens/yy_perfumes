@@ -25,14 +25,20 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Category::factory()
-            ->count(10)
-            ->create();
+//        Category::factory()
+//            ->count(10)
+//            ->create();
+
+        Category::create([
+            'slug' => 'perfume',
+            'title' => 'Perfume',
+        ]);
 
         $this->call([
             UserSeeder::class,
             CurrencySeeder::class,
             ShopSeeder::class,
+            PersonSeeder::class,
         ]);
 
         DeliveryMethod::create([
@@ -48,8 +54,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Ravenna'
         ]);
 
-        Product::factory()
-            ->count(4)
-            ->create();
+        $this->call([
+            ProductSeeder::class,
+        ]);
+
+//        Product::factory()
+//            ->count(4)
+//            ->create();
     }
 }
