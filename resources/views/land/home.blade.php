@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="flex flex-col items-start h-[520px] mt-[168px] w-full" style="background: rgba(222, 208, 208, .3);">
+    <div class="flex flex-col items-start h-[520px] mt-[168px] w-full" style="background: #DED0D0;">
         <div class="flex justify-center w-fit mx-auto mt-[-100px]">
             <div class="w-[283px] h-[351px] mr-3"
                  style="background: url('{{ asset('images/gideon.jpeg') }}');background-size: cover;background-position: center center;"></div>
@@ -27,8 +27,8 @@
             <hr class="my-2">
         </div>
     </div>
-    <div class="flex flex-col justify-end h-[246px] mt-0 w-full"
-         style="background: url('{{ asset('images/pexels-mario-cuadros-4608979-1-2048x1400.jpg') }}');background-size: cover;background-position: center center;">
+    <div class="flex flex-col justify-end h-[500px] mt-0 w-full"
+         style="background: url('{{ asset('images/dsc_5533-kopiya.jpg') }}');background-size: cover;background-position: center -100px;">
         <div class="flex justify-center w-fit mx-auto mb-[-100px]">
             <div class="w-[175px] h-[222px] mr-3"
                  style="background: url('{{ asset('images/https-yaninayakusheva-com-wp-content-uploads-img-2-768x961.jpeg') }}');background-size: cover;background-position: center center;"></div>
