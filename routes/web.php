@@ -67,13 +67,13 @@ Route::get('/cart/view', 'App\Http\Controllers\CartController@show')->name('cart
 Route::view('/shop/checkout', 'checkout')->name('checkout');
 
 // Persons
-Route::view('/philosophy', 'philosophy');
-Route::view('/ravenna/my-universe', 'person.ravenna.my-universe');
-Route::view('/william/my-universe', 'person.william.my-universe');
-Route::view('/aron/my-universe', 'person.aron.my-universe');
-Route::view('/gideon/my-universe', 'person.gideon.my-universe');
-Route::view('/perfumer', 'perfumer');
-Route::view('/store-locator', 'store-locator');
+Route::view('/philosophy', 'philosophy')->name('philosophy');
+Route::view('/ravenna/my-universe', 'person.ravenna.my-universe')->name('ravenna.my-universe');
+Route::view('/william/my-universe', 'person.william.my-universe')->name('william.my-universe');
+Route::view('/aron/my-universe', 'person.aron.my-universe')->name('aron.my-universe');
+Route::view('/gideon/my-universe', 'person.gideon.my-universe')->name('gideon.my-universe');
+Route::view('/perfumer', 'perfumer')->name('perfumer');
+Route::view('/store-locator', 'store-locator')->name('store-locator');
 
 Route::view('profile/become-dealer', 'profile.become-dealer')->name('become-dealer');
 
