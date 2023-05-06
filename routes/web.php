@@ -47,6 +47,13 @@ Route::resources([
     'post' => \App\Http\Controllers\PostController::class,
 ]);
 
+Route::group(['prefix' => 'print', 'as' => 'print.'], function () {
+    Route::resources([
+        'order' => \App\Http\Controllers\Print\OrderPrintController::class,
+        'invoice' => \App\Http\Controllers\Print\InvoicePrintController::class,
+    ]);
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

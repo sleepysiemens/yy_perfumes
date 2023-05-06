@@ -43,10 +43,13 @@ class OrderController extends Controller
      */
     public function store(OrderCreateRequest $request)
     {
+        $shopId = $request->input('shop') ?? 1;
+
         $cart = $this->cartService->getCart();
-        $shop = Shop::query()->find($request->input('shop'));
+        $shop =  Shop::query()->find($shopId);
 
         $order = Order::query()->create([
+            'hash' => \Str::random(46),
             'name' => $request->input('name'),
             'email' => UserService::userIsRegistered($request->input('email'), $request->all())->email,
             'phone' => '',
@@ -57,7 +60,7 @@ class OrderController extends Controller
             'basket' => $cart,
             'total' => $cart['total'],
             'country' => $shop->country,
-            'address' => $request->input('address'),
+            'address' => $request->input('address') ?? $shop->address,
         ]);
 
         event(new OrderCreated($order));

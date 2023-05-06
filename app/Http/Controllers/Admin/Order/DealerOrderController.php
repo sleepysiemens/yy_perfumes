@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Dealer;
+namespace App\Http\Controllers\Admin\Order;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
+use App\Models\DealerOrder;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class DealerOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $orders = \Auth::user()->shop->orders;
-        return view('dealer.orders.index', compact('orders'));
+        //
     }
 
     /**
@@ -30,13 +29,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input());
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(DealerOrder $dealerOrder)
     {
         //
     }
@@ -44,27 +43,23 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Order $order)
+    public function edit(DealerOrder $dealerOrder)
     {
-        return view('dealer.orders.edit', compact('order'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, DealerOrder $dealerOrder)
     {
-        $order->update([
-            'order_status_id' => $request->input('status')
-        ]);
-
-        return redirect()->back()->with('success', 'Заказ обновлен');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Order $order)
+    public function destroy(DealerOrder $dealerOrder)
     {
         //
     }

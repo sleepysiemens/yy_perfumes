@@ -61,4 +61,9 @@ class Order extends Model
     {
         return $this->belongsTo(OrderStatus::class, 'order_status_id');
     }
+
+    public function delivery(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(DeliveryMethod::class, 'delivery_method_id');
+    }
 }

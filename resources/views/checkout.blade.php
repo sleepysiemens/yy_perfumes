@@ -15,40 +15,68 @@
         <a href="{{ route('catalogue.index') }}" class="underline">В каталог</a>
     @else
         <div class="flex flex-wrap mt-3">
-            <form action="{{ route('order.store') }}" method="post" class="lg:w-1/3 lg:mb-0 mx-auto w-full mb-5">
-                @csrf
-                <h1 class="text-xl font-semibold mb-5">{{ __('Checkout order') }}</h1>
-                <div class="form-group">
-                    <label for="" class="font-medium">{{ __('Name') }}</label>
-                    <input type="text" name="name" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Enter name') }}">
-                </div>
-                <div class="form-group mt-3">
-                    <label for="" class="font-medium">{{ __('Email') }}</label>
-                    <input type="email" name="email" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Enter email') }}">
-                </div>
-                <div class="form-group mt-3">
-                    <label for="" class="font-medium">{{ __('Select shop') }}</label>
-                    <select name="shop" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
-                        @foreach(\App\Models\Shop::all() as $shop)
-                            <option value="{{ $shop->id }}" @if(App::getLocale() == $shop->country) selected @endif>
-                                @if($shop->name != '')
-                                    {{ $shop->name }} |
-                                @endif
-                                {{ config('countries.countries')[$shop->country]  }},
-                                {{ $shop->address }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group mt-3">
-                    <label for="" class="font-medium">{{ __('Address') }}</label>
-                    <input type="text" name="address" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Address') }}">
-                </div>
-                <div class="my-3 mb-5">
-                    <a href="">{{ __('When placing an order, I agree to the terms') }}</a>
-                </div>
-                <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-zinc-900 hover:bg-zinc-700 active:scale-95 text-white duration-200 flex items-center">{{ __('Confirm order') }}</button>
-            </form>
+            @if (Auth::check() && Auth::user()->type == 'dealer')
+                <form action="{{ route('order.store') }}" method="post" class="lg:w-1/3 lg:mb-0 mx-auto w-full mb-5">
+                    @csrf
+                    <h1 class="text-xl font-semibold mb-5">{{ __('Checkout order as dealer') }}</h1>
+                    <div class="form-group">
+                        <label for="" class="font-medium">{{ __('Name') }}</label>
+                        <input type="text" name="name" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Enter name') }}"
+                            value="{{ Auth::check() == 1 ? Auth::user()->name : '' }}">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="" class="font-medium">{{ __('Email') }}</label>
+                        <input type="email" name="email" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Enter email') }}"
+                            value="{{ Auth::check() == 1 ? Auth::user()->email : '' }}">
+                    </div>
+                    <div class="form-group mt-4 mb-1">
+                        <label for="" class="font-medium">{{ __('Shop') }}</label>
+                        <div class="font-bold mt-1 text-md">Wholesale delivery to the {{ Auth::user()->shop->name }} |
+                            {{ Auth::user()->shop->address }}</div>
+                    </div>
+                    <div class="my-3 mb-5">
+                        <a href="">{{ __('When placing an order, I agree to the terms') }}</a>
+                    </div>
+                    <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-zinc-900 hover:bg-zinc-700 active:scale-95 text-white duration-200 flex items-center">{{ __('Confirm order') }}</button>
+                </form>
+            @else
+                <form action="{{ route('order.store') }}" method="post" class="lg:w-1/3 lg:mb-0 mx-auto w-full mb-5">
+                    @csrf
+                    <h1 class="text-xl font-semibold mb-5">{{ __('Checkout order') }}</h1>
+                    <div class="form-group">
+                        <label for="" class="font-medium">{{ __('Name') }}</label>
+                        <input type="text" name="name" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Enter name') }}"
+                               value="{{ Auth::check() == 1 ? Auth::user()->name : '' }}">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="" class="font-medium">{{ __('Email') }}</label>
+                        <input type="email" name="email" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Enter email') }}"
+                               value="{{ Auth::check() == 1 ? Auth::user()->email : '' }}">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="" class="font-medium">{{ __('Select shop') }}</label>
+                        <select name="shop" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
+                            @foreach(\App\Models\Shop::all() as $shop)
+                                <option value="{{ $shop->id }}" @if(App::getLocale() == $shop->country) selected @endif>
+                                    @if($shop->name != '')
+                                        {{ $shop->name }} |
+                                    @endif
+                                    {{ config('countries.countries')[$shop->country]  }},
+                                    {{ $shop->address }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="" class="font-medium">{{ __('Address') }}</label>
+                        <input type="text" name="address" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Address') }}">
+                    </div>
+                    <div class="my-3 mb-5">
+                        <a href="">{{ __('When placing an order, I agree to the terms') }}</a>
+                    </div>
+                    <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-zinc-900 hover:bg-zinc-700 active:scale-95 text-white duration-200 flex items-center">{{ __('Confirm order') }}</button>
+                </form>
+            @endif
             <div class="lg:w-1/3 w-full">
                 @php
                     $cart = Session::has('cart') ? Session::get('cart') : [];

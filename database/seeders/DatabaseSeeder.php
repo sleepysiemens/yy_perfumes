@@ -58,8 +58,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
         ]);
 
-//        Product::factory()
-//            ->count(4)
-//            ->create();
+        Product::factory()
+            ->count(4)
+            ->create();
     }
 }

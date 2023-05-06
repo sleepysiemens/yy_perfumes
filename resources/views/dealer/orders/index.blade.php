@@ -50,6 +50,8 @@
                                         <div></div>
                                     </td>
                                     <td>
+                                        <a href="{{ route('order-print.show', $order->hash) }}">{{ __('Print order') }}</a>
+                                        <br>
                                         <a href="{{ route('dealer.orders.edit', $order->id) }}">Change status or edit</a>
                                     </td>
                                 </tr>

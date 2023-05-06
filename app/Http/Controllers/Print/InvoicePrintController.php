@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Dealer;
+namespace App\Http\Controllers\Print;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class InvoicePrintController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $orders = \Auth::user()->shop->orders;
-        return view('dealer.orders.index', compact('orders'));
+        //
     }
 
     /**
@@ -30,15 +29,16 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input());
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show($hash)
     {
-        //
+        $order = Order::query()->where('hash', $hash)->firstOrFail();
+        return view('print.invoice', compact('order'));
     }
 
     /**
@@ -46,7 +46,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('dealer.orders.edit', compact('order'));
+        //
     }
 
     /**
@@ -54,11 +54,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        $order->update([
-            'order_status_id' => $request->input('status')
-        ]);
-
-        return redirect()->back()->with('success', 'Заказ обновлен');
+        //
     }
 
     /**
