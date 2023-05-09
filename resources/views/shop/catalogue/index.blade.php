@@ -9,13 +9,13 @@
         @foreach($products as $product)
             <div class="product xl:w-1/4 sm:w-2/5 w-full md:mx-4 sm:my-10 md:mb-0 mb-28">
                 <a href="{{ route('catalogue.show', $product->slug) }}"><div class="product__img"
-                    style="background: url('/storage/products/{{ $product->img }}');background-size: cover;background-position: center center;"
+                    style="background: url('{{ $product->getImage() }}');background-size: cover;background-position: center center;"
                     ></div></a>
-                <div class="product__title mt-5">
+                <div class="product__title mt-7">
                     <a href="{{ route('catalogue.show', $product->slug) }}">{{ $product->getTitle() }}</a>
                 </div>
                 <div class="product__description my-4 mt-1">
-                    {{ $product->getDescription() }}
+                    {{ mb_substr($product->getDescription(), 0, 70) }}...
                 </div>
                 <div class="product__form flex items-center justify-between">
                     <p class="my-0">{{ $product->getFormatedPrice() }}</p>

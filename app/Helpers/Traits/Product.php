@@ -5,6 +5,7 @@ namespace App\Helpers\Traits;
 use App\Services\Shop\CurrencyService;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\fileExists;
 
 trait Product
 {
@@ -39,6 +40,14 @@ trait Product
         $currency = (new CurrencyService())->get();
 
         return $this->$priceType * intval($currency['rate']);
+    }
+
+    public function getImage()
+    {
+        if (file_exists('/storage/products/' . $this->img))
+            return '/storage/products/' . $this->img;
+        else
+            return '/images/' . $this->img;
     }
 
     public function getFormatedPrice()

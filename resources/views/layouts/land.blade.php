@@ -57,7 +57,7 @@
         <div class="flex">
             <a href="/" class="flex items-center">
                 <img src="{{ asset('images/logo.png') }}" alt="" class="mt-[-5px]">
-                <h2 class="font-bold italic text-lg w-2/3">Yanina Yakusheva Perfumes</h2>
+                <h2 class="font-bold italic text-lg w-2/3">{{ __('Yanina Yakusheva Perfumes') }}</h2>
             </a>
         </div>
 
@@ -72,19 +72,19 @@
 
     <header class="header container sm:flex justify-center items-center mx-auto py-8 text-md hidden">
         <div class="w-1/2 flex justify-end">
-            <a href="/" class="mr-4" rel="nofollow">Home</a>
-            <a href="{{ route('shop') }}" class="mr-4">Shop</a>
-            <a href="{{ route('ravenna.my-universe') }}" class="mr-4">Ravenna</a>
-            <a href="{{ route('william.my-universe') }}" class="">William</a>
+            <a href="/" class="mr-4" rel="nofollow">{{ __('Home') }}</a>
+            <a href="{{ route('shop') }}" class="mr-4">{{ __('Shop') }}</a>
+            <a href="{{ route('ravenna.my-universe') }}" class="mr-4">{{ __('Ravenna') }}</a>
+            <a href="{{ route('william.my-universe') }}" class="">{{ __('William') }}</a>
         </div>
         <div class="w-fit mx-5 mt-[-10px] flex justify-center items-start">
             <img src="{{ asset('images/logo.png') }}" alt="">
         </div>
         <div class="w-1/2 flex justify-start">
-            <a href="{{ route('gideon.my-universe') }}" class="mr-4">Gideon</a>
-            <a href="{{ route('aron.my-universe') }}" class="mr-4">Aron</a>
-            <a href="{{ route('perfumer') }}" class="mr-4">Perfumer</a>
-            <a href="{{ route('philosophy') }}" class="">Philosophy</a>
+            <a href="{{ route('gideon.my-universe') }}" class="mr-4">{{ __('Gideon') }}</a>
+            <a href="{{ route('aron.my-universe') }}" class="mr-4">{{ __('Aron') }}</a>
+            <a href="{{ route('perfumer') }}" class="mr-4">{{ __('Perfumer') }}</a>
+            <a href="{{ route('philosophy') }}" class="">{{ __('Philosophy') }}</a>
         </div>
     </header>
 

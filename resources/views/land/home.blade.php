@@ -1,7 +1,7 @@
 @extends('layouts.land')
 
 @section('title')
-    Brand Bio
+    {{ __('Brand Bio') }}
 @endsection
 
 @section('content')
@@ -15,15 +15,12 @@
                  style="background: url('{{ asset('images/william.jpeg') }}');background-size: cover;background-position: center center;"></div>
         </div>
         <div class="w-fit text-center mx-auto mt-11">
-            <h2 class="font-bold italic text-xl">Yanina Yakusheva Perfumes</h2>
-            <p class="w-fit mx-auto text-center mt-2">Fragrance is a silent and invisible companion. <br>
-                In the era of loneliness and imaginary communication, fantasies become more material.</p>
+            <h2 class="font-bold italic text-xl">{{ __('Yanina Yakusheva Perfumes') }}</h2>
+            <p class="w-2/3 mx-auto text-center mt-2">{{ __('Fragrance is a silent and invisible companion. In the era of loneliness and imaginary communication, fantasies become more material.') }}
+            </p>
             <hr class="my-2">
-            <p class="w-fit mx-auto text-center mt-2">The founder of the brand – perfumer Yanina Yakusheva. <br>
-                The main idea of her brand is to demonstrate the individuality of each person with the help of the perfume,
-                <br>
-                to reveal perfume not only as an item for personal use but as an artistic creation that is able
-                to interact with other objects, society and you.</p>
+            <p class="w-1/2 mx-auto text-center mt-2">{{ __('The founder of the brand – perfumer Yanina Yakusheva. The main idea of her brand is to demonstrate the individuality of each person with the help of the perfume, to reveal perfume not only as an item for personal use but as an artistic creation that is able to interact with other objects, society and you.') }} <br>
+            </p>
             <hr class="my-2">
         </div>
     </div>
@@ -43,26 +40,25 @@
             <div class="block md:h-[375px] md:w-[375px] h-[155px] w-[155px]"
                  style="background: url('{{ asset('images/ravena.jpeg') }}');background-size: cover;background-position: center center;"></div>
             <div class="w-1/2 ml-8">
-                <p class="text-[#C69B70] text-xl">Women's fragrances</p>
-                <p class="mt-2 text-sm">Women's fragrances with a character. Make your choice.</p>
+                <p class="text-[#C69B70] text-xl">{{ __("Women's fragrances") }}</p>
+                <p class="mt-2 text-sm">{{ __("Women's fragrances with a character. Make your choice.") }}</p>
             </div>
         </div>
         <div class="flex items-start justify-start md:ml-[165px] md:mt-[-100px] mt-[10px] md:ml-0 ml-4">
             <div class="block md:h-[375px] md:w-[375px] h-[155px] w-[155px]"
                  style="background: url('{{ asset('images/aron.jpeg') }}');background-size: cover;background-position: center center;"></div>
             <div class="w-1/2 ml-8 md:h-[375px] h-fit flex flex-col justify-center">
-                <p class="text-[#C69B70] text-xl">Men's fragrances</p>
-                <p class="mt-2 text-sm">Men's fragrances. Make your choice.</p>
+                <p class="text-[#C69B70] text-xl">{{ __("Men's fragrances") }}</p>
+                <p class="mt-2 text-sm">{{ __("Men's fragrances. Make your choice.") }}</p>
             </div>
         </div>
         <img src="{{ asset('images/flacon.png') }}" class="absolute right-0 mt-[-280px] sm:block hidden" alt="">
     </div>
     <div class="container mx-auto flex justify-center flex-col items-center md:mt-[217px] mt-[200px]">
-        <h2 class="font-medium text-2xl">Our fragrances</h2>
+        <h2 class="font-medium text-2xl">{{ __('Our fragrances') }}</h2>
         <hr class="my-3 w-1/3">
-        <p class="text-sm text-center w-3/4 font-light">
-            Each fragrance has its own individual character describing character traits. <br>
-            There are 4 characters of women's and men's fragrances in the assortment.
+        <p class="text-sm text-center w-1/2 font-light">
+            {{ __("Each fragrance has its own individual character describing character traits. There are 4 characters of women's and men's fragrances in the assortment.") }}
         </p>
     </div>
     <div class="container mx-auto flex lg:justify-center justify-around flex-wrap mt-[55px]">
@@ -121,11 +117,8 @@
                  style="background: url('{{ asset('images/perfumer.jpg') }}');background-size: cover;background-position: center -50px;"></div>
         </div>
         <div class="md:w-2/4 w-3/4 ml-8 flex flex-col justify-end relative md:mb-0 mb-20 sm:order-2 order-1">
-            <h3 class="text-2xl mb-2">Perfumer</h3>
-            <p class="mb-12">The founder of the brand Yanina Yakusheva is such a creator.
-                The main idea of her brand is to demonstrate the individuality of each person with the help of the
-                perfume, to reveal perfume not only as an item for personal use but as an artistic creation that is able
-                to interact with other objects and society.</p>
+            <h3 class="text-2xl mb-2">{{ __('Perfumer') }}</h3>
+            <p class="mb-12">{{ __("The founder of the brand Yanina Yakusheva is such a creator. The main idea of her brand is to demonstrate the individuality of each person with the help of the perfume, to reveal perfume not only as an item for personal use but as an artistic creation that is able to interact with other objects and society.") }}</p>
             <p class="text-[#C69B70] absolute right-[20px] rotate-[-8deg] mt-[20px]"
                 style="font-family: 'Marck Script';font-size: 47px;">Yanina</p>
         </div>
@@ -136,9 +129,8 @@
     <div class="container mx-auto relative">
         <div class="sm:px-20 px-2">
             <div class="border-[3px] border-[#D2CCC3] mx-auto flex flex-col items-center justify-center p-8 pb-20 relative sm:w-5/6 w-full">
-                <p class="text-2xl font-medium italic text-center sm:w-2/3 w-full">
-                    Each fragrance can tell about any person. <br>
-                    Ravenna is a perfume that speaks of status, femininity and self-sufficiency
+                <p class="text-2xl font-medium italic text-center sm:w-3/4 w-full">
+                    {{ __('Each fragrance can tell about any person. Ravenna is a perfume that speaks of status, femininity and self-sufficiency') }}
                 </p>
                 <p class="text-base font-regular italic text-center sm:w-3/4 w-full mt-6">
 {{--                    Ravena is an absolutely stunning perfume for women. It is perfect for those who are looking for a--}}
@@ -153,10 +145,8 @@
 {{--                    One of the things I love about Ravena is how long-lasting the scent is. Even after a long day, the fragrance lingers on the skin, leaving a subtle and sophisticated scent that is sure to leave a lasting impression.--}}
 {{--                    <br><br>--}}
 {{--                    Overall, I would highly recommend Ravena to any woman who is looking for a unique and elegant fragrance that is perfect for any occasion. It is a truly mesmerizing perfume that is sure to turn heads and leave a lasting impression.--}}
-                    Ravena is so far the only brand that produces various perfumes for all occasions and contains all the
-                    components that everyone will like.Expanded range of smells. <br><br>
-                    The smell does not fade for about two days.The only drawback was that there was no delivery to my city,
-                    I had to pick it up through a friend.
+                    {{ __("Ravena is so far the only brand that produces various perfumes for all occasions and contains all the components that everyone will like.Expanded range of smells.") }} <br><br>
+                    {{ __("The smell does not fade for about two days.The only drawback was that there was no delivery to my city, I had to pick it up through a friend.") }}
                 </p>
                 <div class="absolute rounded-[50%] w-[92px] h-[92px] bottom-0 translate-y-[45px]"
                     style="background: url('{{ asset('images/client.jpg') }}');
@@ -189,10 +179,9 @@
             <div class="flex justify-between w-[90%] mx-auto">
                 <div class="flex justify-between sm:flex-row flex-col">
                     <div class="md:w-1/2 w-full mr-5 md:order-1 order-2">
-                        <p class="text-2xl mb-3">Yanina Yakusheva Perfumes</p>
+                        <p class="text-2xl mb-3">{{ __('Yanina Yakusheva Perfumes') }}</p>
                         <p class="text-base mt-3 md:w-2/3 w-full">
-                            Fragrance is a silent and invisible companion. In the era of loneliness and imaginary
-                            communication, fantasies become more material.
+                            {{ __("Fragrance is a silent and invisible companion. In the era of loneliness and imaginary communication, fantasies become more material.") }}
                         </p>
                         <ul class="social-icons flex items-center mt-4">
                             <li>
@@ -205,15 +194,15 @@
                     </div>
                     <div class="flex md:w-2/4 w-full md:order-2 order-1 md:mb-0 mb-12">
                         <div class="w-1/2 flex flex-col">
-                            <p class="text-2xl mb-3">Information</p>
-                            <a href="" class="mb-2">Privacy Policy</a>
-                            <a href="" class="mb-2">Terms and conditions</a>
-                            <a href="" class="mb-2">Contact</a>
+                            <p class="text-2xl mb-3">{{ __('Information') }}</p>
+                            <a href="" class="mb-2">{{ __('Privacy Policy') }}</a>
+                            <a href="" class="mb-2">{{ __('Terms and conditions') }}</a>
+                            <a href="" class="mb-2">{{ __('Contacts') }}</a>
                         </div>
                         <div class="w-1/2 flex flex-col">
-                            <p class="text-2xl mb-3">Our Offers</p>
-                            <a href="" class="mb-2">News</a>
-                            <a href="" class="mb-2">Shop</a>
+                            <p class="text-2xl mb-3">{{ __('Our Offers') }}</p>
+                            <a href="" class="mb-2">{{ __('News') }}</a>
+                            <a href="" class="mb-2">{{ __('Shop') }}</a>
                         </div>
                     </div>
                 </div>

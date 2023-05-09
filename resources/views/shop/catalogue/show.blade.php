@@ -10,7 +10,7 @@
             <a href="{{ route('catalogue.index') }}" class="underline hover:no-underline">{{ __('Shop') }}</a> / {{ $product->getTitle() }}
         </div>
         <div class="flex lg:flex-row flex-wrap sm:flex-row flex-col sm:justify-start justify-start sm:flex-row">
-            <img src="/storage/products/{{ $product->img }}" class="sm:mb-0 mb-5" width="300px" alt="">
+            <img src="{{ $product->getImage() }}" class="sm:mb-0 mb-5" width="300px" alt="">
             <div class="flex flex-col sm:ml-12">
                 <h1 class="font-bold text-xl">{{ $product->getTitle() }}</h1>
                 <p class="mt-2">{{ $product->getFormatedPrice() }}</p>
