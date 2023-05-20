@@ -18,6 +18,8 @@
     <script src="https://kit.fontawesome.com/64a2dc4faa.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="{{ asset('css/avgrund.css') }}">
+
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dropdown-menu.css') }}">
@@ -93,6 +95,25 @@
             @yield('content')
         </div>
     </div>
+
+    <!-- JS -->
+    <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('js/avgrund.js') }}"></script>
+
+    <script>
+        // MODALS OPEN SCRIPT
+        $('.modal-open').on('click', function () {
+            let modal = $(this).attr('data-modal');
+            Avgrund.show("#" + modal);
+        });
+
+        function closeDialog() {
+            Avgrund.hide();
+        }
+    </script>
+
+    @include('components.modals')
+
 
     <!-- JS -->
     <script src="{{ asset('js/scripts.js') }}"></script>

@@ -360,11 +360,11 @@ article {
 
     .mobile-menu-nav.opened {
         display: block;
-        transform: translateX(-71%);
+        transform: translateX(0);
     }
 
     body.opened-menu {
-        transform: translateX(50%);
+        /*transform: translateX(50%);*/
     }
 }
 

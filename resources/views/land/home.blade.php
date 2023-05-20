@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="flex flex-col items-start h-[520px] mt-[168px] w-full md:pt-0" style="background: #DED0D0;">
+    <div class="flex flex-col items-start sm:h-fit h-fit mt-[168px] w-full md:pt-0" style="background: #DED0D0;">
         <div class="flex justify-center w-fit mx-auto mt-[-100px]">
             <div class="lg:w-[283px] lg:h-[351px] sm:w-[200px] sm:h-[251px] h-[200px] w-[150px] mr-3"
                  style="background: url('{{ asset('images/gideon.jpeg') }}');background-size: cover;background-position: center center;"></div>
@@ -16,10 +16,10 @@
         </div>
         <div class="w-fit text-center mx-auto mt-11">
             <h2 class="font-bold italic text-xl">{{ __('Yanina Yakusheva Perfumes') }}</h2>
-            <p class="w-2/3 mx-auto text-center mt-2">{{ __('Fragrance is a silent and invisible companion. In the era of loneliness and imaginary communication, fantasies become more material.') }}
+            <p class="sm:w-2/3 w-full mx-auto text-center mt-2">{{ __('Fragrance is a silent and invisible companion. In the era of loneliness and imaginary communication, fantasies become more material.') }}
             </p>
             <hr class="my-2">
-            <p class="w-1/2 mx-auto text-center mt-2">{{ __('The founder of the brand – perfumer Yanina Yakusheva. The main idea of her brand is to demonstrate the individuality of each person with the help of the perfume, to reveal perfume not only as an item for personal use but as an artistic creation that is able to interact with other objects, society and you.') }} <br>
+            <p class="sm:w-1/2 w-full mx-auto text-center mt-2">{{ __('The founder of the brand – perfumer Yanina Yakusheva. The main idea of her brand is to demonstrate the individuality of each person with the help of the perfume, to reveal perfume not only as an item for personal use but as an artistic creation that is able to interact with other objects, society and you.') }} <br>
             </p>
             <hr class="my-2">
         </div>
@@ -35,7 +35,9 @@
                  style="background: url('{{ asset('images/img_20201001_215447_969-768x960.jpg') }}');background-size: cover;background-position: center center;"></div>
         </div>
     </div>
-    <div class="container mx-auto mt-[350px]">
+    <div class="container mx-auto sm:mt-[250px] mt-[200px]">
+        <div class="w-2/3 h-[2px] bg-[#888] mx-auto my-12"></div>
+        <div class="font-bold text-center mb-12 text-3xl mt-0">{{ __('Parfum à choisir') }}</div>
         <div class="flex items-start justify-start md:ml-0 ml-4">
             <div class="block md:h-[375px] md:w-[375px] h-[155px] w-[155px]"
                  style="background: url('{{ asset('images/ravena.jpeg') }}');background-size: cover;background-position: center center;"></div>
@@ -52,12 +54,13 @@
                 <p class="mt-2 text-sm">{{ __("Men's fragrances. Make your choice.") }}</p>
             </div>
         </div>
+        <div class="w-2/3 h-[2px] bg-[#888] mx-auto my-12"></div>
         <img src="{{ asset('images/flacon.png') }}" class="absolute right-0 mt-[-280px] sm:block hidden" alt="">
     </div>
-    <div class="container mx-auto flex justify-center flex-col items-center md:mt-[217px] mt-[200px]">
+    <div class="container mx-auto flex justify-center flex-col items-center md:mt-[150px] sm:mt-[200px] mt-[100px]">
         <h2 class="font-medium text-2xl">{{ __('Our fragrances') }}</h2>
         <hr class="my-3 w-1/3">
-        <p class="text-sm text-center w-1/2 font-light">
+        <p class="text-sm text-center sm:w-1/2 w-full font-light">
             {{ __("Each fragrance has its own individual character describing character traits. There are 4 characters of women's and men's fragrances in the assortment.") }}
         </p>
     </div>
@@ -110,7 +113,7 @@
             <a href="" class="py-1 px-4 border border-[#000] w-fit text-sm">Перейти в магазин</a>
         </div>
     </div>
-    <div class="container mx-auto flex md:justify-center md:flex-row flex-col mt-[250px]">
+    <div class="container mx-auto flex md:justify-center md:flex-row flex-col sm:mt-[150px] mt-[100px]">
         <div class="w-[375px] h-[222px] mx-auto sm:order-1 order-2">
             <div class="border-[3px] mt-[-33px] ml-[-36px] border-[#D2CCC3] w-[375px] h-[222px] absolute"></div>
             <div class="h-full w-full"
@@ -192,14 +195,14 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="flex md:w-2/4 w-full md:order-2 order-1 md:mb-0 mb-12">
-                        <div class="w-1/2 flex flex-col">
+                    <div class="flex md:w-2/4 w-full md:order-2 order-1 md:mb-0 mb-12 sm:flex-row flex-col">
+                        <div class="sm:w-1/2 w-full flex flex-col">
                             <p class="text-2xl mb-3">{{ __('Information') }}</p>
                             <a href="" class="mb-2">{{ __('Privacy Policy') }}</a>
                             <a href="" class="mb-2">{{ __('Terms and conditions') }}</a>
                             <a href="" class="mb-2">{{ __('Contacts') }}</a>
                         </div>
-                        <div class="w-1/2 flex flex-col">
+                        <div class="sm:w-1/2 w-full flex flex-col sm:mt-0 mt-4">
                             <p class="text-2xl mb-3">{{ __('Our Offers') }}</p>
                             <a href="" class="mb-2">{{ __('News') }}</a>
                             <a href="" class="mb-2">{{ __('Shop') }}</a>
