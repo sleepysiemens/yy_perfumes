@@ -86,7 +86,16 @@
             <a href="{{ route('gideon.my-universe') }}" class="mr-4">{{ __('Gideon') }}</a>
             <a href="{{ route('aron.my-universe') }}" class="mr-4">{{ __('Aron') }}</a>
             <a href="{{ route('perfumer') }}" class="mr-4">{{ __('Perfumer') }}</a>
-            <a href="{{ route('philosophy') }}" class="">{{ __('Philosophy') }}</a>
+            <a href="{{ route('philosophy') }}" class="mr-4">{{ __('Philosophy') }}</a>
+            <a href="javascript:void(0);" rel="nofollow"
+               class="modal-open"
+               data-modal="change-language">
+                <div class="fixed right-0 mr-20 top-0 mt-0 py-3 px-5 bg-[rgba(0,0,0,.03)] hover:bg-[rgba(0,0,0,.08)] duration-200 z-[9999999] flex flex-row">
+                        <img src="{{ \App\Services\Content\FlagService::get(\Illuminate\Support\Facades\App::getLocale()) }}"
+                             width="17px" class="mr-2 mt-[-2px]" alt="">
+                        {{ \Illuminate\Support\Str::upper((\Illuminate\Support\Facades\App::getLocale())) }}
+                </div>
+            </a>
         </div>
     </header>
 

@@ -326,6 +326,12 @@ article {
     cursor: pointer;
 }
 
+@media (min-width: 850px) {
+    .mobile-menu-nav {
+        display: none;
+    }
+}
+
 @media (max-width: 850px) {
     .article {
         width: 37vh !important;

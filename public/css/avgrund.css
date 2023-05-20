@@ -8,7 +8,7 @@
 
 @media (min-width: 1000px) {
     .avgrund-active body {
-        transform: scale( 0.9 );
+        /*transform: scale( 0.9 );*/
     }
 }
 
