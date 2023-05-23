@@ -18,6 +18,12 @@ Route::get('/', function () {
     return view('land.home');
 });
 
+Route::group(['prefix' => '/about'], function () {
+    Route::view('/privacy-policy', 'about.privacy-policy')->name('privacy-policy');
+    Route::view('/terms', 'about.terms')->name('terms');
+    Route::view('/contact', 'about.contact')->name('contact');
+});
+
 //Route::redirect('/', '/shop/');
 
 Route::get('/test', function () {

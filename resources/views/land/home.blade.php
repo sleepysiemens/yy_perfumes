@@ -65,53 +65,27 @@
         </p>
     </div>
     <div class="container mx-auto flex lg:justify-center justify-around flex-wrap mt-[55px]">
-        <div class="flex flex-col mb-8">
-            <div class="h-[201px] w-[222px]"
-                 style="background: url('{{ asset('images/aron-thumbnail.jpg') }}');background-size: cover;background-position: center center;"></div>
-            <p class="text-base text-center mb-1 mt-3">Aron – Eau De Parfum</p>
-            <div class="flex justify-between items-center mb-4">
-                <p>50$</p>
-                <div class="w-full h-[2px] bg-[#000000] mx-3 opacity-25"></div>
-                <p>100ml</p>
+        @php
+            $items = \App\Models\Product::limit(4)->orderByDesc('created_at')->get();
+        @endphp
+        @for($i = 0; $i < $items->count(); $i++)
+            <div class="flex flex-col mb-8">
+                <div class="h-[201px] w-[222px]"
+                     style="background: url('{{ asset($items[$i]->getImage()) }}');background-size: cover;background-position: center center;"></div>
+                <a target="_blank" href="{{ route('catalogue.show', $items[$i]['slug']) }}" class="text-base text-center mb-1 mt-3">
+                    {{ $items[$i]->getTitle() }}
+                </a>
+                <div class="flex justify-between items-center mb-4">
+                    <p>{{ $items[$i]['cost'] }}$</p>
+                    <div class="w-full h-[2px] bg-[#000000] mx-3 opacity-25"></div>
+                    <p>100ml</p>
+                </div>
+                <a target="_blank" href="{{ route('catalogue.show', $items[$i]['slug']) }}" class="py-1 px-4 border border-[#000] w-fit text-sm">{{ __('Go to shop') }}</a>
             </div>
-            <a href="" class="py-1 px-4 border border-[#000] w-fit text-sm">Перейти в магазин</a>
-        </div>
-        <div class="h-[371px] mt-[-30px] w-[2px] bg-[#000] mx-8 lg:block hidden"></div>
-        <div class="flex flex-col mb-8">
-            <div class="h-[201px] w-[222px]"
-                 style="background: url('{{ asset('images/gideon-thumbnail.jpg') }}');background-size: cover;background-position: center center;"></div>
-            <p class="text-base text-center mb-1 mt-3">Gideon – Eau De Parfum</p>
-            <div class="flex justify-between items-center mb-4">
-                <p>50$</p>
-                <div class="w-full h-[2px] bg-[#000000] mx-3 opacity-25"></div>
-                <p>100ml</p>
-            </div>
-            <a href="" class="py-1 px-4 border border-[#000] w-fit text-sm">Перейти в магазин</a>
-        </div>
-        <div class="h-[371px] mt-[-30px] w-[2px] bg-[#000] mx-8 lg:block hidden"></div>
-        <div class="flex flex-col mb-8">
-            <div class="h-[201px] w-[222px]"
-                 style="background: url('{{ asset('images/ravenna-thumbnail-600x700.jpg') }}');background-size: cover;background-position: center center;"></div>
-            <p class="text-base text-center mb-1 mt-3">Ravenna – Eau De Parfum</p>
-            <div class="flex justify-between items-center mb-4">
-                <p>50$</p>
-                <div class="w-full h-[2px] bg-[#000000] mx-3 opacity-25"></div>
-                <p>100ml</p>
-            </div>
-            <a href="" class="py-1 px-4 border border-[#000] w-fit text-sm">Перейти в магазин</a>
-        </div>
-        <div class="h-[371px] mt-[-30px] w-[2px] bg-[#000] mx-8 lg:block hidden"></div>
-        <div class="flex flex-col mb-8">
-            <div class="h-[201px] w-[222px] bg-[#D2CCC3]"
-                 style="background: url('{{ asset('images/william-thumbnail.jpg') }}');background-size: cover;background-position: center center;"></div>
-            <p class="text-base text-center mb-1 mt-3">William – Eau De Parfum</p>
-            <div class="flex justify-between items-center mb-4">
-                <p>50$</p>
-                <div class="w-full h-[2px] bg-[#000000] mx-3 opacity-25"></div>
-                <p>100ml</p>
-            </div>
-            <a href="" class="py-1 px-4 border border-[#000] w-fit text-sm">Перейти в магазин</a>
-        </div>
+            @if($i < ($items->count() - 1))
+                <div class="h-[371px] mt-[-30px] w-[2px] bg-[#000] mx-8 lg:block hidden"></div>
+            @endif
+        @endfor
     </div>
     <div class="container mx-auto flex md:justify-center md:flex-row flex-col sm:mt-[150px] mt-[100px]">
         <div class="w-[375px] h-[222px] mx-auto sm:order-1 order-2">
@@ -198,14 +172,14 @@
                     <div class="flex md:w-2/4 w-full md:order-2 order-1 md:mb-0 mb-12 sm:flex-row flex-col">
                         <div class="sm:w-1/2 w-full flex flex-col">
                             <p class="text-2xl mb-3">{{ __('Information') }}</p>
-                            <a href="" class="mb-2">{{ __('Privacy Policy') }}</a>
-                            <a href="" class="mb-2">{{ __('Terms and conditions') }}</a>
-                            <a href="" class="mb-2">{{ __('Contacts') }}</a>
+                            <a href="{{ route('privacy-policy') }}" class="mb-2 hover:underline w-fit">{{ __('Privacy Policy') }}</a>
+                            <a href="{{ route('terms') }}" class="mb-2 hover:underline w-fit">{{ __('Terms and conditions') }}</a>
+                            <a href="{{ route('contact') }}" class="mb-2 hover:underline w-fit">{{ __('Contacts') }}</a>
                         </div>
                         <div class="sm:w-1/2 w-full flex flex-col sm:mt-0 mt-4">
                             <p class="text-2xl mb-3">{{ __('Our Offers') }}</p>
-                            <a href="" class="mb-2">{{ __('News') }}</a>
-                            <a href="" class="mb-2">{{ __('Shop') }}</a>
+                            <a href="" class="mb-2 hover:underline w-fit">{{ __('News') }}</a>
+                            <a href="" class="mb-2 hover:underline w-fit">{{ __('Shop') }}</a>
                         </div>
                     </div>
                 </div>

@@ -17,6 +17,11 @@ body {
     width: fit-content;
 }
 
+*::selection {
+    background: #000;
+    color: #fff;
+}
+
 article {
     width: 100% !important;
 }

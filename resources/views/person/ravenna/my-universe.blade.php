@@ -9,6 +9,6 @@
 @endsection
 
 @section('content')
-    <h2 class="font-bold text-2xl text-center my-6 mb-10">My universe</h2>
+    <h2 class="font-bold text-2xl text-center my-6 mb-10">{{ __('My universe') }}</h2>
     {!! $article->getContent() !!}
 @endsection
