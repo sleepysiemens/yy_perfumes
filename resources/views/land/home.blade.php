@@ -131,61 +131,6 @@
             </div>
         </div>
     </div>
-    <footer class="w-100 bg-[#D2CCC3] mt-[250px] relative pb-[100px]">
-        <div class="container mx-auto relative block">
-            <div class="flex justify-between w-[90%] mx-auto translate-y-[-80px]">
-                <div class="h-[148px] w-[150px]"
-                     style="background: url('{{ asset('images/posters/dsc09904-scaled.jpg') }}');
-                        background-size: cover;background-position: center center;"></div>
-                <div class="h-[148px] w-[150px] sm:block hidden"
-                     style="background: url('{{ asset('images/posters/dsc09915-scaled.jpg') }}');
-                        background-size: cover;background-position: center center;"></div>
-                <div class="h-[148px] w-[150px]"
-                     style="background: url('{{ asset('images/posters/dsc09961-scaled.jpg') }}');
-                        background-size: cover;background-position: center center;"></div>
-                <div class="h-[148px] w-[150px] sm:block hidden"
-                     style="background: url('{{ asset('images/posters/dsc_5544.jpg') }}');
-                        background-size: cover;background-position: center center;"></div>
-                <div class="h-[148px] w-[150px]"
-                     style="background: url('{{ asset('images/posters/img_20201007_075234_213.jpg') }}');
-                        background-size: cover;background-position: center center;"></div>
-                <div class="h-[148px] w-[150px] sm:block hidden"
-                     style="background: url('{{ asset('images/posters/dsc01890.jpg') }}');
-                        background-size: cover;background-position: center center;"></div>
-            </div>
-            <div class="flex justify-between w-[90%] mx-auto">
-                <div class="flex justify-between sm:flex-row flex-col">
-                    <div class="md:w-1/2 w-full mr-5 md:order-1 order-2">
-                        <p class="text-2xl mb-3">{{ __('Yanina Yakusheva Perfumes') }}</p>
-                        <p class="text-base mt-3 md:w-2/3 w-full">
-                            {{ __("Fragrance is a silent and invisible companion. In the era of loneliness and imaginary communication, fantasies become more material.") }}
-                        </p>
-                        <ul class="social-icons flex items-center mt-4">
-                            <li>
-                                <a class="facebook social-icon" href="https://www.facebook.com/profile.php?id=100004700704305" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li class="ml-4">
-                                <a class="instagram social-icon" href="https://www.instagram.com/yaninayakusheva/" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="flex md:w-2/4 w-full md:order-2 order-1 md:mb-0 mb-12 sm:flex-row flex-col">
-                        <div class="sm:w-1/2 w-full flex flex-col">
-                            <p class="text-2xl mb-3">{{ __('Information') }}</p>
-                            <a href="{{ route('privacy-policy') }}" class="mb-2 hover:underline w-fit">{{ __('Privacy Policy') }}</a>
-                            <a href="{{ route('terms') }}" class="mb-2 hover:underline w-fit">{{ __('Terms and conditions') }}</a>
-                            <a href="{{ route('contact') }}" class="mb-2 hover:underline w-fit">{{ __('Contacts') }}</a>
-                        </div>
-                        <div class="sm:w-1/2 w-full flex flex-col sm:mt-0 mt-4">
-                            <p class="text-2xl mb-3">{{ __('Our Offers') }}</p>
-                            <a href="" class="mb-2 hover:underline w-fit">{{ __('News') }}</a>
-                            <a href="" class="mb-2 hover:underline w-fit">{{ __('Shop') }}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <style>
         hr {

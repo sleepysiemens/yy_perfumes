@@ -39,12 +39,13 @@ Route::get('/test', function () {
 Route::prefix('/shop')->group(function () {
     Route::get('/', 'App\Http\Controllers\Shop\HomeController@index')->name('shop');
 
-    Route::get('/articles/{path}', 'App\Http\Controllers\ArticleController@show')->where('path', '.*');
-
     Route::resources([
+        'news' => \App\Http\Controllers\ArticleController::class,
         'catalogue' => \App\Http\Controllers\Shop\ProductController::class,
         'order' => \App\Http\Controllers\OrderController::class,
     ]);
+
+    Route::get('/news/{path}', 'App\Http\Controllers\ArticleController@show')->where('path', '.*');
 
     Route::view('/checkout/success', 'checkout.success')->name('checkout.success');
 });
