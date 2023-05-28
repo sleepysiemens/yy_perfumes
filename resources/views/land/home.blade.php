@@ -72,7 +72,7 @@
             <div class="flex flex-col mb-8">
                 <div class="h-[201px] w-[222px]"
                      style="background: url('{{ asset($items[$i]->getImage()) }}');background-size: cover;background-position: center center;"></div>
-                <a target="_blank" href="{{ route('catalogue.show', $items[$i]['slug']) }}" class="text-base text-center mb-1 mt-3">
+                <a target="_blank" href="{{ route('catalogue.show', $items[$i]['slug']) }}" class="text-[15px] text-left mb-1 mt-3 max-w-[235px]">
                     {{ $items[$i]->getTitle() }}
                 </a>
                 <div class="flex justify-between items-center mb-4">
