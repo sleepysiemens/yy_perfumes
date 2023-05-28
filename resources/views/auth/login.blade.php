@@ -9,7 +9,6 @@
         <div class="sm:w-1/2 w-full sm:mb-0 mb-12 sm:pr-20">
             <div class="card">
                 <div class="text-xl font-bold mb-3">{{ __('Login') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

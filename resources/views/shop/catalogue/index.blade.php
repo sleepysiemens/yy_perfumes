@@ -14,7 +14,7 @@
                 <div class="product__title mt-7">
                     <a href="{{ route('catalogue.show', $product->slug) }}">{{ $product->getTitle() }}</a>
                 </div>
-                <div class="product__description my-4 mt-1">
+                <div class="product__description text-sm my-4 mt-1">
                     {{ mb_substr($product->getDescription(), 0, 60) }}...
                 </div>
                 <div class="product__form flex items-center justify-between">
