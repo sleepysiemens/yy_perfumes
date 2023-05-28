@@ -74,5 +74,31 @@
 
     "News": "Новости",
 
-    "Go to shop": "Перейти в магазин"
+    "Go to shop": "Перейти в магазин",
+
+    "Register or log in to your personal account to manage orders": "Зарегистрируйтесь или войдите в личный кабинет для управления заказами",
+
+    "Login": "Авторизация",
+
+    "Email Address": "Электронная почта",
+
+    "Password": "Пароль",
+
+    "Remember Me": "Запомнить меня",
+
+    "Forgot Your Password?": "Забыли пароль",
+
+    "Register": "Регистрация",
+
+    "Name": "Имя",
+
+    "Confirm Password": "Подтвердите пароль",
+
+    "Ravenna": "Равенна",
+
+    "William": "Уильям",
+
+    "Aron": "Арон",
+
+    "Gideon": "Гидеон"
 }

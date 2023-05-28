@@ -9,7 +9,7 @@
 
     <ul class="sub-menu">
         <li>
-            <a href="/ravenna/my-universe">My universe</a>
+            <a href="/ravenna/my-universe">{{ __('My universe') }}</a>
         </li>
     </ul>
 </li>
@@ -18,7 +18,7 @@
 
     <ul class="sub-menu">
         <li>
-            <a href="/william/my-universe">My universe</a>
+            <a href="/william/my-universe">{{ __('My universe') }}</a>
         </li>
     </ul>
 </li>
@@ -27,7 +27,7 @@
 
     <ul class="sub-menu">
         <li>
-            <a href="/aron/my-universe">My universe</a>
+            <a href="/aron/my-universe">{{ __('My universe') }}</a>
         </li>
     </ul>
 </li>
@@ -36,7 +36,7 @@
 
     <ul class="sub-menu">
         <li>
-            <a href="/gideon/my-universe">My universe</a>
+            <a href="/gideon/my-universe">{{ __('My universe') }}</a>
         </li>
     </ul>
 </li>
