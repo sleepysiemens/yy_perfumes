@@ -119,7 +119,7 @@
                 </ul>
             </div>
         </div>
-        <div class="flex items-center logo-block justify-center py-8 w-100 mx-auto relative">
+        <div class="flex items-center logo-block justify-center py-8 pt-0 w-100 mx-auto relative">
             <a href="/">
                 <img src="{{ asset('images/logo.png') }}" alt="">
             </a>

@@ -1,9 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
-    <div class="flex flex-wrap justify-around">
-        <div class="sm:w-1/3 w-full sm:mb-0 mb-12">
+<div class="w-full">
+    <div class="text-2xl mt-2 font-bold">
+        {{ __('Register or log in to your personal account to manage orders') }}
+    </div>
+    <div class="flex flex-wrap justify-between mt-8">
+        <div class="sm:w-1/2 w-full sm:mb-0 mb-12 sm:pr-20">
             <div class="card">
                 <div class="text-xl font-bold mb-3">{{ __('Login') }}</div>
 
@@ -68,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="sm:w-1/3 w-full">
+        <div class="sm:w-1/2 w-full sm:pr-20">
             <div class="card">
                 <div class="text-xl font-bold mb-3">{{ __('Register') }}</div>
 
