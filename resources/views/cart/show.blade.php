@@ -26,7 +26,7 @@
             @if ($product)
                 <div class="flex items-start justify-between my-5 py-5 border-t border-b">
                     <div class="flex items-start">
-                        <img src="/storage/products/{{ $product->img }}" class="rounded-sm" width="80px" alt="">
+                        <img src="{{ $product->getImage() }}" class="rounded-sm" width="80px" alt="">
                         <div class="ml-4">
                             <div class="flex">
                                 <h2 class="font-bold text-2xl">{{ $product->getTitle() }}</h2>

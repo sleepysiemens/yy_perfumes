@@ -21,8 +21,8 @@
                     <p class="my-0">{{ $product->getFormatedPrice() }}</p>
                     @if ((new \App\Services\Shop\CartService())->checkExists($product->id))
                         <a href="{{ route('cart.view') }}">
-                            <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-gray-100 hover:bg-gray-300 active:scale-95 text-black duration-200 flex items-center">
-                                {{ __('Add to cart') }}
+                            <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-gray-100 hover:bg-gray-300 active:scale-95 text-black duration-200 flex items-center in-basket">
+                                {{ __('In cart') }}
                             </button>
                         </a>
                     @else
@@ -36,4 +36,11 @@
             </div>
         @endforeach
     </div>
+
+    <script>
+        $('.to-cart-btn').on('click', function () {
+            $(this).html('{{ __('In cart') }}');
+            $(this).addClass('in-basket');
+        });
+    </script>
 @endsection

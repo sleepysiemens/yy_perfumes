@@ -89,17 +89,17 @@
                         @endphp
 
                         @if ($product)
-                            <div class="flex items-start justify-between my-5 py-5 border-t border-b">
+                            <div class="flex items-start justify-between my-5 py-5 border-t relative border-b">
                                 <div class="flex items-center">
-                                    <img src="/storage/products/{{ $product->img }}" class="rounded-sm" width="50px" alt="">
+                                    <img src="{{ $product->getImage() }}" class="rounded-sm" width="50px" alt="">
                                     <div class="ml-4">
                                         <div class="flex">
-                                            <h2 class="font-bold text-2xl">{{ $product->getTitle() }}</h2>
+                                            <h2 class="font-bold text-md">{{ $product->getTitle() }}</h2>
                                         </div>
-                                        <p class="text-md">{{ $product->getDescription() }}</p>
+                                        <p class="text-md">{{ mb_substr($product->getDescription(), 0, 60) }}</p>
                                     </div>
                                 </div>
-                                <div class="flex pr-3 flex-col">
+                                <div class="flex pr-3 flex-col text-sm font-light absolute right-0">
                                     {{ $product->getFormatedPrice() }}
                                 </div>
                             </div>

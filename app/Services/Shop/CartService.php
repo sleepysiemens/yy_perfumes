@@ -56,6 +56,12 @@ class CartService
         return \Arr::exists($cart, $id);
     }
 
+    public static function checkExistsStatic($id): bool
+    {
+        $cart = Session::has('cart') ? Session::get('cart') : [];
+        return \Arr::exists($cart, $id);
+    }
+
     public function remove($id)
     {
         $cart = Session::has('cart') ? Session::get('cart') : [];

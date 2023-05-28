@@ -47,7 +47,7 @@ $(document).ready(function () {
 
                                 $('#cart-container').append(`
                                 <div class="cart-item flex flex-row items-center mb-3">
-                                    <img src="/storage/products/${item.img}" class="mr-2 rounded-md" width="50px" height="50px" alt="">
+                                    <img src="${item.img}" class="mr-2 rounded-md" width="50px" height="50px" alt="">
                                     <div class="flex flex-col">
                                         <span>${item.title}</span>
                                         <span class="text-slate-400 text-xs">${item.price}</span>
