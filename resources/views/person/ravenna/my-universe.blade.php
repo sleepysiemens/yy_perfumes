@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h2 class="font-bold text-2xl text-center my-6 mb-10">{{ __('My universe') }}</h2>
+    <h2 class="font-bold text-2xl text-center my-6 mb-10">{{ __('Ravenna') }} - {{ __('My universe') }}</h2>
     <ul class="blocks-gallery-grid" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; list-style: none; display: flex; flex-wrap: wrap; color: rgb(102, 102, 102); font-family: Arial, Helvetica, sans-serif, Arial, Helvetica, sans-serif; font-size: 12px;">
         <li class="blocks-gallery-item" style="margin: 0px 1em 1em 0px; display: flex; flex-grow: 1; flex-direction: column; justify-content: center; position: relative; width: calc(33.3333% - 0.66667em);">
             <figure style="display: flex; margin-bottom: 0px; height: 509.328px; align-items: flex-end; justify-content: flex-start;">
