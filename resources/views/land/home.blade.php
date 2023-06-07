@@ -76,8 +76,8 @@
                     {{ $items[$i]->getTitle() }}
                 </a>
                 <div class="flex justify-between items-center mb-4">
-                    <p>{{ $items[$i]['cost'] }}$</p>
-                    <div class="w-full h-[2px] bg-[#000000] mx-3 opacity-25"></div>
+                    <p class="w-fit">{{ $items[$i]->getFormatedPrice() }}</p>
+                    <div class="h-[2px] bg-[#000000] mx-3 opacity-25"></div>
                     <p>100ml</p>
                 </div>
                 <a target="_blank" href="{{ route('catalogue.show', $items[$i]['slug']) }}" class="py-1 px-4 border border-[#000] w-fit text-sm">{{ __('Go to shop') }}</a>
