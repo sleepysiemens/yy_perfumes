@@ -93,7 +93,7 @@
                     @endphp
                     <tr>
                         <td class="text-center">{{ $item->id }}</td>
-                        <td>{{ $item->getTitle() }}</td>
+                        <td>{{ $item->getTitle() }} Арт. {{ $item->artikul }}</td>
                         <td class="text-center">{{ $quantity }}</td>
                         <td class="text-center">шт</td>
                         <td class="text-right">{{ $item->getFormatedPrice() }}</td>
