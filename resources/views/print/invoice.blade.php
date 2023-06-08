@@ -79,6 +79,7 @@
                 <tr class="italic">
                     <th>№</th>
                     <th>Товары (работы, услуги)</th>
+                    <th>Артикул</th>
                     <th>Кол-во</th>
                     <th>Ед.</th>
                     <th>Цена</th>
@@ -93,7 +94,8 @@
                     @endphp
                     <tr>
                         <td class="text-center">{{ $item->id }}</td>
-                        <td>{{ $item->getTitle() }} Арт. {{ $item->artikul }}</td>
+                        <td>{{ $item->getTitle() }}</td>
+                        <td>{{ $item->artikul }}</td>
                         <td class="text-center">{{ $quantity }}</td>
                         <td class="text-center">шт</td>
                         <td class="text-right">{{ $item->getFormatedPrice() }}</td>
