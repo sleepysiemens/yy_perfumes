@@ -18,7 +18,7 @@ class ExchangeRateService
 
     public function rate($currency)
     {
-        $response = $this->client->get("https://v6.exchangerate-api.com/v6/{$this->apiKey}/pair/USD/{$currency}");
+        $response = $this->client->get("https://v6.exchangerate-api.com/v6/{$this->apiKey}/pair/EUR/{$currency}");
         return json_decode($response->getBody(), true)['conversion_rate'];
     }
 }
