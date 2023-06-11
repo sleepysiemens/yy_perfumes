@@ -31,7 +31,7 @@ class CurrencyService
             }
         }
 
-        return 'USD'; // Если локаль не найдена, то возвращаем доллары
+        return 'EUR'; // Если локаль не найдена, то возвращаем евро
     }
 
     private function selectFromDb($currency): array

@@ -39,7 +39,7 @@ trait Product
         $priceType = config('types.prices')[$userType];
         $currency = (new CurrencyService())->get();
 
-        return $this->$priceType * intval($currency['rate']);
+        return $this->$priceType * floatval($currency['rate']);
     }
 
     public function getImage()
