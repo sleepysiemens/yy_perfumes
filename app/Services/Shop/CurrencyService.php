@@ -21,7 +21,7 @@ class CurrencyService
         }
     }
 
-    private function selectCurrency(): string
+    public function selectCurrency(): string
     {
         foreach(config('currencies') as $currency => $locale) {
             foreach ($locale as $lang) {
@@ -43,6 +43,8 @@ class CurrencyService
                 'symbol' => $currency->symbol ?? $currency->currency,
                 'rate' => $currency->rate
             ];
+        } else {
+            return [];
         }
     }
 }

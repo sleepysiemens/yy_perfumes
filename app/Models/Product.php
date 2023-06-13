@@ -62,6 +62,7 @@ class Product extends Model
         'cost' => 'float',
         'cost_dealer' => 'float',
         'cost_vip_dealer' => 'float',
+        'fix_prices' => 'array',
     ];
 
     protected $guarded = [];
