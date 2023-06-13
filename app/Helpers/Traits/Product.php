@@ -29,7 +29,7 @@ trait Product
         return $currency['symbol'];
     }
 
-    public function getProductPrice()
+    public function getProductPrice(): float|int
     {
         if (Auth::check())
             $userType = Auth::user()->type;
