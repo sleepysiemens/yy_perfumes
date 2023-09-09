@@ -75,7 +75,7 @@
     <header class="header container sm:flex justify-center items-center mx-auto py-8 text-md hidden">
         <div class="w-1/2 flex justify-end">
             <a href="/" class="mr-4" rel="nofollow">{{ __('Home') }}</a>
-            <a href="{{ route('shop') }}" class="mr-4">{{ __('Shop') }}</a>
+            <a href="{{ route('catalogue.index') }}" class="mr-4">{{ __('Shop') }}</a>
             <a href="{{ route('ravenna.my-universe') }}" class="mr-4">{{ __('Ravenna') }}</a>
             <a href="{{ route('william.my-universe') }}" class="">{{ __('William') }}</a>
         </div>

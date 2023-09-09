@@ -21,7 +21,7 @@ class CurrencyService
         }
     }
 
-    private function selectCurrency(): string
+    public function selectCurrency(): string
     {
         foreach(config('currencies') as $currency => $locale) {
             foreach ($locale as $lang) {
@@ -31,7 +31,7 @@ class CurrencyService
             }
         }
 
-        return 'USD'; // Если локаль не найдена, то возвращаем доллары
+        return 'EUR'; // Если локаль не найдена, то возвращаем евро
     }
 
     private function selectFromDb($currency): array
@@ -43,6 +43,8 @@ class CurrencyService
                 'symbol' => $currency->symbol ?? $currency->currency,
                 'rate' => $currency->rate
             ];
+        } else {
+            return [];
         }
     }
 }

@@ -94,6 +94,7 @@ class ProductController extends Controller
                 'en' => $request->input('en_description'),
                 'ru' => $request->input('ru_description'),
             ],
+            'fix_prices' => json_decode($request->input('fix_prices')),
             'cost' => $request->input('cost'),
             'cost_dealer' => $request->input('cost_dealer'),
             'cost_vip_dealer' => $request->input('cost_vip_dealer'),

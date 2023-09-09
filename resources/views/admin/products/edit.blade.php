@@ -12,7 +12,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4>Создание статуса</h4>
+                    <h4>Редактирование товара</h4>
                     <a href="{{ route('products.index') }}">Назад к списку</a>
 
                     <form action="{{ route('products.update', $product) }}" method="post">
@@ -54,18 +54,31 @@
                         </div>
 
                         <div class="from-group mb-3">
-                            <label for="">Цена $</label>
+                            <label for="">Цена EUR</label>
                             <input type="text" class="form-control" name="cost" value="{{ $product->cost }}">
                         </div>
 
                         <div class="from-group mb-3">
-                            <label for="">Цена дилера $</label>
+                            <label for="">Цена дилера EUR</label>
                             <input type="text" class="form-control" name="cost_dealer" value="{{ $product->cost_dealer }}">
                         </div>
 
                         <div class="from-group mb-3">
-                            <label for="">Цена прем. дилера $</label>
+                            <label for="">Цена прем. дилера EUR</label>
                             <input type="text" class="form-control" name="cost_vip_dealer" value="{{ $product->cost_vip_dealer }}">
+                        </div>
+
+                        <div class="from-group mb-3">
+                            <label for="">Фиксированные цены</label>
+                            <textarea name="fix_prices" class="form-control" id="" cols="30" rows="10">{{ json_encode($product->fix_prices) }}</textarea>
+                            <p class="text-muted">
+                                Пример записи: <br> <br>
+                                {
+                                    "Код валюты": цена, <br>
+                                    "USD": 150, <br>
+                                    "RUB": 14500, <br>
+                                }
+                            </p>
                         </div>
 
                         <hr>

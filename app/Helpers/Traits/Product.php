@@ -29,17 +29,26 @@ trait Product
         return $currency['symbol'];
     }
 
-    public function getProductPrice()
+    public function getProductPrice(): float|int
     {
+        $currencyService = new CurrencyService();
+
         if (Auth::check())
             $userType = Auth::user()->type;
         else
             $userType = 'client';
 
         $priceType = config('types.prices')[$userType];
-        $currency = (new CurrencyService())->get();
+        $currency = $currencyService->get();
 
-        return $this->$priceType * intval($currency['rate']);
+        $currencySymbol = $currencyService->selectCurrency();
+
+        if (isset($this->fix_prices[$currencySymbol])) {
+            return $this->fix_prices[$currencySymbol];
+        } else {
+            return $this->$priceType * floatval($currency['rate']);
+        }
+
     }
 
     public function getImage()
