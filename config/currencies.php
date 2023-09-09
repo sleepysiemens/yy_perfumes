@@ -6,11 +6,13 @@ return [
     ],
     'RUB' => [
         'ru',
-        'kz',
         'arm',
     ],
     'EUR' => [
         'deu',
         'tur',
+    ],
+    'KAZ' => [
+        'kzt',
     ],
 ];
