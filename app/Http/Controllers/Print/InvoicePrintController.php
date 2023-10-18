@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Print;
 
 use App\Http\Controllers\Controller;
+use App\Models\Crm\Invoice;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -37,8 +38,19 @@ class InvoicePrintController extends Controller
      */
     public function show($hash)
     {
-        $order = Order::query()->where('hash', $hash)->firstOrFail();
-        return view('print.invoice', compact('order'));
+        $order = Order::query()->where('hash', $hash);
+
+        if ($print = $order->first()) {
+            return view('print.invoice', [
+                'order' => $print
+            ]);
+        } else {
+            $print = Invoice::query()->with('order')->where('hash', $hash)->firstOrFail();
+            return view('print.invoice', [
+                'invoice' => $print,
+                'order' => $print->order,
+            ]);
+        }
     }
 
     /**

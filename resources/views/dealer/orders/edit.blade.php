@@ -6,52 +6,52 @@
             <div class="col-lg-8 col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        User info
+                        {{ __('User info') }}
                     </div>
                     <div class="card-body">
                         <div class="mb-2">
-                            <span class="font-weight-bold">Name:</span>
+                            <span class="font-weight-bold">{{ __('Name') }}:</span>
                             {{ $order->name }}
                         </div>
                         <div class="mb-2">
-                            <span class="font-weight-bold">Phone:</span>
+                            <span class="font-weight-bold">{{ __('Phone') }}:</span>
                             {{ $order->phone }}
                         </div>
                         <div class="mb-2">
-                            <span class="font-weight-bold">Email:</span>
+                            <span class="font-weight-bold">{{ __('Email') }}:</span>
                             {{ $order->email }}
                         </div>
                     </div>
                 </div>
                 <div class="card mt-3">
                     <div class="card-header">
-                        Delivery info
+                        {{ __('Delivery info') }}
                     </div>
                     <div class="card-body">
                         <div class="mb-2">
-                            <span class="font-weight-bold">Country:</span>
+                            <span class="font-weight-bold">{{ __('Country') }}:</span>
                             {{ config('countries.countries')[$order->country] }}
                         </div>
                         <div class="mb-2">
-                            <span class="font-weight-bold">Address:</span>
+                            <span class="font-weight-bold">{{ __('Address') }}:</span>
                             {{ $order->address }}
                         </div>
                         <div class="mb-2">
-                            <span class="font-weight-bold">Email:</span>
+                            <span class="font-weight-bold">{{ __('Email') }}:</span>
                             {{ $order->email }}
                         </div>
                     </div>
                 </div>
                 <div class="card mt-3">
                     <div class="card-header">
-                        Cart info
+                        {{ __('Cart') }}
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Product</th>
-                                <th>Quantity</th>
+                                <th>{{ __('Product') }}</th>
+                                <th>{{ __('Quantity') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -80,11 +80,19 @@
                         </table>
                     </div>
                 </div>
+                <div class="card mt-3">
+                    <div class="card-header">
+                        {{ __('Create invoice') }}
+                    </div>
+                    <div class="card-body">
+                        <a href="{{ route('dealer.invoices.create', ['order_id' => $order->id]) }}" class="btn btn-primary">{{ __('Create invoice') }}</a>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4 col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Order status
+                        {{ __('Order status') }}
                     </div>
                     <div class="card-body">
                         <form action="{{ route('dealer.orders.update', $order->id) }}" method="post">
@@ -102,14 +110,14 @@
                                 </select>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button class="btn btn-light mt-2 w-100">Save</button>
+                                <button class="btn btn-light mt-2 w-100">{{ __('Save') }}</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="card mt-3">
                     <div class="card-header">
-                        Payment method
+                        {{ __('Payment method') }}
                     </div>
                     <div class="card-body">
                         <form action="{{ route('dealer.orders.update', $order->id) }}" method="post">
@@ -127,10 +135,10 @@
                                 </select>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button class="btn btn-light mt-2 w-100">Save</button>
+                                <button class="btn btn-light mt-2 w-100">{{ __('Save') }}</button>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button class="btn btn-primary mt-2 w-100">Send payment link</button>
+                                <button class="btn btn-primary mt-2 w-100">{{ __('Send payment link') }}</button>
                             </div>
                         </form>
                     </div>

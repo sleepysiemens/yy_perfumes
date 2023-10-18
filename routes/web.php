@@ -47,8 +47,18 @@ Route::prefix('/shop')->group(function () {
 
     Route::get('/news/{path}', 'App\Http\Controllers\ArticleController@show')->where('path', '.*');
 
-    Route::view('/checkout/success', 'checkout.success')->name('checkout.success');
+    Route::get('/checkout/success/{hash}', function ($hash) {
+        return view('checkout.success', [
+            'order' => \App\Models\Order::where('hash', $hash)->firstOrFail(),
+        ]);
+    })->name('checkout.success');
 });
+
+Route::get('/payment/error/{hash}', function ($hash) {
+    return view('payment.error', [
+        'order' => \App\Models\Order::where('hash', $hash)->firstOrFail(),
+    ]);
+})->name('payment.error');
 
 Route::resources([
     'post' => \App\Http\Controllers\PostController::class,
@@ -90,15 +100,3 @@ Route::view('/perfumer', 'perfumer')->name('perfumer');
 Route::view('/store-locator', 'store-locator')->name('store-locator');
 
 Route::view('profile/become-dealer', 'profile.become-dealer')->name('become-dealer');
-
-Route::group([
-    'prefix' => 'dealer',
-    'middleware' => 'dealer',
-    'as' => 'dealer.'
-], function () {
-    Route::get('dashboard', 'App\Http\Controllers\Dealer\DashboardController@index')->name('dashboard');
-
-    Route::resources([
-        'orders' => 'App\Http\Controllers\Dealer\OrderController',
-    ]);
-});

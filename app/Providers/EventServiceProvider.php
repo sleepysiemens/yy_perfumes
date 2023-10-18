@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\OrderCreated;
 use App\Events\UserRegister;
+use App\Listeners\OrderCreated\YooKassaRedirect;
 use App\Listeners\SendOrderMail;
 use App\Listeners\SendUserDataToEmail;
 use Illuminate\Auth\Events\Registered;
@@ -24,7 +25,8 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         OrderCreated::class => [
-            SendOrderMail::class,
+//            SendOrderMail::class,
+            YooKassaRedirect::class,
         ],
 
         UserRegister::class => [

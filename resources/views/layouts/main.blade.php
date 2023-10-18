@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{{ asset('css/dropdown-menu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
+    @vite('resources/sass/styles.scss')
+
     <script>
         localStorage.setItem('lang', '{{ \Illuminate\Support\Facades\App::getLocale() }}');
     </script>

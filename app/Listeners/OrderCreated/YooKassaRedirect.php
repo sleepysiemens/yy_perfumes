@@ -1,0 +1,105 @@
+<?php
+
+namespace App\Listeners\OrderCreated;
+
+use App\Events\OrderCreated;
+use App\Exceptions\MailException;
+use App\Mail\Order\Created;
+use App\Models\Order;
+use App\Services\Merchants\YookassaService;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
+
+class YooKassaRedirect
+{
+    /**
+     * Create the event listener.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Handle the event.
+     */
+    public function handle(OrderCreated $event): bool
+    {
+//        try {
+//            foreach ($event->order->shop->users()->get() as $user) {
+//                Mail::to($user->email)->send(new Created($event->order));
+//            }
+//        } catch (MailException $exception) {
+//
+//        }
+
+        $yookassaService = new YookassaService();
+
+        $client = $yookassaService->getClient();
+        $idempotenceKey = uniqid($event->order->id, true);
+
+        // Items
+        $items = [];
+        foreach ($event->order->basket['cart'] as $item) {
+            $items[] = [
+
+            ];
+        }
+
+        // START
+        $response = $client->createPayment([
+            'amount' => [
+                'value' => $event->order->total,
+                'currency' => $event->order->getCurrencyString(),
+            ],
+            'confirmation' => [
+                'type' => 'redirect',
+                'locale' => 'ru_RU',
+                'return_url' => config('app.url') . "/payment/error/" . $event->order->hash,
+            ],
+            'capture' => true,
+            'description' => "Заказ №{$event->order->id}",
+            'metadata' => [
+                'orderNumber' => $event->order->id,
+            ],
+            'receipt' => [
+                'customer' => [
+                    'full_name' => $event->order->name,
+                    'email' => $event->order->email,
+                    'phone' => $event->order->phone,
+                ],
+//                'items' => [
+//                    [
+//                        'description' => 'Переносное зарядное устройство Хувей',
+//                        'quantity' => '1.00',
+//                        'amount' => [
+//                            'value' => 1000,
+//                            'currency' => 'RUB'
+//                        ],
+//                        'vat_code' => '2',
+//                        'payment_mode' => 'full_payment',
+//                        'payment_subject' => 'commodity',
+//                        'country_of_origin_code' => 'CN',
+//                        'product_code' => '44 4D 01 00 21 FA 41 00 23 05 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 AB 00',
+//                        'customs_declaration_number' => '10714040/140917/0090376',
+//                        'excise' => '20.00',
+//                        'supplier' => [
+//                            'name' => 'string',
+//                            'phone' => 'string',
+//                            'inn' => 'string'
+//                        ]
+//                    ],
+//                ]
+            ],
+            $idempotenceKey
+        ]);
+        // END
+
+        $order = Order::find($event->order->id);
+        $order->payment_link = $response->getConfirmation()->getConfirmationUrl();
+        $order->save();
+
+        return true;
+    }
+}

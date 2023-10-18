@@ -66,4 +66,15 @@ class Order extends Model
     {
         return $this->belongsTo(DeliveryMethod::class, 'delivery_method_id');
     }
+
+    public function getCurrencyString(): string
+    {
+        $currency = $this->basket['currency'];
+
+        if ($currency == '$') {
+            return 'USD';
+        } else {
+            return 'RUB';
+        }
+    }
 }

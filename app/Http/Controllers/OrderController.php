@@ -65,7 +65,7 @@ class OrderController extends Controller
 
         event(new OrderCreated($order));
 
-        return redirect()->route('checkout.success');
+        return redirect()->route('checkout.success', $order->hash);
     }
 
     /**

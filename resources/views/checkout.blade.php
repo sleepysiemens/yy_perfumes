@@ -69,7 +69,33 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="" class="font-medium">{{ __('Address') }}</label>
-                        <input type="text" name="address" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Address') }}">
+                        <input type="text" name="address" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Город') }}">
+                        <input type="text" name="address" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Адрес') }}">
+                        <input type="text" name="address" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder="{{ __('Почтовый индекс') }}">
+                    </div>
+                    <h4 class="font-weight-bold mt-3">Выберите способ доставки</h4>
+                    <div class="mt-5 mb-3 flex flex-wrap">
+                        <label class="radio-select-large">
+                            <input class="radio-select-large-input" type="radio"  name="option" checked>
+                            <div class="radio-select-large-content">
+                                <strong class="radio-select-large-title">СДЭК</strong>
+                            </div>
+                        </label>
+
+                        <label class="radio-select-large">
+                            <input class="radio-select-large-input" type="radio"  name="option" >
+                            <div class="radio-select-large-content">
+                                <strong class="radio-select-large-title">Почта России</strong>
+                            </div>
+                        </label>
+
+                        <label class="radio-select-large">
+                            <input class="radio-select-large-input" type="radio"  name="option" >
+                            <div class="radio-select-large-content">
+                                <strong class="radio-select-large-title">Самовывоз</strong>
+{{--                                <small class="radio-select-large-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>--}}
+                            </div>
+                        </label>
                     </div>
                     <div class="my-3 mb-5">
                         <a href="">{{ __('When placing an order, I agree to the terms') }}</a>

@@ -15,10 +15,10 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Order status</th>
-                <th>Total amount</th>
+                <th>{{ __('Email') }}</th>
+                <th>{{ __('Address') }}</th>
+                <th>{{ __('Order status') }}</th>
+                <th>{{ __('Total amount') }}</th>
                 @if(Auth::user()->type == 'dealer')
                     <th>
                     </th>

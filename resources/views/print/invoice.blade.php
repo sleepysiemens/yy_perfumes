@@ -65,9 +65,14 @@
                     (Заказчик):
                 </td>
                 <td class="border-0">
-                    <textarea name="" id="" style="resize: none;"
-                              class="w-full outline-none font-bold"
-                              rows="2" placeholder="Введите данные"></textarea>
+                    @if($invoice)
+                        <b>{{ "{$invoice->requisites['soc_name']}, ИНН {$invoice->requisites['inn']}, КПП {$invoice->requisites['inn']},
+                            {$invoice->requisites['address']}, Телефон {$invoice->requisites['phone']}" }}</b>
+                    @else
+                        <textarea name="" id="" style="resize: none;"
+                                  class="w-full outline-none font-bold"
+                                  rows="2" placeholder="Введите данные"></textarea>
+                    @endif
                 </td>
             </tr>
         </table>
@@ -87,30 +92,43 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach($order->basket['cart'] as $product => $quantity)
-                @if($product != 'undefined')
-                    @php
-                        $item = \App\Models\Product::find($product);
-                    @endphp
-                    <tr>
-                        <td class="text-center">{{ $item->id }}</td>
-                        <td>{{ $item->getTitle() }}</td>
-                        <td>{{ $item->artikul }}</td>
-                        <td class="text-center">{{ $quantity }}</td>
-                        <td class="text-center">шт</td>
-                        <td class="text-right">{{ $item->getFormatedPrice() }}</td>
-                        <td class="text-right">{{ $order->basket['currency'] }}
-                            {{ number_format($item->getPrice() * $quantity, 2, ',', ' ') }}</td>
-                    </tr>
-                @endif
-            @endforeach
+            @if($order)
+                @foreach($order->basket['cart'] as $product => $quantity)
+                    @if($product != 'undefined')
+                        @php
+                            $item = \App\Models\Product::find($product);
+                        @endphp
+                        <tr>
+                            <td class="text-center">{{ $item->id }}</td>
+                            <td>{{ $item->getTitle() }}</td>
+                            <td>{{ $item->artikul }}</td>
+                            <td class="text-center">{{ $quantity }}</td>
+                            <td class="text-center">шт</td>
+                            <td class="text-right">{{ $order->basket['currency'] }}
+                                {{ number_format($item->getPrice(), 2, ',', ' ') }}</td>
+                            <td class="text-right">{{ $order->basket['currency'] }}
+                                {{ number_format($item->getPrice() * $quantity, 2, ',', ' ') }}</td>
+                        </tr>
+                    @endif
+                @endforeach
+            @else
+                <tr>
+                    <td class="text-center"></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center"></td>
+                    <td class="text-center">шт</td>
+                    <td class="text-right"></td>
+                    <td class="text-right"></td>
+                </tr>
+            @endif
             </tbody>
         </table>
         <div class="flex justify-end mt-1">
             <table class="w-1/3 table-small text-right font-bold italic">
                 <tr>
                     <td class="border-0 w-[100px]">Итого:</td>
-                    <td class="border-0 w-[60px]">{{ number_format($order->basket['total'], 2, ',', ' ') }}</td>
+                    <td class="border-0 w-[60px]">@if($order) {{ number_format($order->basket['total'], 2, ',', ' ') }}@endif</td>
                 </tr>
                 <tr>
                     <td class="border-0 w-[100px]">Без налога (НДС):</td>
@@ -118,13 +136,13 @@
                 </tr>
                 <tr>
                     <td class="border-0 w-[100px]">Всего к оплате:</td>
-                    <td class="border-0">{{ number_format($order->basket['total'], 2, ',', ' ') }}</td>
+                    <td class="border-0">@if($order){{ number_format($order->basket['total'], 2, ',', ' ') ?? '' }}@endif</td>
                 </tr>
             </table>
         </div>
         <div class="mt-0 text-sm">
-            Всего наименований {{ count($order->basket['cart']) }}, на сумму
-            {{ $order->basket['currency'] }}{{ number_format($order->basket['total'], 2, ',', ' ') }}
+            Всего наименований @if($order){{ count($order->basket['cart']) }}@endif, на сумму
+            @if($order){{ $order->basket['currency'] }}{{ number_format($order->basket['total'], 2, ',', ' ') ?? '' }}@endif
         </div>
         <div class="text-sm font-bold" contenteditable="">
             Введите сумму буквами

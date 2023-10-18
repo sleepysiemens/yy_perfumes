@@ -48,6 +48,8 @@
             @endif
         @endforeach
 
+        <div id="cdek-map" style="width:800px;height:600px"></div>
+
         <div class="flex justify-between flex-wrap">
             <div class="flex items-start sm:w-fit sm:mb-0 mb-4 w-full">
                 <span class="">{{ __('Total') }}:</span>
@@ -66,3 +68,53 @@
         <a href="{{ route('catalogue.index') }}" class="underline">В каталог</a>
     @endif
 @endsection
+
+@push('scripts')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cdek-it/widget@latest/dist/cdek-widget.umd.js" charset="utf-8"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f99f4881-6280-4ea5-894d-b9140db7343f&lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        new window.CDEKWidget({
+            from: 'Новосибирск',
+            root: 'cdek-map',
+            apiKey: 'f99f4881-6280-4ea5-894d-b9140db7343f',
+            canChoose: true,
+            servicePath: 'https://some-site.com/service.php',
+            hideFilters: {
+                have_cashless: false,
+                have_cash: false,
+                is_dressing_room: false,
+                type: false,
+            },
+            hideDeliveryOptions: {
+                office: false,
+                door: false,
+            },
+            debug: false,
+            goods: [
+                {
+                    width: 10,
+                    height: 10,
+                    length: 10,
+                    weight: 10,
+                },
+            ],
+            defaultLocation: [55.0415, 82.9346],
+            lang: 'rus',
+            currency: 'RUB',
+            tariffs: {
+                office: [233, 137, 139],
+                door: [234, 136, 138],
+            },
+            onReady() {
+                alert('Виджет загружен');
+            },
+            onCalculate() {
+                alert('Расчет стоимости доставки произведен');
+            },
+            onChoose() {
+                alert('Доставка выбрана');
+            },
+        });
+    </script>
+@endpush

@@ -9,11 +9,11 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th>Client</th>
-                                <th>Total</th>
-                                <th>Address</th>
-                                <th>Basket</th>
-                                <th style="width: 200px;">Edit</th>
+                                <th>{{ __('Client') }}</th>
+                                <th>{{ __('Total') }}</th>
+                                <th>{{ __('Address') }}</th>
+                                <th>{{ __('Basket') }}</th>
+                                <th>{{ __('Edit') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -50,7 +50,7 @@
                                         <div></div>
                                     </td>
                                     <td>
-                                        <a href="{{ route('print.order.show', $order->hash) }}">{{ __('Print order') }}</a>
+                                        <a href="{{ route('print.order.show', $order->hash) }}" target="_blank">{{ __('Print order') }}</a>
                                         <br>
                                         <a href="{{ route('dealer.orders.edit', $order->id) }}">Change status or edit</a>
                                     </td>
