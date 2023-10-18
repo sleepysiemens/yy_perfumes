@@ -50,7 +50,7 @@ class YooKassaRedirect
         // START
         $response = $client->createPayment([
             'amount' => [
-                'value' => $event->order->total,
+                'value' => round($event->order->total),
                 'currency' => $event->order->getCurrencyString(),
             ],
             'confirmation' => [
@@ -58,7 +58,7 @@ class YooKassaRedirect
                 'locale' => 'ru_RU',
                 'return_url' => config('app.url') . "/payment/error/" . $event->order->hash,
             ],
-            'capture' => true,
+            'capture' => false,
             'description' => "Заказ №{$event->order->id}",
             'metadata' => [
                 'orderNumber' => $event->order->id,
@@ -98,6 +98,7 @@ class YooKassaRedirect
 
         $order = Order::find($event->order->id);
         $order->payment_link = $response->getConfirmation()->getConfirmationUrl();
+        $order->ykassa_id = $response->getId();
         $order->save();
 
         return true;

@@ -16,5 +16,3 @@
         <a href="{{ $order->payment_link }}">Пожалуйста, повторите попытку оплаты.</a>
     </p>
 @endsection
-
-sudo apt -y install php8.2 php8.2-cli php8.2-fpm php8.2-json php8.2-pdo php8.2-mysql php8.2-zip php8.2-gd php8.2-mbstring php8.2-curl php8.2-xml php-pear php8.2-bcmath

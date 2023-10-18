@@ -54,12 +54,6 @@ Route::prefix('/shop')->group(function () {
     })->name('checkout.success');
 });
 
-Route::get('/payment/error/{hash}', function ($hash) {
-    return view('payment.error', [
-        'order' => \App\Models\Order::where('hash', $hash)->firstOrFail(),
-    ]);
-})->name('payment.error');
-
 Route::resources([
     'post' => \App\Http\Controllers\PostController::class,
 ]);
@@ -100,3 +94,12 @@ Route::view('/perfumer', 'perfumer')->name('perfumer');
 Route::view('/store-locator', 'store-locator')->name('store-locator');
 
 Route::view('profile/become-dealer', 'profile.become-dealer')->name('become-dealer');
+
+
+// PAYMENT
+
+Route::get('/payment/error/{hash}', function ($hash) {
+    return view('payment.error', [
+        'order' => \App\Models\Order::where('hash', $hash)->firstOrFail(),
+    ]);
+})->name('payment.error');

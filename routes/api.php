@@ -26,3 +26,5 @@ Route::get('/products/{product}/{lang}', 'App\Http\Controllers\Api\Product\Produ
 
 Route::post('/cart/push/{product}/{count}', 'App\Http\Controllers\Api\CartController@push');
 Route::get('/cart/get', 'App\Http\Controllers\Api\CartController@get');
+
+Route::post('/payment/status', 'App\Http\Controllers\Api\Merchant\MerchantCallbackController@statusUpdate');
