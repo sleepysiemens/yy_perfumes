@@ -15,6 +15,7 @@
     <meta name="og:type" content="@yield('og-type', 'article')" />
     <meta name="og:image" content="@yield('og-image', asset('images/logo.png'))" />
 
+    <script src="//code.jivo.ru/widget/fRpVeuWvii" async></script>
 
     @yield('seo')
 

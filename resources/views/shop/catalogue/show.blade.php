@@ -19,7 +19,7 @@
             <a href="{{ route('catalogue.index') }}" class="underline hover:no-underline">{{ __('Shop') }}</a> / {{ $product->getTitle() }}
         </div>
         <div class="flex lg:flex-row flex-wrap sm:flex-row flex-col sm:justify-start justify-start sm:flex-row">
-            <img src="{{ $product->getImage() }}" class="sm:mb-0 mb-5" width="300px" alt="">
+            <a data-fancybox data-src="{{ $product->getImage() }}" data-caption="{{ $product->getTitle() }}" href="{{ $product->getImage() }}" class="block--gallery"><img src="{{ $product->getImage() }}" class="sm:mb-0 mb-5" width="300px" alt=""></a>
             <div class="flex flex-col sm:ml-12">
                 <h1 class="font-bold text-xl">{{ $product->getTitle() }}</h1>
                 <p class="mt-2">{{ $product->getFormatedPrice() }}</p>
@@ -43,6 +43,12 @@
                 <!-- PERSON -->
                 <h3 class="text-lg">{{ __('Ravenna') }}</h3>
                 <a href="" class="border-b text-teal-500 text-sm w-fit border-teal-500 duration-100 hover:border-transparent font-medium">{{ __('My universe') }}</a>
+            </div>
+            <div class="flex flex-col xs:items-end xs:mt-0 mt-4 sm:ml-12 ms:block w-64">
+                <div class="w-fit">
+                    <a href="{{ route('contact') }}" class="border-b text-sm w-fit border-900 duration-100 hover:border-transparent font-medium block">Связаться с нами</a>
+                    <a href="{{ route('store-locator') }}" class="border-b text-sm w-fit border-900 duration-100 hover:border-transparent font-medium mt-2">Ближайшие магазины</a>
+                </div>
             </div>
         </div>
 
@@ -78,3 +84,43 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        var blocks = ['.block--description', '.block--gallery'];
+
+        var style = document.createElement('link');
+        style.rel = 'stylesheet';
+        style.href = 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css';
+        document.getElementsByTagName('head')[0].appendChild(style);
+
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js';
+        script.addEventListener('load', function () {
+            var fancyBoxClass = 'image-fancybox';
+            blocks.forEach(function (block) {
+                $(block)
+                    .find('[data-bg]')
+                    .toArray()
+                    .forEach(function (element) {
+                        var url = element.getAttribute('data-bg')
+                            .replace('url(', '')
+                            .replace(')', '')
+                            .replace('"', '')
+                            .trim();
+                        if (url === '') {
+                            return;
+                        }
+                        $(element)
+                            .parent()
+                            .wrap('<a style="width: 100%; height: 100%;" class="' + fancyBoxClass + '" href="' + url + '"></a>');
+                    });
+            });
+
+            $('.' + fancyBoxClass)
+                .fancybox();
+        }, false);
+        document.getElementsByTagName('body')[0].appendChild(script);
+    </script>
+@endpush

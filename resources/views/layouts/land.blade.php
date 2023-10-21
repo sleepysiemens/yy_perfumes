@@ -29,6 +29,10 @@
 
     <link rel="stylesheet" href="{{ asset('css/avgrund.css') }}">
 
+
+    <script src="//code.jivo.ru/widget/fRpVeuWvii" async></script>
+
+
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dropdown-menu.css') }}">
