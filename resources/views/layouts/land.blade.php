@@ -6,6 +6,15 @@
 
     <title>@yield('title', __('Home page')) | Yanina Yakusheva Perfumes - Made in France</title>
 
+    <meta name="description" content="@yield('seo-description', 'Основательница бренда – парфюмер Янина Якушева. Основная идея ее бренда - продемонстрировать индивидуальность каждого человека с помощью духов, раскрыть духи не только как предмет личного пользования, но и как художественное творение, способное взаимодействовать с другими объектами, обществом и вами.')"/>
+    <meta name="keywords" content="@yield('seo-keywords', 'парфюм, парфюмерия, купить парфюм, yyperfumes')"/>
+
+    <meta name="og:url" content="@yield('og-url', config('app.url'))" />
+    <meta name="og:title" content="@yield('og-title', __('Home page') | __('Yanina Yakusheva Perfumes - Made in France'))" />
+    <meta name="og:description" content="@yield('og-description')" />
+    <meta name="og:type" content="@yield('og-type', 'article')" />
+    <meta name="og:image" content="@yield('og-image', asset('images/logo.png'))" />
+
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}"/>
 
     <!-- JQUERY -->
