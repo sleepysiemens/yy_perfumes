@@ -82,9 +82,9 @@ class YooKassaRedirect
                         'payment_mode' => 'full_payment',
                         'payment_subject' => 'commodity',
                         'country_of_origin_code' => 'CN',
-                        'product_code' => '44 4D 01 00 21 FA 41 00 23 05 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 12 00 AB 00',
+                        'product_code' => '44D',
                         'customs_declaration_number' => '10714040/140917/0090376',
-                        'excise' => '20.00',
+//                        'excise' => '20.00',
                         'supplier' => [
                             'name' => 'Сергей',
                             'phone' => '+79956112267',

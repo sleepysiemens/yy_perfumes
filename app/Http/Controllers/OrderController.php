@@ -52,7 +52,7 @@ class OrderController extends Controller
             'hash' => \Str::random(46),
             'name' => $request->input('name'),
             'email' => UserService::userIsRegistered($request->input('email'), $request->all())->email,
-            'phone' => '',
+            'phone' => $request->input('phone'),
             'shop_id' => $shop->id,
             'order_status_id' => OrderStatus::first()->id,
             'delivery_method_id' => DeliveryMethod::first()->id,

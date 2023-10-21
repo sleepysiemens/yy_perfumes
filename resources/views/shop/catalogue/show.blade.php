@@ -32,8 +32,8 @@
                 </div>
                 <hr class="my-5">
                 <!-- PERSON -->
-                <h3 class="text-lg">Ravenna</h3>
-                <a href="" class="border-b text-teal-500 text-sm w-fit border-teal-500 duration-100 hover:border-transparent font-medium">My universe</a>
+                <h3 class="text-lg">{{ __('Ravenna') }}</h3>
+                <a href="" class="border-b text-teal-500 text-sm w-fit border-teal-500 duration-100 hover:border-transparent font-medium">{{ __('My universe') }}</a>
             </div>
         </div>
 
