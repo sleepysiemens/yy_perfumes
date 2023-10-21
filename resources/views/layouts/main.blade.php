@@ -187,6 +187,11 @@
                                     <a class="instagram social-icon" href="https://www.instagram.com/yaninayakusheva/" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a>
                                 </li>
                             </ul>
+
+                            <div class="mt-5">
+                                <p>ИП Черномаз Сергей Николаевич</p>
+                                <p>ИНН 319237500408538</p>
+                            </div>
                         </div>
                         <div class="flex md:w-2/4 w-full md:order-2 order-1 md:mb-0 mb-12 sm:flex-row flex-col">
                             <div class="sm:w-1/2 w-full flex flex-col">

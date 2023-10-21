@@ -44,10 +44,13 @@
     <a href="{{ route('catalogue.index') }}">{{ __('Shop') }}</a>
 </li>
 <li>
-    <a href="/perfumer">{{ __('Perfumer') }}</a>
+    <a href="{{ route('perfumer') }}">{{ __('Perfumer') }}</a>
 </li>
 <li>
-    <a href="/store-locator">{{ __('Store locator') }}</a>
+    <a href="{{ route('delivery') }}">{{ __('Delivery') }}</a>
+</li>
+<li>
+    <a href="{{ route('store-locator') }}">{{ __('Store locator') }}</a>
 </li>
 <li class="change-language">
     <a href="javascript:void(0);" rel="nofollow"

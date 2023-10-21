@@ -83,6 +83,7 @@ Route::get('/cart/remove/{id}', 'App\Http\Controllers\Api\CartController@remove'
 Route::get('/cart/view', 'App\Http\Controllers\CartController@show')->name('cart.view');
 
 Route::view('/shop/checkout', 'checkout')->name('checkout');
+Route::view('/shop/delivery', 'delivery')->name('delivery');
 
 // Persons
 Route::view('/philosophy', 'philosophy')->name('philosophy');
@@ -94,7 +95,6 @@ Route::view('/perfumer', 'perfumer')->name('perfumer');
 Route::view('/store-locator', 'store-locator')->name('store-locator');
 
 Route::view('profile/become-dealer', 'profile.become-dealer')->name('become-dealer');
-
 
 // PAYMENT
 
