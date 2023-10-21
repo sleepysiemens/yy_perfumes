@@ -5,12 +5,11 @@
 @endsection
 
 @section('og-title')
-    Закажите {{ $product->title['ru'] }} в магазине Парфюмерия Янины Якушевой
-    | Янина Якушева Парфюмерия - Сделано во Франции
+    Закажите {{ $product->title['ru'] }} в магазине Парфюмерия Янины Якушевой | Янина Якушева Парфюмерия - Сделано во Франции
 @endsection
 
-@section('seo-description'){{ $product->description['ru'] }}@endsection
-@section('og-description'){{ $product->description['ru'] }}@endsection
+@section('seo-description'){{ str_replace("\n", ' ', $product->description['ru']) }}@endsection
+@section('og-description'){{ str_replace("\n", ' ', $product->description['ru']) }}@endsection
 
 @section('og-image'){{ config('app.url') . $product->getImage() }}@endsection
 
