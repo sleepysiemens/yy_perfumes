@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class DealerOrder extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'cart' => 'array'
+    ];
+
+    protected $guarded = [];
 }

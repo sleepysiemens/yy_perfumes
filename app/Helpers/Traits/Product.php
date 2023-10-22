@@ -29,6 +29,25 @@ trait Product
         return $currency['symbol'];
     }
 
+    public function getGuestPrice(): float|int
+    {
+        $currencyService = new CurrencyService();
+
+        $userType = 'client';
+
+        $priceType = config('types.prices')[$userType];
+        $currency = $currencyService->get();
+
+        $currencySymbol = $currencyService->selectCurrency();
+
+        if (isset($this->fix_prices[$currencySymbol])) {
+            return $this->fix_prices[$currencySymbol];
+        } else {
+            return $this->$priceType * floatval($currency['rate']);
+        }
+
+    }
+
     public function getProductPrice(): float|int
     {
         $currencyService = new CurrencyService();

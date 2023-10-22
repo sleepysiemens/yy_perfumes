@@ -50,7 +50,7 @@ $(document).ready(function () {
                                     <img src="${item.img}" class="mr-2 rounded-md" width="50px" height="50px" alt="">
                                     <div class="flex flex-col">
                                         <span>${item.title}</span>
-                                        <span class="text-slate-400 text-xs">${item.price}</span>
+                                        <span class="text-slate-400 text-xs">${(item.price).toFixed(2)}</span>
                                     </div>
                                 </div>
                             `);
@@ -67,7 +67,7 @@ $(document).ready(function () {
                                                     <span class="font-bold">${cart.quantity}</span>
                                                 </span>
                                                 <span class="w-1/2 whitespace-nowrap">Итого:
-                                                    <span class="font-bold">${cart.total}</span>
+                                                    <span class="font-bold">${(cart.total).toFixed(2)}</span>
                                                 </span>
                                             </div>
                                          `);

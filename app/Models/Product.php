@@ -71,4 +71,9 @@ class Product extends Model
     {
         return $this->getProductPrice();
     }
+
+    public function guestPrice(): float|int
+    {
+        return $this->getGuestPrice();
+    }
 }

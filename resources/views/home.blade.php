@@ -1,15 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="flex flex-wrap sm:flex-row items-center flex-col justify-between w-1/2 mx-auto">
-        <a href="" class="underline">{{ __('My orders') }}</a>
-        <a href="">{{ __('Actions') }}</a>
-        @if (Auth::user()->type == 'dealer')
-            <a href="{{ route('dealer.dashboard') }}">{{ __('Dealer') }}</a>
-        @else
-            <a href="{{ route('become-dealer') }}">{{ __('Become dealer') }}</a>
-        @endif
-    </div>
+    @include('dealer.menu')
 
     <table class="w-full table text-left mt-12">
         <thead>

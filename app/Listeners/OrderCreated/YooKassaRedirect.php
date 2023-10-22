@@ -6,6 +6,7 @@ use App\Events\OrderCreated;
 use App\Exceptions\MailException;
 use App\Mail\Order\Created;
 use App\Models\Order;
+use App\Models\Product;
 use App\Services\Merchants\YookassaService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -42,10 +43,33 @@ class YooKassaRedirect
 
         // Items
         $items = [];
-        foreach ($event->order->basket['cart'] as $item) {
-            $items[] = [
+        foreach ($event->order->basket['cart'] as $item => $count) {
+            if ($item == 'undefined')
+                continue;
 
-            ];
+            $item = Product::where('id', $item);
+
+            if ($item = $item->first()) {
+                $items[] = [
+                    'description' => $item->getTitle(),
+                    'quantity' => $count,
+                    'amount' => [
+                        'value' => $item->getPrice(),
+                        'currency' => 'RUB'
+                    ],
+                    'mark_code_info' => [
+                        'gs_10' => $item->gtin // GTIN
+                    ],
+                    'vat_code' => '1',
+                    'measure' => 'piece',
+                    'payment_mode' => 'full_prepayment',
+                    'payment_subject' => 'commodity',
+                    'country_of_origin_code' => 'RU',
+                    'mark_mode' => 0,
+//                    'mark_quantity' => 1,
+//                        'excise' => '20.00',
+                ];
+            }
         }
 
         // START
@@ -70,28 +94,7 @@ class YooKassaRedirect
                     'email' => $event->order->email,
                     'phone' => $event->order->phone,
                 ],
-                'items' => [
-                    [
-                        'description' => 'Товары',
-                        'quantity' => '1.00',
-                        'amount' => [
-                            'value' => round($event->order->total),
-                            'currency' => 'RUB'
-                        ],
-                        'vat_code' => '2',
-                        'payment_mode' => 'full_payment',
-                        'payment_subject' => 'commodity',
-                        'country_of_origin_code' => 'CN',
-                        'product_code' => '44D',
-                        'customs_declaration_number' => '10714040/140917/0090376',
-//                        'excise' => '20.00',
-                        'supplier' => [
-                            'name' => 'Сергей',
-                            'phone' => '+79956112267',
-                            'inn' => '052401862060'
-                        ]
-                    ],
-                ]
+                'items' => $items,
             ],
             $idempotenceKey
         ]);
