@@ -81,6 +81,7 @@ Route::post('/cart/push/{product}/{count}', 'App\Http\Controllers\Api\CartContro
 Route::get('/cart/get', 'App\Http\Controllers\Api\CartController@get')->name('cart.show');
 Route::get('/cart/remove/{id}', 'App\Http\Controllers\Api\CartController@remove')->name('cart.remove');
 Route::get('/cart/view', 'App\Http\Controllers\CartController@show')->name('cart.view');
+Route::post('/cart/update', 'App\Http\Controllers\CartController@update')->name('cart.view');
 
 Route::view('/shop/checkout', 'checkout')->name('checkout');
 Route::view('/shop/delivery', 'delivery')->name('delivery');

@@ -195,6 +195,11 @@
                                             <h2 class="font-bold text-md">{{ $product->getTitle() }}</h2>
                                         </div>
                                         <p class="text-md">{{ mb_substr($product->getDescription(), 0, 60) }}</p>
+                                        <div class="flex border w-fit px-3">
+                                            <button id="plus_{{ $item }}" class="count_edit_minus" data-id="{{ $item }}">-</button>
+                                            <input type="tel" value="{{ $itemArray }}" id="count_{{ $item }}" style="width: 50px;text-align: center;outline: none !important;">
+                                            <button id="minus_{{ $item }}" class="count_edit_plus" data-id="{{ $item }}">+</button>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="flex pr-3 flex-col text-sm font-light absolute right-0">
@@ -207,7 +212,7 @@
                     <div class="flex justify-start">
                         <div class="flex items-start">
                             <span class="">{{ __('Total') }}:</span>
-                            <span class="font-bold ml-2">{{ $cartTotals['currency'] }} {{ number_format($cartTotals['total'], 2, ',', ' ') }}</span>
+                            <span class="font-bold ml-2">{{ $cartTotals['currency'] }} <span id="cart_total">{{ number_format($cartTotals['total'], 2, ',', ' ') }}</span></span>
                         </div>
                     </div>
                 @endif
@@ -215,3 +220,57 @@
         </div>
     @endif
 @endsection
+
+@push('scripts')
+    <script>
+        $('.count_edit_minus').on('click', function () {
+            let elementId = $(this).attr('data-id');
+            let countInput = $('#count_' + elementId);
+            let count = Number($(countInput).val());
+
+            if (count > 1) {
+                countInput.val(count - 1);
+
+                updateCount({
+                    id: elementId,
+                    count: count - 1
+                });
+            }
+
+            console.log(countInput.val());
+        });
+        $('.count_edit_plus').on('click', function () {
+            let elementId = $(this).attr('data-id');
+            let countInput = $('#count_' + elementId);
+            let count = Number($(countInput).val());
+
+            countInput.val(count + 1);
+
+            updateCount({
+                id: elementId,
+                count: count + 1
+            });
+
+            console.log(count++);
+        });
+
+        // {itemId: newCount}
+        function updateCount(updateData) {
+            // $.post('/cart/update', updateData)
+            //     .then(response => {
+            //         console.log(response.data);
+            //     });
+            $.post(
+                '/cart/update',
+                updateData,
+                function (response) {
+                    updateAmount(Intl.NumberFormat('ru-RU').format(response.total));
+                }
+            );
+        }
+
+        function updateAmount(newAmount) {
+            $('#cart_total').html(newAmount);
+        }
+    </script>
+@endpush
