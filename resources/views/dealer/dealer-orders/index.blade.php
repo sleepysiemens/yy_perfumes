@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <table class="table">
                             <tr>
-                                <th>Номер заказа</th>
+                                <th style="width: 85px">Номер заказа</th>
                                 <th style="width: 200px;">Итого</th>
                                 <th style="width:200px;">Экономия</th>
                                 <th style="width:200px;">Дата создания</th>
@@ -20,10 +20,16 @@
                             @foreach($orders as $order)
                                 <tr>
                                     <td>#{{ $order->id }}</td>
-                                    <td>{{ $order->total }}</td>
-                                    <td>{{ $order->profit }}</td>
+                                    <td>
+                                        {{ $order->total }} руб.
+                                        <br>
+                                        <a href="{{ route('dealer.dealer-orders.pay', $order->id) }}" class="mb-1">Оплатить как физ лицо</a>
+                                    </td>
+                                    <td>{{ $order->profit }} руб.</td>
                                     <td>{{ $order->created_at }}</td>
-                                    <td><a href="{{ route('dealer.dealer-orders.show', $order->id) }}">Посмотреть</a></td>
+                                    <td>
+                                        <a href="{{ route('dealer.dealer-orders.show', $order->id) }}">Посмотреть</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

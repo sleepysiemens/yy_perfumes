@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-striped table-hover">
+                        <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th style="width:200px;">{{ __('Client') }}</th>
@@ -43,7 +43,7 @@
                                                     <a href="{{ route('catalogue.show', $item->slug) }}">
                                                         {{ $item->getTitle() }}
                                                     </a>
-                                                    <span>x{{ $quantity }}</span>
+                                                    <span>{{ $quantity }}</span>
                                                 </div>
                                             @endif
                                         @endforeach
@@ -54,9 +54,8 @@
                                             Печать
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="printDropdown{{ $order->id }}">
-                                            <a class="dropdown-item" href="{{ route('print.order.show', $order->hash) }}">
-                                                Заказ
-                                            </a>
+                                            <a class="dropdown-item" href="{{ route('print.order.show', $order->hash) }}">Заказ</a>
+                                            <a class="dropdown-item" href="{{ route('print.order.show', $order->hash) }}">Приходный ордер</a>
                                         </div>
                                         <br>
                                         <a href="{{ route('dealer.orders.edit', $order->id) }}">Посмотреть заказ подробнее</a>

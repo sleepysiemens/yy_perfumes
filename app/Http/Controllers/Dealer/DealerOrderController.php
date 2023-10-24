@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Dealer;
 
 use App\Http\Controllers\Controller;
 use App\Models\DealerOrder;
+use App\Models\Order;
+use App\Models\Product;
+use App\Services\Merchants\YookassaService;
 use Illuminate\Http\Request;
 
 class DealerOrderController extends Controller
@@ -42,6 +45,88 @@ class DealerOrderController extends Controller
         ]);
 
         return response()->json($dealerOrder);
+    }
+
+    public function payWithKassa($orderId)
+    {
+        $yookassaService = new YookassaService();
+
+        $order = DealerOrder::query()->find($orderId);
+
+        $client = $yookassaService->getClient();
+        $idempotenceKey = uniqid($order->id, true);
+
+
+        // Items
+        $items = [];
+        foreach ($order->cart as $product) {
+            if ($product == 'undefined')
+                continue;
+
+            $item = Product::where('id', $product['id']);
+
+            if ($item = $item->first()) {
+                $items[] = [
+                    'description' => $product['title'],
+                    'quantity' => $product['count'],
+                    'amount' => [
+                        'value' => $product['price'],
+                        'currency' => 'RUB'
+                    ],
+                    'mark_code_info' => [
+                        'gs_10' => $item->gtin // GTIN
+                    ],
+                    'vat_code' => '1',
+                    'measure' => 'piece',
+                    'payment_mode' => 'full_prepayment',
+                    'payment_subject' => 'commodity',
+                    'country_of_origin_code' => 'RU',
+                    'mark_mode' => 0,
+//                    'mark_quantity' => 1,
+//                        'excise' => '20.00',
+                ];
+            }
+        }
+
+        // START
+        $response = $client->createPayment([
+            'amount' => [
+                'value' => round($order->total),
+                'currency' => 'RUB',
+            ],
+            'confirmation' => [
+                'type' => 'redirect',
+                'locale' => 'ru_RU',
+                'return_url' => config('app.url') . "/dealer/dealer-orders",
+            ],
+            'capture' => false,
+            'description' => "Заказ дилером №{$order->id}",
+            'metadata' => [
+                'orderNumber' => $order->id,
+                'type' => 'dealer',
+            ],
+            'receipt' => [
+                'customer' => [
+                    'full_name' => \Auth::user()->name,
+                    'email' => \Auth::user()->email,
+                    'phone' => \Auth::user()->phone,
+                ],
+                'items' => $items,
+            ],
+            $idempotenceKey
+        ]);
+        // END
+
+        $order->payment_link = $response->getConfirmation()->getConfirmationUrl();
+        $order->ykassa_id = $response->getId();
+        $order->save();
+        
+        return redirect($response->getConfirmation()->getConfirmationUrl());
+
+//        $order = Order::find($event->order->id);
+//        $order->payment_link = $response->getConfirmation()->getConfirmationUrl();
+//        $order->ykassa_id = $response->getId();
+//        $order->save();
     }
 
     /**

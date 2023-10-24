@@ -14,6 +14,8 @@ Route::group([
         'products' => 'App\Http\Controllers\Dealer\Api\ProductController',
     ]);
 
+    Route::get('dealer-orders/pay/{orderId}', 'App\Http\Controllers\Dealer\DealerOrderController@payWithKassa')->name('dealer-orders.pay');
+
     Route::get('invoices/load-data/{inn}', 'App\Http\Controllers\Dealer\InvoiceController@loadData');
     Route::get('invoices/load-bank-data/{bik}', 'App\Http\Controllers\Dealer\InvoiceController@loadBankData');
 
