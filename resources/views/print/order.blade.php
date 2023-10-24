@@ -10,14 +10,14 @@
             <div>Order: #{{ $order->id }}</div>
         </div>
         <div class="w-full mt-[60px]">
-            <div class="text-md">Name: {{ $order->name }}</div>
-            <div class="text-md">Email: {{ $order->email }}</div>
-            <div class="text-md">Phone: {{ $order->phone }}</div>
+            <div class="text-md">Имя: {{ $order->name }}</div>
+            <div class="text-md">Почта: {{ $order->email }}</div>
+            <div class="text-md">Телефон: {{ $order->phone }}</div>
             <div class="mt-2">
-                Delivery: {{ $order->delivery->title }}
+                Способ доставки: {{ $order->delivery->title }}
             </div>
-            <div>Address: {{ $order->address }}</div>
-            <div>Shop: {{ $order->shop->name }},
+            <div>Адрес: {{ $order->address }}</div>
+            <div>Магазин: {{ $order->shop->name }},
                 {{ config('countries.countries')[$order->shop->country] }},
                 {{ $order->shop->address }}</div>
         </div>

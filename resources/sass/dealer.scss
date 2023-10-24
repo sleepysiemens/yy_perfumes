@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Inter', serif !important;
+}
+
+body {
+    background: #f6f6f6;
+}
+
+.card {
+    border: none;
+    box-shadow: 0px 0px 14px rgba(0,0,0,.05);
+
+    .card-header {
+        border: none;
+
+        .title {
+            font-weight: bold;
+        }
+    }
+}
+
+.btn {
+    padding: 7px 15px;
+}
+
+.card {
+    a {
+
+        &:hover {
+        }
+    }
+}
+
+.btn-primary {
+    border: 1px solid #000;
+    background: rgba(0,0,0,0);
+    color: #000;
+
+    &:hover {
+        border-color: #000;
+        background: #000;
+        color: #fff;
+    }
+}
+
+.navbar {
+    border-bottom: 2px solid #0a53be;
+
+    a {
+        color: #000;
+        font-weight: 500;
+    }
+
+    a.navbar-brand {
+        color: #0a53be;
+    }
+}

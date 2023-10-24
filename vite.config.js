@@ -8,6 +8,7 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/sass/styles.scss',
+                'resources/sass/dealer.scss',
                 'resources/js/app.js',
             ],
             refresh: true,

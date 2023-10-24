@@ -64,6 +64,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'requisites' => 'array',
     ];
 
     public function orders(): \Illuminate\Database\Eloquent\Relations\HasMany

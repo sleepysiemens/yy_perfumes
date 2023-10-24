@@ -9,11 +9,11 @@
                         <table class="table table-striped table-hover">
                             <thead>
                             <tr>
-                                <th>{{ __('Client') }}</th>
-                                <th>{{ __('Total') }}</th>
-                                <th>{{ __('Address') }}</th>
+                                <th style="width:200px;">{{ __('Client') }}</th>
+                                <th style="width:150px;">{{ __('Total') }}</th>
+                                <th style="width:300px">{{ __('Address') }}</th>
                                 <th>{{ __('Basket') }}</th>
-                                <th>{{ __('Edit') }}</th>
+                                <th style="width:170px;">{{ __('Edit') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -21,8 +21,8 @@
                                 <tr>
                                     <td>
                                         <div>{{ $order->name }}</div>
-                                        <div>{{ $order->email }}</div>
-                                        <div>{{ $order->phone }}</div>
+                                        <div><a href="mailto:{{ $order->email }}">{{ $order->email }}</a></div>
+                                        <div><a href="tel:{{ $order->phone }}">{{ $order->phone }}</a></div>
                                     </td>
                                     <td>
                                         <div>
@@ -50,9 +50,16 @@
                                         <div></div>
                                     </td>
                                     <td>
-                                        <a href="{{ route('print.order.show', $order->hash) }}" target="_blank">{{ __('Print order') }}</a>
+                                        <a id="printDropdown{{ $order->id }}" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Печать
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="printDropdown{{ $order->id }}">
+                                            <a class="dropdown-item" href="{{ route('print.order.show', $order->hash) }}">
+                                                Заказ
+                                            </a>
+                                        </div>
                                         <br>
-                                        <a href="{{ route('dealer.orders.edit', $order->id) }}">Change status or edit</a>
+                                        <a href="{{ route('dealer.orders.edit', $order->id) }}">Посмотреть заказ подробнее</a>
                                     </td>
                                 </tr>
                             @endforeach

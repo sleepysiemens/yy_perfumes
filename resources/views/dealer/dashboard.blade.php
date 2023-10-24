@@ -81,8 +81,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="{{ route('dealer.invoices.create') }}">
-
+                            <a href="{{ route('dealer.requisites.edit') }}">
                                 <div class="fast-item">
                                     <div>
                                         <p class="mb-0">Мои реквизиты</p>

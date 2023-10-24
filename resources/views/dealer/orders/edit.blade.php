@@ -51,7 +51,8 @@
                             <thead>
                             <tr>
                                 <th>{{ __('Product') }}</th>
-                                <th>{{ __('Quantity') }}</th>
+                                <th style="width:120px;">{{ __('Quantity') }}</th>
+                                <th style="width:120px;">Цена</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -62,16 +63,17 @@
                                     @endphp
                                     <tr>
                                         <td class="d-flex align-items-center">
+                                            <img src="{{ $item->getImage() }}" alt="" class="mr-3" style="width:50px;margin-right: 15px;">
                                             <a href="{{ route('catalogue.show', $item->slug) }}">
-                                                <div class="product__img"
-                                                     style="background: url('/storage/products/{{ $item->img }}');
-                                                         background-size: cover;background-position: center center;"
-                                                ></div>
                                                 {{ $item->getTitle() }}
                                             </a>
                                         </td>
                                         <td>
                                             {{ $quantity }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($item->getGuestPrice() * $quantity, 2, ',', ' ') }}
+                                            {{ $order->basket['currency'] }}
                                         </td>
                                     </tr>
                                 @endif

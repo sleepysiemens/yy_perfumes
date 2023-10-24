@@ -16,4 +16,9 @@ Route::group([
 
     Route::get('invoices/load-data/{inn}', 'App\Http\Controllers\Dealer\InvoiceController@loadData');
     Route::get('invoices/load-bank-data/{bik}', 'App\Http\Controllers\Dealer\InvoiceController@loadBankData');
+
+    Route::prefix('my')->as('requisites.')->group(function () {
+        Route::view('requisites/edit', 'dealer.my.requisites')->name('edit');
+        Route::post('requisites/edit', 'App\Http\Controllers\Dealer\ProfileController@updateRequisites')->name('update');
+    });
 });

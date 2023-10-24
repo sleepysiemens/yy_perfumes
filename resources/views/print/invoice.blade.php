@@ -1,3 +1,7 @@
+@php
+$numberFormatter = new NumberFormatter('ru', NumberFormatter::SPELLOUT);
+@endphp
+
 @extends('layouts.print')
 
 @section('content')
@@ -5,7 +9,11 @@
         <table class="w-full table-small" valign="top">
             <tr>
                 <td rowspan="2" colspan="2">
-                    КРАСНОДАРСКОЕ ОТДЕЛЕНИЕ N8619 ПАО СБЕРБАНК г. Краснодар
+                    @if($dealerBy)
+                        КРАСНОДАРСКОЕ ОТДЕЛЕНИЕ N8619 ПАО СБЕРБАНК г. Краснодар
+                    @else
+                        {{ Auth::user()->requisites['bank_name'] ?? '' }}
+                    @endif
                     <br><br>
                     Банк получателя
                 </td>
@@ -13,9 +21,17 @@
                     БИК
                 </td>
                 <td rowspan="2">
-                    040349602
+                    @if($dealerBy)
+                        040349602
+                    @else
+                        {{ Auth::user()->requisites['bik'] ?? '' }}
+                    @endif
                     <br>
-                    30101810100000000602
+                    @if($dealerBy)
+                        30101810100000000602
+                    @else
+                        {{ Auth::user()->requisites['kor'] ?? '' }}
+                    @endif
                 </td>
                 <td rowspan="4" class="w-[100px]">
                 </td>
@@ -25,28 +41,46 @@
             </tr>
             <tr>
                 <td>
-                    ИНН 616502706146
+                    ИНН
+                    @if($dealerBy)
+                        616502706146
+                    @else
+                        {{ Auth::user()->requisites['inn'] ?? '' }}
+                    @endif
                 </td>
                 <td class="w-[210px]">
                     КПП
+                    @if($dealerBy)
+
+                    @else
+                        {{ Auth::user()->requisites['self_kpp'] ?? '' }}
+                    @endif
                 </td>
                 <td rowspan="2">
                     р/с. №
                 </td>
                 <td rowspan="2">
-                    40802810330000116195
+                    @if($dealerBy)
+                        40802810330000116195
+                    @else
+                        {{ Auth::user()->requisites['ras']  ?? '' }}
+                    @endif
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    ИП Черномаз Сергей Николаевич
+                    @if($dealerBy)
+                        ИП Черномаз Сергей Николаевич
+                    @else
+                        {{ Auth::user()->requisites['soc_name']  ?? '' }}
+                    @endif
                     <br><br>
                     Получатель
                 </td>
             </tr>
         </table>
         <div class="text-lg font-bold italic pl-4 my-1">
-            Счет на оплату № 02 от 19 апреля 2023 г.
+            Счет на оплату № {{ $invoice->id }} от {{ \Carbon\Carbon::parse($invoice->created_at)->translatedFormat('j F Y') }} г.
         </div>
         <hr class="border-b-[2px] border-b-[#000]">
         <table class="border-0 mr-4 text-md mt-3 table-small">
@@ -56,7 +90,17 @@
                     (Исполнитель):
                 </td>
                 <td class="border-0">
-                    <b>ИП Черномаз С.Н., ИНН 616502706146, 350000, Россия, Краснодарский край, г. Краснодар ул. Рашпилевская 119 кв. 27, тел.: +79184873797</b>
+
+                    <b>
+                        @if($dealerBy)
+                            ИП Черномаз С.Н., ИНН 616502706146, 350000, Россия, Краснодарский край, г. Краснодар ул. Рашпилевская 119 кв. 27, тел.: +79184873797
+                        @else
+                            {{ Auth::user()->requisites['soc_name']  ?? '' }}, ИНН {{ Auth::user()->requisites['inn']  ?? '' }}, {{ Auth::user()->requisites['address']  ?? '' }},
+                            @if(isset(Auth::user()->requisites['phone']) && Auth::user()->requisites['phone'] != '')
+                                тел: {{ Auth::user()->requisites['phone'] ?? '' }}
+                            @endif
+                        @endif
+                    </b>
                 </td>
             </tr>
             <tr>
@@ -66,8 +110,8 @@
                 </td>
                 <td class="border-0">
                     @if($invoice)
-                        <b>{{ "{$invoice->requisites['soc_name']}, ИНН {$invoice->requisites['inn']}, КПП {$invoice->requisites['inn']},
-                            {$invoice->requisites['address']}, Телефон {$invoice->requisites['phone']}" }}</b>
+                        <b>{{ $invoice->requisites['soc_name'] ?? '' }}, ИНН {{$invoice->requisites['inn'] ?? ''}}, КПП {{$invoice->requisites['inn'] ?? ''}},
+                            {{$invoice->requisites['address'] ?? ''}}, тел: {{$invoice->requisites['phone'] ?? ''}}</b>
                     @else
                         <textarea name="" id="" style="resize: none;"
                                   class="w-full outline-none font-bold"
@@ -145,10 +189,20 @@
             @if($order){{ $order->basket['currency'] }}{{ number_format($order->basket['total'], 2, ',', ' ') ?? '' }}@endif
         </div>
         <div class="text-sm font-bold" contenteditable="">
-            Введите сумму буквами
+            @if($order)
+                {{ $numberFormatter->format(floor($order->basket['total'])) }} рублей
+                {{ $numberFormatter->format(
+                        explode(",",
+                            number_format($order->basket['total'], 2, ',', '')
+                        )[1]
+                ) }}
+                копеек
+            @else
+                Введите сумму буквами
+            @endif
         </div>
         <div class="mt-2 text-[11px]">
-            Оплатить не позднее 10.05.2023
+            Оплатить не позднее {{ \Carbon\Carbon::now()->addDays(10)->format('d.m.Y') }}
             <br>
             Оплата данного счета означает согласие с условиями поставки товара.
         </div>
@@ -156,12 +210,35 @@
             Уведомление об оплате обязательно, в противном случае не гарантируется наличие товара на складе. Товар отпускается по факту прихода денег на р/с Поставщика, самовывозом, при наличии доверенности и паспорта.
         </div>
 
-        <img src="{{ asset('images/crm/sign.png') }}" class="max-w-[106%] ml-[-10px]" alt="">
+        @if($dealerBy)
+            <img src="{{ asset('images/crm/sign.png') }}" class="max-w-[106%] ml-[-10px]" alt="">
+        @else
+            <div style="height:2px;width:100%;background:#000;margin-top: 30px;"></div>
+
+            <div style="display:flex;margin-top: 45px;">
+                <b style="font-style: italic;margin-top: -15px;">Предприниматель</b>
+                <div style="height:1px;width:100%;background:#000;transform: translateY(5px)">
+                    <div class="text-right">
+                        <div class="text-right" style="margin-top: -18px;font-size: 13px;">
+                            {{ Auth::user()->requisites['display_name'] ?? '' }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        @endif
 {{--        <div class="w-full h-[250px]"--}}
 {{--             style="background: url('{{ asset('images/crm/sign.png') }}');background-size: 100%;background-repeat: no-repeat;" alt="">--}}
     </div>
+@endsection
+
+@push('scripts')
 
     <style>
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+
         body {
             font-family: Arial;
         }
@@ -195,4 +272,4 @@
             }
         }
     </style>
-@endsection
+@endpush

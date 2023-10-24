@@ -36,19 +36,23 @@ class InvoicePrintController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($hash)
+    public function show($hash, Request $request)
     {
         $order = Order::query()->where('hash', $hash);
 
+        $dealerBy = $request->get('dealer-by') ?? false;
+
         if ($print = $order->first()) {
             return view('print.invoice', [
-                'order' => $print
+                'order' => $print,
+                'dealerBy' => $dealerBy,
             ]);
         } else {
             $print = Invoice::query()->with('order')->where('hash', $hash)->firstOrFail();
             return view('print.invoice', [
                 'invoice' => $print,
                 'order' => $print->order,
+                'dealerBy' => $dealerBy,
             ]);
         }
     }
