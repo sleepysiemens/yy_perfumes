@@ -88,9 +88,9 @@
     </li>
 
     <li class="menu-item">
-        <a href="icons-boxicons.html" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-crown"></i>
-            <div data-i18n="Boxicons">Boxicons</div>
+        <a href="{{ route('dealer.prices') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-dollar"></i>
+            <div data-i18n="Boxicons">Цены дилеров</div>
         </a>
     </li>
 
@@ -99,8 +99,8 @@
     <!-- Forms -->
     <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-detail"></i>
-            <div data-i18n="Form Elements">Form Elements</div>
+            <i class="menu-icon tf-icons bx bx-badge-dollar"></i>
+            <div data-i18n="Form Elements">Цены дилеров</div>
         </a>
         <ul class="menu-sub">
             <li class="menu-item">

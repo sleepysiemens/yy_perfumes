@@ -22,4 +22,7 @@ Route::prefix('/yy-admin')->group(function () {
         'articles' => \App\Http\Controllers\Admin\ArticleController::class,
         'orders' => \App\Http\Controllers\Admin\OrderController::class,
     ]);
+
+    Route::view('dealer/prices/', 'admin.dealer.prices')->name('dealer.prices');
+    Route::post('dealer/prices/', 'App\Http\Controllers\Admin\Config\DealerSaleController@updatePrices')->name('dealer.prices');
 });
