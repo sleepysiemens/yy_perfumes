@@ -1,5 +1,5 @@
 @php
-$numberFormatter = new NumberFormatter('ru', NumberFormatter::SPELLOUT);
+$numberFormatter = new \NumberFormatter('ru', NumberFormatter::SPELLOUT);
 @endphp
 
 @extends('layouts.print')

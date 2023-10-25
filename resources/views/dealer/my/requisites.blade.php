@@ -24,7 +24,7 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="inn">ИНН</label>
-                                    <input type="text" id="inn" class="form-control mb-1" name="inn" value="{{ Auth::user()->requisites['inn'] }}">
+                                    <input type="text" id="inn" class="form-control mb-1" name="inn" value="{{ Auth::user()->requisites['inn'] ?? '' }}">
                                     <a href="javascript:void(0);" onclick="loadData()">Подгрузить данные</a>
                                 </div>
                             </div>
@@ -39,37 +39,37 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="soc_name">Сокращенное наименование</label>
-                                    <input type="text" id="soc_name" class="form-control mb-1" name="soc_name" value="{{ Auth::user()->requisites['soc_name'] }}">
+                                    <input type="text" id="soc_name" class="form-control mb-1" name="soc_name" value="{{ Auth::user()->requisites['soc_name'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="name">Полное наименование</label>
-                                    <input type="text" id="name" class="form-control mb-1" name="name" value="{{ Auth::user()->requisites['name'] }}">
+                                    <input type="text" id="name" class="form-control mb-1" name="name" value="{{ Auth::user()->requisites['name'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="address">Адрес</label>
-                                    <input type="text" id="address" class="form-control mb-1" name="address" value="{{ Auth::user()->requisites['address'] }}">
+                                    <input type="text" id="address" class="form-control mb-1" name="address" value="{{ Auth::user()->requisites['address'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="okpo">ОКПО</label>
-                                    <input type="text" id="okpo" class="form-control mb-1" name="okpo" value="{{ Auth::user()->requisites['okpo'] }}">
+                                    <input type="text" id="okpo" class="form-control mb-1" name="okpo" value="{{ Auth::user()->requisites['okpo'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="ogrn">ОГРН</label>
-                                    <input type="text" id="ogrn" class="form-control mb-1" name="ogrn" value="{{ Auth::user()->requisites['ogrn'] }}">
+                                    <input type="text" id="ogrn" class="form-control mb-1" name="ogrn" value="{{ Auth::user()->requisites['ogrn'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="phone">Телефон</label>
-                                    <input type="text" id="phone" class="form-control mb-1" name="phone" value="{{ Auth::user()->requisites['phone'] }}">
+                                    <input type="text" id="phone" class="form-control mb-1" name="phone" value="{{ Auth::user()->requisites['phone'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
@@ -93,32 +93,32 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="bik">Бик банка</label>
-                                    <input type="text" id="bik" class="form-control mb-1" name="bik" value="{{ Auth::user()->requisites['bik'] }}">
+                                    <input type="text" id="bik" class="form-control mb-1" name="bik" value="{{ Auth::user()->requisites['bik'] ?? '' }}">
                                     <a href="javascript:void(0);" onclick="loadBankData()">Подгрузить данные</a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="kpp">КПП</label>
-                                    <input type="text" id="kpp" class="form-control mb-1" name="kpp" value="{{ Auth::user()->requisites['kpp'] }}">
+                                    <input type="text" id="kpp" class="form-control mb-1" name="kpp" value="{{ Auth::user()->requisites['kpp'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="ras">Расчетный счет</label>
-                                    <input type="text" id="ras" class="form-control mb-1" name="ras" value="{{ Auth::user()->requisites['ras'] }}">
+                                    <input type="text" id="ras" class="form-control mb-1" name="ras" value="{{ Auth::user()->requisites['ras'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="kor">Кор. счет</label>
-                                    <input type="text" id="kor" class="form-control mb-1" name="kor" value="{{ Auth::user()->requisites['kor'] }}">
+                                    <input type="text" id="kor" class="form-control mb-1" name="kor" value="{{ Auth::user()->requisites['kor'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group">
                                     <label for="bank_name">Наименование банка и город</label>
-                                    <input type="text" id="bank_name" class="form-control mb-1" name="bank_name" value="{{ Auth::user()->requisites['bank_name'] }}">
+                                    <input type="text" id="bank_name" class="form-control mb-1" name="bank_name" value="{{ Auth::user()->requisites['bank_name'] ?? '' }}">
                                 </div>
                             </div>
                             <div class="col-12">
