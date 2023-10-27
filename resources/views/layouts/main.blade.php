@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 
     @vite('resources/sass/styles.scss')
+    @vite('resources/js/app.js')
 
     <script>
         localStorage.setItem('lang', '{{ \Illuminate\Support\Facades\App::getLocale() }}');
@@ -66,8 +67,8 @@
         </div>
     </div>
 
-    <div class="container bg-white mx-auto min-h-[500px]" id="app-container">
-        <div class="w-100 mx-auto py-5 px-8 container-body">
+    <div class="container bg-white mx-auto min-h-[500px]">
+        <div class="w-100 mx-auto py-5 px-8 container-body" id="app-container">
             @yield('content')
         </div>
 

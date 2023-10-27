@@ -18,10 +18,12 @@ const app = createApp({});
 import ExampleComponent from './components/ExampleComponent.vue';
 import DealerOrdersIndex from './components/Dealer/DealerOrders/DealerOrdersIndex.vue';
 import DealerOrdersCreate from './components/Dealer/DealerOrders/DealerOrdersCreate.vue';
+import CheckoutOrder from './components/Shop/Order.vue';
 
 app.component('example-component', ExampleComponent);
 app.component('dealer-orders', DealerOrdersIndex);
 app.component('dealer-order-create', DealerOrdersCreate);
+app.component('checkout-order', CheckoutOrder);
 
 /**
  * The following block of code may be used to automatically register your
