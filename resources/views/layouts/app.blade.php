@@ -18,6 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
+    <script src="https://kit.fontawesome.com/64a2dc4faa.js" crossorigin="anonymous"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/sass/dealer.scss', 'resources/js/app.js'])
 </head>
@@ -25,9 +27,13 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
-                    Кабинет дилера
-                </a>
+                <div>
+                    <a class="navbar-brand mb-0" href="{{ route('home') }}">
+                        Кабинет дилера
+                    </a>
+                    <span class="version">Версия: {{ config('app.version') }}</span>
+                </div>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -108,9 +114,31 @@
         </nav>
 
         <main class="py-4">
+            <div class="container mb-3">
+                <div class="row">
+                    <div class="col-xs-12">
+                        @if(!isset($hiddenBackUrl))
+                            <a href="@yield('return-url', url()->previous())" class="btn btn-light border-primary">
+                                <i class="fa-solid fa-angle-left" style="margin-right: 3px;"></i> @yield('return-text', 'Назад')
+                            </a>
+                        @endif
+                    </div>
+                </div>
+            </div>
             @yield('content')
         </main>
     </div>
+
+{{--    <div style="height: 50px;"></div>--}}
+{{--    <div class="footer" style="position: absolute;bottom:0;">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-xs-12">--}}
+{{--                    asdas--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <style>
         nav li {
@@ -119,5 +147,15 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @stack('scripts')
+
+    <script type="text/javascript">
+        console.log($);
+
+        $(document).ready(function(){
+            $('.card-help .card-header').on('click', function () {
+                $(this).parent('.card-help').toggleClass('active');
+            })
+        });
+    </script>
 </body>
 </html>

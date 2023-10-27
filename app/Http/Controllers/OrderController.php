@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Http\Controllers\Controller;
 use App\Models\OrderStatus;
 use App\Models\Shop;
+use App\Services\Notifications\SmsService;
 use App\Services\Shop\CartService;
 use App\Services\User\UserService;
 use Illuminate\Http\Request;
@@ -62,6 +63,12 @@ class OrderController extends Controller
             'country' => $shop->country,
             'address' => $request->input('address') ?? $shop->address,
         ]);
+
+        $smsService = new SmsService();
+
+        if ($order->phone != '') {
+            $smsService->sendMessage($order->phone, "Ваш заказ №{$order->id} на сайте принят.");
+        }
 
         event(new OrderCreated($order));
 

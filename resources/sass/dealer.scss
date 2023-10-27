@@ -8,6 +8,14 @@ body {
     background: #f6f6f6;
 }
 
+.version {
+    font-size: 11px;
+    line-height: 11px;
+    display: block;
+    opacity: .5;
+    margin-top: -3px;
+}
+
 .card {
     border: none;
     box-shadow: 0px 0px 14px rgba(0,0,0,.05);
@@ -21,6 +29,43 @@ body {
     }
 }
 
+button:disabled,
+button[disabled] {
+    cursor: pointer !important;
+}
+
+div.title {
+    display: flex;
+    align-items: center;
+}
+
+.card-help {
+    .card-body {
+        display: none;
+    }
+
+    &.active {
+        .card-body {
+            display: block;
+        }
+    }
+
+    .card-header {
+        transition: .3s ease;
+
+        outline: 2px dashed rgba(0,0,0,0);
+
+        &:hover {
+            cursor: pointer;
+            background: rgba(0,0,0,.0);
+        }
+
+        &:active {
+            outline: 1px dashed #000;
+        }
+    }
+}
+
 .btn {
     padding: 7px 15px;
 }
@@ -30,6 +75,12 @@ body {
 
         &:hover {
         }
+    }
+}
+
+.title {
+    svg {
+        margin-right: 5px;
     }
 }
 
@@ -64,6 +115,10 @@ table {
         border: 0 !important;
         padding: 10px !important;
         font-weight: 400 !important;
+    }
+
+    tr {
+        border-bottom: 1px dotted rgba(0,0,0,.4) !important;
     }
 
     thead, thead * {

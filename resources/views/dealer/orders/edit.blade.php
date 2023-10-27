@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
-                <div class="card">
+                <div class="card card-help active">
                     <div class="card-header">
-                        {{ __('User info') }}
+                        <div class="title"><i class="fa-solid fa-user"></i> {{ __('User info') }}</div>
                     </div>
                     <div class="card-body">
                         <div class="mb-2">
@@ -23,9 +23,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mt-3">
+                <div class="card card-help active mt-3">
                     <div class="card-header">
-                        {{ __('Delivery info') }}
+                        <i class="fa-solid fa-truck"></i> {{ __('Delivery info') }}
                     </div>
                     <div class="card-body">
                         <div class="mb-2">
@@ -42,9 +42,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mt-3">
+                <div class="card card-help active mt-3">
                     <div class="card-header">
-                        {{ __('Cart') }}
+                        <div class="title"><i class="fa-solid fa-cart-shopping"></i> {{ __('Cart') }}</div>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped">
@@ -84,7 +84,7 @@
                 </div>
                 <div class="card mt-3">
                     <div class="card-header">
-                        {{ __('Create invoice') }}
+                        <div class="title"><i class="fa-solid fa-file-invoice-dollar"></i> {{ __('Create invoice') }}</div>
                     </div>
                     <div class="card-body">
                         <a href="{{ route('dealer.invoices.create', ['order_id' => $order->id]) }}" class="btn btn-primary">{{ __('Create invoice') }}</a>
@@ -101,13 +101,10 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <select name="status" class="form-control" id="">
-                                    @foreach(\App\Models\OrderStatus::all() as $status)
-                                        <option value="{{ $status->id }}"
-                                                @if($order->order_status_id == $status->id)
-                                                    selected
-                                                @endif
-                                        >{{ $status->title }}</option>
+                                <select name="status" class="form-control" value="{{ $order->order_status_id }}" id="">
+                                    @foreach(config('crm.order_statuses') as $id => $status)
+                                        <option value="{{ $id }}"
+                                        >{{ $status['title'] }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -126,13 +123,10 @@
                             @csrf
                             @method('PUT')
                             <div class="form-group">
-                                <select name="status" class="form-control" id="">
-                                    @foreach(\App\Models\OrderStatus::all() as $status)
-                                        <option value="{{ $status->id }}"
-                                                @if($order->order_status_id == $status->id)
-                                                    selected
-                                            @endif
-                                        >{{ $status->title }}</option>
+                                <select name="status" class="form-control" id="" value="{{ $order->delivery_method_id }}">
+                                    @foreach(config('crm.payment_methods') as $id => $method)
+                                        <option value="{{ $id }}"
+                                        >{{ $method['title'] }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -80,7 +80,7 @@ $numberFormatter = new \NumberFormatter('ru', NumberFormatter::SPELLOUT);
             </tr>
         </table>
         <div class="text-lg font-bold italic pl-4 my-1">
-            Счет на оплату № {{ $invoice->id }} от {{ \Carbon\Carbon::parse($invoice->created_at)->translatedFormat('j F Y') }} г.
+            Счет на оплату № {{ $invoice->id ?? $order->id }} от {{ \Carbon\Carbon::parse($invoice->created_at ?? $order->created_at)->translatedFormat('j F Y') }} г.
         </div>
         <hr class="border-b-[2px] border-b-[#000]">
         <table class="border-0 mr-4 text-md mt-3 table-small">
@@ -109,18 +109,23 @@ $numberFormatter = new \NumberFormatter('ru', NumberFormatter::SPELLOUT);
                     (Заказчик):
                 </td>
                 <td class="border-0">
-                    @if($invoice)
-                        <b>{{ $invoice->requisites['soc_name'] ?? '' }}, ИНН {{$invoice->requisites['inn'] ?? ''}}, КПП {{$invoice->requisites['inn'] ?? ''}},
-                            {{$invoice->requisites['address'] ?? ''}}, тел: {{$invoice->requisites['phone'] ?? ''}}</b>
+                    @if($dealerBy)
+                        <b>{{ Auth::user()->requisites['soc_name'] ?? '' }}, ИНН {{ Auth::user()->requisites['inn'] ?? ''}}, КПП {{ Auth::user()->requisites['inn'] ?? ''}},
+                            {{ Auth::user()->requisites['address'] ?? ''}}, тел: {{ Auth::user()->requisites['phone'] ?? ''}}</b>
                     @else
-                        <textarea name="" id="" style="resize: none;"
-                                  class="w-full outline-none font-bold"
-                                  rows="2" placeholder="Введите данные"></textarea>
+                        @if($invoice)
+                            <b>{{ $invoice->requisites['soc_name'] ?? '' }}, ИНН {{$invoice->requisites['inn'] ?? ''}}, КПП {{$invoice->requisites['inn'] ?? ''}},
+                                {{$invoice->requisites['address'] ?? ''}}, тел: {{$invoice->requisites['phone'] ?? ''}}</b>
+                        @else
+                            <textarea name="" id="" style="resize: none;"
+                                      class="w-full outline-none font-bold"
+                                      rows="2" placeholder="Введите данные"></textarea>
+                        @endif
                     @endif
                 </td>
             </tr>
         </table>
-        <div class="text-sm mt-5 mb-3">
+        <div class="mt-5 mb-3" style="font-size: 13px;">
             Основание:
         </div>
         <table class="w-full small-td border-2 border-[#000]">
@@ -136,35 +141,54 @@ $numberFormatter = new \NumberFormatter('ru', NumberFormatter::SPELLOUT);
                 </tr>
             </thead>
             <tbody>
-            @if($order)
-                @foreach($order->basket['cart'] as $product => $quantity)
+            @if($dealerBy)
+                @foreach($order->cart as $product)
                     @if($product != 'undefined')
                         @php
-                            $item = \App\Models\Product::find($product);
+                            $item = \App\Models\Product::find($product['id']);
                         @endphp
                         <tr>
                             <td class="text-center">{{ $item->id }}</td>
                             <td>{{ $item->getTitle() }}</td>
                             <td>{{ $item->artikul }}</td>
-                            <td class="text-center">{{ $quantity }}</td>
+                            <td class="text-center">{{ $product['count'] }}</td>
                             <td class="text-center">шт</td>
-                            <td class="text-right">{{ $order->basket['currency'] }}
-                                {{ number_format($item->getPrice(), 2, ',', ' ') }}</td>
-                            <td class="text-right">{{ $order->basket['currency'] }}
-                                {{ number_format($item->getPrice() * $quantity, 2, ',', ' ') }}</td>
+                            <td class="text-right">{{ number_format($item->getPrice(), 2, ',', ' ') }} руб.</td>
+                            <td class="text-right">{{ number_format($item->getPrice() * $product['count'], 2, ',', ' ') }} руб.</td>
                         </tr>
                     @endif
                 @endforeach
             @else
-                <tr>
-                    <td class="text-center"></td>
-                    <td></td>
-                    <td></td>
-                    <td class="text-center"></td>
-                    <td class="text-center">шт</td>
-                    <td class="text-right"></td>
-                    <td class="text-right"></td>
-                </tr>
+                @if($order)
+                    @foreach($order->basket['cart'] as $product => $quantity)
+                        @if($product != 'undefined')
+                            @php
+                                $item = \App\Models\Product::find($product);
+                            @endphp
+                            <tr>
+                                <td class="text-center">{{ $item->id }}</td>
+                                <td>{{ $item->getTitle() }}</td>
+                                <td>{{ $item->artikul }}</td>
+                                <td class="text-center">{{ $quantity }}</td>
+                                <td class="text-center">шт</td>
+                                <td class="text-right">{{ $order->basket['currency'] }}
+                                    {{ number_format($item->getPrice(), 2, ',', ' ') }}</td>
+                                <td class="text-right">{{ $order->basket['currency'] }}
+                                    {{ number_format($item->getPrice() * $quantity, 2, ',', ' ') }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                @else
+                    <tr>
+                        <td class="text-center"></td>
+                        <td></td>
+                        <td></td>
+                        <td class="text-center"></td>
+                        <td class="text-center">шт</td>
+                        <td class="text-right"></td>
+                        <td class="text-right"></td>
+                    </tr>
+                @endif
             @endif
             </tbody>
         </table>
@@ -172,7 +196,13 @@ $numberFormatter = new \NumberFormatter('ru', NumberFormatter::SPELLOUT);
             <table class="w-1/3 table-small text-right font-bold italic">
                 <tr>
                     <td class="border-0 w-[100px]">Итого:</td>
-                    <td class="border-0 w-[60px]">@if($order) {{ number_format($order->basket['total'], 2, ',', ' ') }}@endif</td>
+                    <td class="border-0 w-[60px]">
+                        @if($dealerBy)
+                            {{ number_format($order->total, 2, ',', ' ') }}
+                        @else
+                            @if($order) {{ number_format($order->basket['total'], 2, ',', ' ') }}@endif
+                        @endif
+                    </td>
                 </tr>
                 <tr>
                     <td class="border-0 w-[100px]">Без налога (НДС):</td>
@@ -180,25 +210,51 @@ $numberFormatter = new \NumberFormatter('ru', NumberFormatter::SPELLOUT);
                 </tr>
                 <tr>
                     <td class="border-0 w-[100px]">Всего к оплате:</td>
-                    <td class="border-0">@if($order){{ number_format($order->basket['total'], 2, ',', ' ') ?? '' }}@endif</td>
+                    <td class="border-0">
+                        @if($dealerBy)
+                            {{ number_format($order->total, 2, ',', ' ') }}
+                        @else
+                            @if($order){{ number_format($order->basket['total'], 2, ',', ' ') ?? '' }}@endif
+                        @endif
+                    </td>
                 </tr>
             </table>
         </div>
         <div class="mt-0 text-sm">
-            Всего наименований @if($order){{ count($order->basket['cart']) }}@endif, на сумму
-            @if($order){{ $order->basket['currency'] }}{{ number_format($order->basket['total'], 2, ',', ' ') ?? '' }}@endif
+            Всего наименований
+            @if($dealerBy)
+                {{ count($order->cart) }}
+            @else
+                @if($order){{ count($order->basket['cart']) }}@endif
+            @endif
+            , на сумму
+            @if($dealerBy)
+                {{ number_format($order->total, 2, ',', ' ') ?? '' }} рублей.
+            @else
+                @if($order){{ $order->basket['currency'] }}{{ number_format($order->basket['total'], 2, ',', ' ') ?? '' }}@endif
+            @endif
         </div>
-        <div class="text-sm font-bold" contenteditable="">
-            @if($order)
-                {{ $numberFormatter->format(floor($order->basket['total'])) }} рублей
+        <div class="font-bold" contenteditable="">
+            @if($dealerBy)
+                {{ $numberFormatter->format(floor($order->total)) }} рублей
                 {{ $numberFormatter->format(
                         explode(",",
-                            number_format($order->basket['total'], 2, ',', '')
+                            number_format($order->total, 2, ',', '')
                         )[1]
                 ) }}
-                копеек
+                копейки
             @else
-                Введите сумму буквами
+                @if($order)
+                    {{ $numberFormatter->format(floor($order->basket['total'])) }} рублей
+                    {{ $numberFormatter->format(
+                            explode(",",
+                                number_format($order->basket['total'], 2, ',', '')
+                            )[1]
+                    ) }}
+                    копеек
+                @else
+                    Введите сумму буквами
+                @endif
             @endif
         </div>
         <div class="mt-2 text-[11px]">
@@ -241,6 +297,7 @@ $numberFormatter = new \NumberFormatter('ru', NumberFormatter::SPELLOUT);
 
         body {
             font-family: Arial;
+            font-size: 13px;
         }
 
         tr {

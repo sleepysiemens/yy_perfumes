@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dealer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Services\Notifications\SmsService;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -57,6 +58,13 @@ class OrderController extends Controller
         $order->update([
             'order_status_id' => $request->input('status')
         ]);
+
+        $status = config('crm.order_statuses')[$request->input('status')];
+
+        if (isset($status['send_msg']) && $status['send_msg']) {
+            $smsService = new SmsService();
+            $smsService->sendMessage($order->phone, str_replace('%track_url%', '', $status['msg']));
+        }
 
         return redirect()->back()->with('success', 'Заказ обновлен');
     }

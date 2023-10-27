@@ -1,21 +1,25 @@
 @extends('layouts.app')
 
+@php($hiddenBackUrl = true)
+
 @section('content')
     <div class="container">
-{{--        <div class="row">--}}
-{{--            <div class="col-lg-12">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <div class="title">--}}
-{{--                            Orders--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-{{--                        <canvas id="sells"></canvas>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="row mb-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="title">
+                            Ваш магазин
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{ Auth::user()->shop->name }}
+                        <br>
+                        {{ config('countries.countries')[Auth::user()->shop->country] }}, {{ Auth::user()->shop->address }}
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -28,14 +32,22 @@
                             <a href="{{ route('dealer.dealer-orders.create') }}">
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Заказать товары</p>
+                                        <p class="mb-0">
+                                            <i class="fa-solid fa-cart-plus"></i>
+                                            Заказать товары
+                                            <span class="mb-0 fs-6 info">по дилерской цене</span>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
                             <a href="{{ route('dealer.dealer-orders.index') }}">
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Мои заказы</p>
+                                        <p class="mb-0">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                            Мои заказы
+                                            <span class="info">из магазина</span>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
@@ -46,7 +58,11 @@
                             <a href="{{ route('dealer.orders.index') }}">
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Заказы</p>
+                                        <p class="mb-0">
+                                            <i class="fa-solid fa-chart-column"></i>
+                                            Заказы
+                                            <span class="info">из онлайн-магазина</span>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
@@ -57,7 +73,11 @@
                             <a href="{{ route('dealer.invoices.index') }}">
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Счета</p>
+                                        <p class="mb-0">
+                                            <i class="fa-solid fa-file-invoice-dollar"></i>
+                                            Счета
+                                            <span class="info">клиентам</span>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
@@ -65,7 +85,11 @@
 
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Выставление счёта</p>
+                                        <p class="mb-0">
+                                            <i class="fa-solid fa-file-lines"></i>
+                                            Выставление счёта
+                                            <span class="info">клиенту</span>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
@@ -77,14 +101,24 @@
                             <a href="{{ route('dealer.invoices.index') }}">
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Редактировать контакты</p>
+                                        <p class="mb-0">
+                                            <i class="fa-solid fa-address-card"></i>
+                                            Редактировать контакты
+                                            <span class="info">моего магазина</span>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
                             <a href="{{ route('dealer.requisites.edit') }}">
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Мои реквизиты</p>
+                                        <p class="mb-0">
+                                            <i class="fa-solid fa-file-signature"></i>
+                                            Мои реквизиты
+                                            <span class="info">
+                                                для работы с документами
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
@@ -95,7 +129,8 @@
                             <a href="{{ route('dealer.invoices.index') }}">
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Улучшение перевода текстов</p>
+                                        <p class="mb-0"><i class="fa-solid fa-language"></i> Улучшение перевода текстов
+                                        <span class="info">на разные языки</span></p>
                                     </div>
                                 </div>
                             </a>
@@ -103,7 +138,8 @@
 
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Способы оплаты и платежные данные</p>
+                                        <p class="mb-0"><i class="fa-solid fa-comment-dollar"></i> Способы оплаты и платежные данные
+                                        <span class="info">для оплаты клиентами в онлайн магазине</span></p>
                                     </div>
                                 </div>
                             </a>
@@ -111,7 +147,8 @@
 
                                 <div class="fast-item">
                                     <div>
-                                        <p class="mb-0">Способы доставки</p>
+                                        <p class="mb-0"><i class="fa-solid fa-truck"></i> Способы доставки
+                                            <span class="info">из магазина</span></p>
                                     </div>
                                 </div>
                             </a>
@@ -125,14 +162,24 @@
 
 @push('scripts')
     <style type="text/css">
+        p svg {
+            margin-right: 5px;
+        }
         .fast-item {
             border: 1px solid rgba(69,69,255, .2);
             border-radius: 4px;
-            padding: 15px 0;
-            min-width: 300px;
+            padding: 15px 40px 15px 15px;
+            min-width: fit-content;
             margin-right: 15px;
             transition: .2s ease;
             box-shadow: -4px 4px 7px rgba(0,0,0,.05);
+        }
+        .fast-item .info {
+            max-width: 100%;
+            margin-top: 0px;
+            display: block;
+            opacity: .6;
+            margin-left: 25px;
         }
         .fast-item:hover {
             color: #fff;
@@ -144,7 +191,7 @@
             /*box-shadow: 0 0 0 0.25rem rgba(69,69,255,.5) !important;*/
         }
         .fast-item p {
-            margin-left: 15px;
+            /*margin-left: 15px;*/
         }
         .fast-items a {
             text-decoration: none;

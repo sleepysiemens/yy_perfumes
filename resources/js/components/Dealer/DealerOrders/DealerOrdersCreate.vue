@@ -5,8 +5,11 @@
         </div>
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="title">Список товаров</div>
+                    <button class="btn btn-primary" @click="createOrder" :disabled="this.cart.length < 1">
+                        Отправить заказ
+                    </button>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover" border="1" cellpadding="2">
@@ -27,6 +30,7 @@
                         </tr>
                         </tbody>
                     </table>
+                    <p class="text-danger mb-0" v-if="cart.length < 1">Выберите товар, который хотите заказать.</p>
                 </div>
             </div>
         </div>
@@ -69,7 +73,7 @@
                     <p><b>Итоговая экономия:</b> {{ totalProfit.toFixed(2) }}</p>
                 </div>
                 <div class="card-footer d-flex justify-content-end">
-                    <button class="btn btn-primary" @click="createOrder">
+                    <button class="btn btn-primary" @click="createOrder" :disabled="this.cart.length < 1">
                         Отправить заказ
                     </button>
                 </div>

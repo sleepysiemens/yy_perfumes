@@ -4,14 +4,28 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <div class="card card-help mb-3">
+                    <div class="card-header">
+                        <div class="title"><i class="fa-regular fa-circle-question"></i> Инструкция</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-0">
+                            Нажмите на номер заказа для подробного просмотра. <br>
+                            Для печати документов воспользуйтесь кнопкой в последнем столбце.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-hover">
                             <thead>
                             <tr>
+                                <th style="width:50px;">№</th>
                                 <th style="width:200px;">{{ __('Client') }}</th>
                                 <th style="width:150px;">{{ __('Total') }}</th>
-                                <th style="width:300px">{{ __('Address') }}</th>
+                                <th style="width:280px">{{ __('Address') }}</th>
                                 <th>{{ __('Basket') }}</th>
                                 <th style="width:170px;">{{ __('Edit') }}</th>
                             </tr>
@@ -19,6 +33,7 @@
                             <tbody>
                             @foreach($orders as $order)
                                 <tr>
+                                    <td><a href="{{ route('dealer.orders.edit', $order->id) }}">#{{ $order->id }}</a></td>
                                     <td>
                                         <div>{{ $order->name }}</div>
                                         <div><a href="mailto:{{ $order->email }}">{{ $order->email }}</a></div>
@@ -27,7 +42,7 @@
                                     <td>
                                         <div>
                                             {{ $order->basket['currency'] }}
-                                            {{ $order->total }}
+                                            {{ number_format($order->total, 2, ',', ' ') }}
                                         </div>
                                     </td>
                                     <td>
@@ -42,7 +57,7 @@
                                                 <div>
                                                     <a href="{{ route('catalogue.show', $item->slug) }}">
                                                         {{ $item->getTitle() }}
-                                                    </a>
+                                                    </a> <b style="margin: 0 5px;">x</b>
                                                     <span>{{ $quantity }}</span>
                                                 </div>
                                             @endif
@@ -57,8 +72,6 @@
                                             <a class="dropdown-item" href="{{ route('print.order.show', $order->hash) }}">Заказ</a>
                                             <a class="dropdown-item" href="{{ route('print.order.show', $order->hash) }}">Приходный ордер</a>
                                         </div>
-                                        <br>
-                                        <a href="{{ route('dealer.orders.edit', $order->id) }}">Посмотреть заказ подробнее</a>
                                     </td>
                                 </tr>
                             @endforeach

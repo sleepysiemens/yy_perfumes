@@ -14,7 +14,9 @@
                                 <div class="form-password-toggle mt-2" style="width:100%;">
                                     <div class="input-group">
                                         <input type="text" name="name" value="dealer_prices_sale" hidden="">
-                                        <input type="text" name="percent" class="form-control" id="basic-default-password12" placeholder="Введите процент"  aria-describedby="basic-default-password" />
+                                        <input type="text" name="percent" class="form-control" id="basic-default-password12"
+                                               value="{{ (new \App\Services\Shop\ConfigService())->getConfig()['dealer_prices_sale'] ?? '' }}"
+                                               placeholder="Введите процент"  aria-describedby="basic-default-password" />
                                         <span class="input-group-text" id="basic-addon11">%</span>
                                     </div>
                                 </div>

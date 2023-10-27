@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Print;
 
 use App\Http\Controllers\Controller;
 use App\Models\Crm\Invoice;
+use App\Models\DealerOrder;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -47,12 +48,16 @@ class InvoicePrintController extends Controller
                 'order' => $print,
                 'dealerBy' => $dealerBy,
             ]);
-        } else {
-            $print = Invoice::query()->with('order')->where('hash', $hash)->firstOrFail();
+        } elseif ($print = Invoice::query()->with('order')->where('hash', $hash)->first()) {
             return view('print.invoice', [
                 'invoice' => $print,
                 'order' => $print->order,
                 'dealerBy' => $dealerBy,
+            ]);
+        } else {
+            return view('print.invoice', [
+                'order' => DealerOrder::query()->find($hash),
+                'dealerBy' => true,
             ]);
         }
     }

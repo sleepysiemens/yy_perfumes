@@ -6,6 +6,6 @@ return [
         'hu' => 'Hungary',
         'fr' => 'France',
         'es' => 'Spain',
-        'ru' => 'Russia',
+        'ru' => 'Россия',
     ],
 ];
