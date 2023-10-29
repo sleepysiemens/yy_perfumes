@@ -49,32 +49,71 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('dealer.dashboard') }}">{{ __('Главная') }}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dealer.orders.index') }}">{{ __('Orders') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Shop contact') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Bids') }}</a>
-                        </li>
-                        <li class="nav-item dropdown mr-5">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ __('CRM') }}
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Мой магазин
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">
-                                    {{ __('Payments') }}
+                                <a class="dropdown-item" href="{{ route('dealer.dealer-orders.index') }}">
+                                    Контакты
                                 </a>
-                                <a class="dropdown-item" href="">
-                                    {{ __('Torg 12') }}
+                                <a class="dropdown-item" href="{{ route('dealer.dealer-orders.create') }}">
+                                    Способы доставки
                                 </a>
-                                <a class="dropdown-item" href="">
-                                    {{ __('Deliveries') }}
+                                <a class="dropdown-item" href="{{ route('dealer.dealer-orders.create') }}">
+                                    Способы оплаты и платежные данные
                                 </a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Дилерский заказ
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('dealer.dealer-orders.index') }}">
+                                    Мои заказы
+                                </a>
+                                <a class="dropdown-item" href="{{ route('dealer.dealer-orders.create') }}">
+                                    Оформить заказ
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Счета
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('dealer.invoices.index') }}">
+                                    Все счета
+                                </a>
+                                <a class="dropdown-item" href="{{ route('dealer.invoices.create') }}">
+                                    Выставить счёт
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('dealer.requisites.edit') }}">Мои реквизиты</a>
+                        </li>
+{{--                        <li class="nav-item dropdown mr-5">--}}
+{{--                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
+{{--                                {{ __('CRM') }}--}}
+{{--                            </a>--}}
+
+{{--                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">--}}
+{{--                                <a class="dropdown-item" href="">--}}
+{{--                                    {{ __('Payments') }}--}}
+{{--                                </a>--}}
+{{--                                <a class="dropdown-item" href="">--}}
+{{--                                    {{ __('Torg 12') }}--}}
+{{--                                </a>--}}
+{{--                                <a class="dropdown-item" href="">--}}
+{{--                                    {{ __('Deliveries') }}--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
                         <div style="width: 30px;"></div>
                         <!-- Authentication Links -->
                         @guest
