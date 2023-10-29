@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (\Auth::user()->type = 'dealer') {
+        if (\Auth::user()->type == 'dealer') {
             return redirect()->route('dealer.dashboard');
         }
 
