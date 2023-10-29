@@ -13,9 +13,13 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        {{ Auth::user()->shop->name }}
-                        <br>
-                        {{ config('countries.countries')[Auth::user()->shop->country] }}, {{ Auth::user()->shop->address }}
+                        @if(Auth::user()->shop)
+                            {{ Auth::user()->shop->name }}
+                            <br>
+                            {{ config('countries.countries')[Auth::user()->shop->country] }}, {{ Auth::user()->shop->address }}
+                        @else
+                            <b>У Вас еще нет привязанного магазина.</b>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -158,6 +162,14 @@
             </div>
         </div>
     </div>
+    @if(Auth::user()->active === false)
+        <div style="position:absolute;display:flex;z-index: 99999999;top:0;left:0;width:100%;height: 100%;align-items: center;justify-content: center;backdrop-filter: blur(2px);">
+            <div style="top:0;left:0;width:500px;height:auto;background: #fff;border-radius:8px;box-shadow: 0px 0px 14px rgba(0,0,0,.3);padding: 15px;">
+                <h5 class="text-black">Поздравляем, регистрация прошла успешно!</h5>
+                <p class="mb-0">С Вами свяжется менеджер для обсуждения деталей и активации учетной записи. <br> Пожалуйста, ожидайте.</p>
+            </div>
+        </div>
+    @endif
 @endsection
 
 @push('scripts')

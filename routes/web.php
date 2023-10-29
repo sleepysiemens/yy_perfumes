@@ -104,3 +104,7 @@ Route::get('/payment/error/{hash}', function ($hash) {
         'order' => \App\Models\Order::where('hash', $hash)->firstOrFail(),
     ]);
 })->name('payment.error');
+
+
+Route::get('invoices/load-data/{inn}', 'App\Http\Controllers\Dealer\InvoiceController@loadData');
+Route::get('invoices/load-bank-data/{bik}', 'App\Http\Controllers\Dealer\InvoiceController@loadBankData');

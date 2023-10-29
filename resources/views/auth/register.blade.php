@@ -40,6 +40,17 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">Выберите тип регистрации</label>
+
+                            <div class="col-md-6">
+                                <select name="" id="user_type" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
+                                    <option value="client" selected>Клиент</option>
+                                    <option value="dealer">Дилер</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

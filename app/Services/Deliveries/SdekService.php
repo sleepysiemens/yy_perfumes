@@ -37,6 +37,12 @@ class SdekService
         return $response['access_token'];
     }
 
+    public function getCountries()
+    {
+        $response = $this->client->get("{$this->endPoint}location/regions?country_codes=ru")->getBody();
+        return json_decode($response, true);
+    }
+
     public function getCities()
     {
         $response = $this->client->get("{$this->endPoint}location/regions?country_codes=ru")->getBody();

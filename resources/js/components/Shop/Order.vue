@@ -1,6 +1,12 @@
 <template>
     <form :action="submit" method="post" class="lg:w-1/3 lg:mb-0 mx-auto w-full mb-5">
+        <input type="text" name="_token" :value="csrf" hidden="hidden">
         <h1 class="text-xl font-semibold mb-5">Оформление заказа</h1>
+
+        <!-- TECH INPUTS -->
+        <input type="text" name="pvz_id">
+        <input type="text" name="pvz_address">
+
         <div class="form-group">
             <label for="" class="font-medium">Имя</label>
             <input type="text" name="name" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600" placeholder=""
@@ -32,12 +38,12 @@
         </div>
         <div class="mt-2 mb-3">
             <label for="">Город или регион</label>
-            <select name="" id="" v-model="selectedCity" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
+            <select name="city" id="" v-model="selectedCity" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
                 <option v-for="city in sdekCities" :value="city.region_code">{{ city.region }}</option>
             </select>
         </div>
         <div class="mt-2 mb-3" v-if="sdekVillages.length > 0">
-            <label for="">Выберите населенный пункт</label>
+            <label for="village">Выберите населенный пункт</label>
             <select name="" id="" v-model="selectedVillage" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
                 <option v-for="village in sdekVillages" :value="village.code">{{ village.city }}</option>
             </select>

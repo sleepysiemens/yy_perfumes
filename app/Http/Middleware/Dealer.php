@@ -19,6 +19,10 @@ class Dealer
             return redirect('/');
         }
 
+        if (\Auth::user()->active === false && $request->path() !== 'dealer/dashboard') {
+            return redirect()->route('dealer.dashboard');
+        }
+
         return $next($request);
     }
 }

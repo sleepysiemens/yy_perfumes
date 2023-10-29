@@ -46,6 +46,8 @@ class OrderController extends Controller
     {
         $shopId = $request->input('shop') ?? 1;
 
+        dd($request->all());
+
         $cart = $this->cartService->getCart();
         $shop =  Shop::query()->find($shopId);
 
