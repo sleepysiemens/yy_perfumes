@@ -67,7 +67,7 @@
                             <label for="">Цена прем. дилера EUR</label>
                             <input type="text" class="form-control" name="cost_vip_dealer" value="{{ $product->cost_vip_dealer }}">
                         </div>
-
+<!--
                         <div class="from-group mb-3">
                             <label for="">Фиксированные цены</label>
                             <textarea name="fix_prices" class="form-control" id="" cols="30" rows="10">{{ json_encode($product->fix_prices) }}</textarea>
@@ -80,6 +80,26 @@
                                 }
                             </p>
                         </div>
+-->
+                        <!--=======================================FIX PRICES =======================================-->
+                        <h6 class="mb-2 mt-3 mb-3">Фиксированные цены</h6>
+
+                        <div class="from-group mb-3">
+                            <label for="">Цена RUB</label>
+                            <input type="number" class="form-control" name="fix_prices_rub" value="{{ $product->fix_prices['RUB'] ?? '' }}">
+                        </div>
+
+                        <div class="from-group mb-3">
+                            <label for="">Цена USD</label>
+                            <input type="number" class="form-control" name="fix_prices_usd" value="{{ $product->fix_prices['USD'] ?? '' }}">
+                        </div>
+
+                        <div class="from-group mb-3">
+                            <label for="">Цена KAZ</label>
+                            <input type="number" class="form-control" name="fix_prices_kaz" value="{{ $product->fix_prices['KAZ'] ?? '' }}">
+                        </div>
+
+                        <!--=======================================/FIX =======================================-->
 
                         <hr>
                         <h6 class="mb-2 mt-3 mb-3">Сео</h6>
