@@ -48,6 +48,13 @@
                     <textarea name="ru_description" class="form-control" id="" cols="30" rows="5"></textarea>
                 </div>
 
+                <!--WEIGHT-->
+                <div class="from-group mb-3">
+                    <label for="">Вес, г.</label>
+                    <input type="number" class="form-control" name="weight" value="{{ $product->weight}}">
+                </div>
+                <!--/WEIGHT-->
+
                 <div class="from-group mb-3">
                     <label for="">Цена $</label>
                     <input type="text" class="form-control" name="cost">
@@ -77,6 +84,20 @@
 
                 <hr>
                 <h6 class="mb-2 mt-3">Техническая</h6>
+
+                <!--Vendor code-->
+                <div class="from-group mb-3">
+                    <label for="">Артикул</label>
+                    <input type="text" class="form-control" name="vendor_code" value="{{ $product->vendor_code}}">
+                </div>
+                <!--/Vendor code-->
+
+                <!--Barcode-->
+                <div class="from-group mb-3">
+                    <label for="">Штрихкод</label>
+                    <input type="text" class="form-control" name="barcode" value="{{ $product->barcode}}">
+                </div>
+                <!--/Barcode-->
 
                 <div class="from-group">
                     <label for="">Отображение в адресе</label>

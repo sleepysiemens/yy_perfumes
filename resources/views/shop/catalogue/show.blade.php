@@ -43,6 +43,12 @@
                 <!-- PERSON -->
                 <h3 class="text-lg">{{ __('Ravenna') }}</h3>
                 <a href="" class="border-b text-teal-500 text-sm w-fit border-teal-500 duration-100 hover:border-transparent font-medium">{{ __('My universe') }}</a>
+                @if($product->vendor_code!=NULL)
+                    <p class="vendor_code">{{ __('Vendor code: ') }}{{$product->vendor_code}}</p>
+                @endif
+                @if($product->barcode!=NULL)
+                    <p class="barcode">{{$product->barcode}}</p>
+                @endif
             </div>
             <div class="flex flex-col xs:items-end xs:mt-0 mt-4 sm:ml-12 ms:block w-64">
                 <div class="w-fit">
@@ -57,6 +63,11 @@
         <h2 class="mb-3 text-lg font-semibold">{{ __('Description') }}</h2>
         {!! $product->getDescription() !!}
 
+        @if($product->weight!=NULL)
+            <br>
+            <br>
+            {{ __('Weight: ') }}{{$product->weight}}{{ __('g') }}
+        @endif
         <hr class="my-10 mb-8">
 
         <div class="my-8 flex sm:justify-around flex-wrap mt-8">

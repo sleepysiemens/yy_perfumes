@@ -57,6 +57,9 @@ class ProductController extends Controller
             'cost' => $request->input('cost'),
             'cost_dealer' => $request->input('cost_dealer'),
             'cost_vip_dealer' => $request->input('cost_vip_dealer'),
+            'vendor_code' => $request->input('vendor_code'),
+            'barcode' => $request->input('barcode'),
+            'weight' => $request->input('weight'),
             'slug' => $request->input('slug') ?? Str::slug($request->input('en_title')),
         ]);
 
@@ -102,6 +105,9 @@ class ProductController extends Controller
             'cost' => $request->input('cost'),
             'cost_dealer' => $request->input('cost_dealer'),
             'cost_vip_dealer' => $request->input('cost_vip_dealer'),
+            'vendor_code' => $request->input('vendor_code'),
+            'barcode' => $request->input('barcode'),
+            'weight' => $request->input('weight'),
             'slug' => $request->input('slug') ?? Str::slug($request->input('en_title')),
         ]);
 

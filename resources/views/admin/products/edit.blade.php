@@ -41,6 +41,13 @@
                             <textarea name="en_description" class="form-control" id="" cols="30" rows="5">{{ $product->description['en'] ?? '' }}</textarea>
                         </div>
 
+                        <!--WEIGHT-->
+                        <div class="from-group mb-3">
+                            <label for="">Вес, г.</label>
+                            <input type="number" class="form-control" name="weight" value="{{ $product->weight}}">
+                        </div>
+                        <!--/WEIGHT-->
+
                         <div class="from-group mb-3">
                             <label for="">
                                 <img src="{{ \App\Services\Content\FlagService::get('ru') }}" width="17 px" alt="">
@@ -116,12 +123,27 @@
                         <hr>
                         <h6 class="mb-2 mt-3">Техническая</h6>
 
+                        <!--Vendor code-->
+                        <div class="from-group mb-3">
+                            <label for="">Артикул</label>
+                            <input type="text" class="form-control" name="vendor_code" value="{{ $product->vendor_code}}">
+                        </div>
+                        <!--/Vendor code-->
+
+                        <!--Barcode-->
+                        <div class="from-group mb-3">
+                            <label for="">Штрихкод</label>
+                            <input type="text" class="form-control" name="barcode" value="{{ $product->barcode}}">
+                        </div>
+                        <!--/Barcode-->
+
                         <div class="from-group">
                             <label for="">Отображение в адресе</label>
                             <input type="text" class="form-control mb-2" name="slug" value="{{ $product->slug }}">
                             <span class="text-muted fs-6">Лучше оставить пустым, но можно указать, как будет отображаться в адресе.
                         Поле уникальное! Например: <b>duhy_luchshego_kachestva</b></span>
                         </div>
+
 
                         <button type="submit" class="btn btn-primary mt-3">Добавить</button>
                     </form>

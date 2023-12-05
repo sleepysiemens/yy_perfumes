@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('gtin')->nullable();
-            $table->string('vendor_code')->nullable();
-            $table->string('barcode')->nullable();
+            $table->decimal('weight')->nullable();
         });
     }
 
