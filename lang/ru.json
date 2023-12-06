@@ -196,5 +196,11 @@
 
     "Select shop": "Выберите магазин",
 
-    "Checkout order": "Оформление заказа"
+    "Checkout order": "Оформление заказа",
+
+    "Vendor code: ": "Артикул: ",
+
+    "Weight: ": "Вес: ",
+
+    "g": "г"
 }
