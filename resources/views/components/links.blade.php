@@ -2,6 +2,9 @@
     <a href="/">{{ __('Home') }}</a>
 </li>
 <li>
+    <a href="{{ route('catalogue.index') }}">{{ __('Shop') }}</a>
+</li>
+<li>
     <a href="/philosophy">{{ __('Philosophy') }}</a>
 </li>
 {{--<li class="with-sub">--}}
@@ -52,9 +55,6 @@
 {{--        </li>--}}
 {{--    </ul>--}}
 {{--</li>--}}
-<li>
-    <a href="{{ route('catalogue.index') }}">{{ __('Shop') }}</a>
-</li>
 <li>
     <a href="{{ route('perfumer') }}">{{ __('Perfumer') }}</a>
 </li>

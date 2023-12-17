@@ -21,7 +21,10 @@
         <div class="flex lg:flex-row flex-wrap sm:flex-row flex-col sm:justify-start justify-start sm:flex-row">
             <a data-fancybox data-src="{{ $product->getImage() }}" data-caption="{{ $product->getTitle() }}" href="{{ $product->getImage() }}" class="block--gallery"><img src="{{ $product->getImage() }}" class="sm:mb-0 mb-5" width="300px" alt=""></a>
             <div class="flex flex-col sm:ml-12">
-                <h1 class="font-bold text-xl">{{ $product->getTitle() }}</h1>
+                <h1 class="font-bold text-xl mb0">{{ $product->getTitle() }}</h1>
+                @if($product->vendor_code!=NULL)
+                    <p class="vendor_code mt-0" style="font-size: 13px;color:rgba(0,0,0,.5);">{{ __('Vendor code: ') }}{{$product->vendor_code}}</p>
+                @endif
                 <p class="mt-2">{{ $product->getFormatedPrice() }}</p>
                 <div class="flex items-center mt-4">
                     @if ((new \App\Services\Shop\CartService())->checkExists($product->id))
@@ -43,17 +46,17 @@
                 <!-- PERSON -->
                 <h3 class="text-lg">{{ __('Ravenna') }}</h3>
                 <a href="" class="border-b text-teal-500 text-sm w-fit border-teal-500 duration-100 hover:border-transparent font-medium">{{ __('My universe') }}</a>
-                @if($product->vendor_code!=NULL)
-                    <p class="vendor_code">{{ __('Vendor code: ') }}{{$product->vendor_code}}</p>
-                @endif
-                @if($product->barcode!=NULL)
-                    <p class="barcode">{{$product->barcode}}</p>
+                @if($product->weight!=NULL)
+                    <p class="mt-3">{{ __('Weight: ') }}{{$product->weight}}{{ __('g') }}</p>
                 @endif
             </div>
             <div class="flex flex-col xs:items-end xs:mt-0 mt-4 sm:ml-12 ms:block w-64">
                 <div class="w-fit">
                     <a href="{{ route('contact') }}" class="border-b text-sm w-fit border-900 duration-100 hover:border-transparent font-medium block">Связаться с нами</a>
                     <a href="{{ route('store-locator') }}" class="border-b text-sm w-fit border-900 duration-100 hover:border-transparent font-medium mt-2">Ближайшие магазины</a>
+                    @if($product->barcode!=NULL)
+                        <p class="barcode mt-5">{{$product->barcode}}</p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -63,11 +66,6 @@
         <h2 class="mb-3 text-lg font-semibold">{{ __('Description') }}</h2>
         {!! $product->getDescription() !!}
 
-        @if($product->weight!=NULL)
-            <br>
-            <br>
-            {{ __('Weight: ') }}{{$product->weight}}{{ __('g') }}
-        @endif
         <hr class="my-10 mb-8">
 
         <div class="my-8 flex sm:justify-around flex-wrap mt-8">

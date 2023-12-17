@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 // TODO: Доделать лендинг и убрать редирект
-Route::get('/', function () {
-    return view('land.home');
-});
+//Route::get('/', function () {
+//    return view('land.home');
+//});
+
+Route::redirect('/', '/shop');
 
 Route::group(['prefix' => '/about'], function () {
     Route::view('/privacy-policy', 'about.privacy-policy')->name('privacy-policy');

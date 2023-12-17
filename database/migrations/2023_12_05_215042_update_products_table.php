@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->string('vendor_code')->nullable();
-            $table->string('barcode')->nullable();
             $table->decimal('weight')->nullable();
         });
     }

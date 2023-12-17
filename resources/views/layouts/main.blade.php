@@ -158,5 +158,45 @@
 </div>
 @include('components.modals')
 
+@if(Session::exists('cart') && count(Session::get('cart')) > 0)
+    <a href="{{ route('checkout') }}">
+        <div class="footer-cart">
+            <p style="display: flex;align-items: center;">
+                <svg style="margin-left: -4px;" xmlns="http://www.w3.org/2000/svg" fill="#000000" width="20px" height="20px" viewBox="0 0 32 32"><title></title>
+                    <path d="M22,8H10a1,1,0,0,0-.983.816l-3,16A1,1,0,0,0,7,26H25a1,1,0,0,0,.983-1.184l-3-16A1,1,0,0,0,22,8ZM8.205,24,10.83,10H21.17l2.625,14ZM20,12.5a4,4,0,0,1-8,0,1,1,0,0,1,2,0,2,2,0,0,0,4,0,1,1,0,0,1,2,0Z"></path>
+                </svg>
+                <b>{{ __('Cart') }}</b>
+            </p>
+            {{ count(Session::get('cart')) }} {{ __('products for price') }} {{ (new  \App\Services\Shop\CartService)->getCart()['total'] }}
+            {{ (new  \App\Services\Shop\CartService)->getCart()['currency'] }}
+            <p style="font-size: 14px;margin-top: 10px;line-height: 14px;color:darkblue;width: 150px;">{{ __('Click for view a cart') }}</p>
+        </div>
+    </a>
+
+    <style>
+        .footer-cart {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background: #fff;
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+            padding: 10px 15px;
+            margin-right: 15%;
+            font-size: 14px;
+            border: 1px solid #000;
+            border-bottom: none;
+            height: 100px;
+            transition: .3s ease;
+            margin-bottom: -40px;
+        }
+        .footer-cart:hover {
+            margin-bottom: 0;
+        }
+        .footer-cart p {
+            margin-bottom: 0;
+        }
+    </style>
+@endif
 </body>
 </html>

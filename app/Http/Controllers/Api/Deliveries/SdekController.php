@@ -15,9 +15,15 @@ class SdekController extends Controller
         $this->sdekService = $sdekService;
     }
 
-    public function getCities()
+    public function getCountries()
     {
-        return response()->json($this->sdekService->getCities(), options: JSON_UNESCAPED_UNICODE);
+        $data = json_decode(file_get_contents('json/countries.json'), true);
+        return response()->json($data, options: JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getCities($country)
+    {
+        return response()->json($this->sdekService->getCities($country), options: JSON_UNESCAPED_UNICODE);
     }
 
     public function getVillages($id)

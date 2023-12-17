@@ -23,6 +23,10 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory()->create([
              'name' => 'Test User',
              'email' => 'test@example.com',
+             'password' => \Hash::make('@Password'),
+             'is_admin' => true,
+             'type' => 'dealer',
+             'active' => true,
          ]);
 
         Category::factory()

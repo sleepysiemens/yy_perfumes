@@ -33,10 +33,10 @@
         <div class="mt-2 mb-3">
             <label for="">Страна</label>
             <select name="" id="" v-model="selectedCountry" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
-                <option v-for="country in sdekCountries" :value="country.code">{{ country.name }}</option>
+                <option v-for="country in sdekCountries" :value="country.alpha2">{{ country.name }}</option>
             </select>
         </div>
-        <div class="mt-2 mb-3">
+        <div class="mt-2 mb-3" v-if="sdekCities.length > 0">
             <label for="">Город или регион</label>
             <select name="city" id="" v-model="selectedCity" class="w-full bg-zinc-100 mt-1 py-2 pl-3 font-medium outline-none border-2 border-zinc-0 duration-200 focus:border-zinc-600">
                 <option v-for="city in sdekCities" :value="city.region_code">{{ city.region }}</option>
@@ -165,10 +165,10 @@ export default {
     created() {
         console.log(this.deliveryMethods);
 
-        axios.get('/api/sdek/cities/')
+        axios.get('/api/sdek/countries/')
             .then(response => {
                 console.log(response);
-                this.sdekCities = response.data;
+                this.sdekCountries = response.data;
             });
 
         axios.get('/api/shops')
@@ -181,6 +181,13 @@ export default {
     methods: {
         setDeliveryMethod(method) {
             this.deliveryMethod = method
+        },
+        countrySelected() {
+            axios.get('/api/sdek/cities/' + this.selectedCountry)
+                .then(response => {
+                    console.log(response);
+                    this.sdekCities = response.data;
+                });
         },
         citySelected() {
             this.deliveryMethods.sdekPickup[0].active = false;
@@ -229,6 +236,7 @@ export default {
         selectedCity: 'citySelected',
         selectedVillage: 'villageSelected',
         selectedSdekPoint: 'pointSelected',
+        selectedCountry: 'countrySelected',
     }
 }
 </script>

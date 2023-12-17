@@ -43,9 +43,9 @@ class SdekService
         return json_decode($response, true);
     }
 
-    public function getCities()
+    public function getCities($country)
     {
-        $response = $this->client->get("{$this->endPoint}location/regions?country_codes=ru")->getBody();
+        $response = $this->client->get("{$this->endPoint}location/regions?country_codes=$country")->getBody();
         return json_decode($response, true);
     }
 

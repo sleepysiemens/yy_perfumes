@@ -31,7 +31,8 @@ Route::get('/cart/get', 'App\Http\Controllers\Api\CartController@get');
 Route::post('/payment/status', 'App\Http\Controllers\Api\Merchant\MerchantCallbackController@statusUpdate');
 
 Route::prefix('sdek')->group(function () {
-    Route::get('cities', 'App\Http\Controllers\Api\Deliveries\SdekController@getCities');
+    Route::get('countries', 'App\Http\Controllers\Api\Deliveries\SdekController@getCountries');
+    Route::get('cities/{country}', 'App\Http\Controllers\Api\Deliveries\SdekController@getCities');
     Route::get('villages/{id}', 'App\Http\Controllers\Api\Deliveries\SdekController@getVillages');
     Route::get('points/{id}', 'App\Http\Controllers\Api\Deliveries\SdekController@getPoints');
 });
