@@ -7,3 +7,294 @@
 .images-slider .slide {
     height: 600px;
 }
+
+/*====================================SLIDER====================================*/
+
+.slider-arrow
+{
+    position: absolute;
+    top: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    z-index: 6;
+    transition: .8s;
+    opacity: 0;
+    display: flex;
+    font-size: 20px;
+
+    p
+    {
+        margin: auto;
+    }
+}
+
+.images-slider:hover .slider-arrow
+{
+    opacity: 1;
+}
+
+.left-arrow
+{
+    left: 20px;
+
+}
+
+.right-arrow
+{
+    right: 20px;
+}
+
+.images-slider
+{
+    position: relative;
+}
+
+.slide
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(.8, .8);
+    opacity: 50%;
+    transition: .8s;
+}
+
+.slick-current
+{
+    z-index: 4;
+    transition: .8s;
+    opacity: 1;
+    transform: scale(1,1);
+    /*
+    animation-name: next_slide;
+    animation-duration: 6.4s;
+     */
+
+}
+
+/*
+@keyframes next_slide
+{
+    0%{transform: scale(.8, .8)}
+    5%{transform: scale(1, 1)}
+    95%{transform: scale(1, 1); opacity: 100%}
+    100%{transform: scale(1.2, 1.2); opacity: 50%}
+}
+ */
+
+.slide-loading
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.25);
+    height: 4px;
+    width: 100%;
+}
+
+.slide-content
+{
+    position: absolute;
+    left: 100px;
+    top: 20%;
+    opacity: 0;
+}
+
+.slide-content .subtitle
+{
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 40px;
+    opacity: 0;
+}
+
+.slide-content .button
+{
+    margin-top: 40px;
+    display: flex;
+    background-color: #c1b17e;
+    height: 45px;
+    width: 130px;
+    opacity: 0;
+
+    p
+    {
+        font-size: 10px;
+        color: #fff;
+        margin: auto;
+    }
+}
+
+/*loading*/
+.slick-current .slide-loading
+{
+    width: 100%;
+    animation-name: loading;
+    animation-duration: 6.5s;
+}
+
+@keyframes loading
+{
+    0% {width: 0%;}
+    100% {width: 100%;}
+}
+/*/loading*/
+
+/*title*/
+.slick-current .slide-title
+{
+    color: #fff;
+    font-size: 32px;
+    font-family: 'Libre Franklin', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    overflow: hidden;
+    display: flex;
+    height: 48px;
+}
+
+.slick-current .slide-title d
+{
+    display: block;
+    transform: translateY(-40px);
+    animation-name: title-digit;
+    animation-duration: 7s;
+    text-align: center;
+    opacity: 0;
+}
+
+.slide-content .slide-title d:nth-child(1)
+{
+    animation-delay: 1s;
+}
+.slide-content .slide-title d:nth-child(2)
+{
+    animation-delay: 1.05s;
+}
+.slide-content .slide-title d:nth-child(3)
+{
+    animation-delay: 1.1s;
+}
+.slide-content .slide-title d:nth-child(4)
+{
+    animation-delay: 1.15s;
+}
+.slide-content .slide-title d:nth-child(5)
+{
+    animation-delay: 1.2s;
+}
+.slide-content .slide-title d:nth-child(6)
+{
+    animation-delay: 1.25s;
+}
+.slide-content .slide-title d:nth-child(7)
+{
+    animation-delay: 1.3s;
+}
+.slide-content .slide-title d:nth-child(8)
+{
+    animation-delay: 1.35s;
+}
+.slide-content .slide-title d:nth-child(9)
+{
+    animation-delay: 1.4s;
+}
+.slide-content .slide-title d:nth-child(10)
+{
+    animation-delay: 1.45s;
+}
+.slide-content .slide-title d:nth-child(11)
+{
+    animation-delay: 1.5s;
+}
+.slide-content .slide-title d:nth-child(12)
+{
+    animation-delay: 1.55s;
+}
+.slide-content .slide-title d:nth-child(13)
+{
+    animation-delay: 1.6s;
+}
+.slide-content .slide-title d:nth-child(14)
+{
+    animation-delay: 1.65s;
+}
+.slide-content .slide-title d:nth-child(15)
+{
+    animation-delay: 1.7s;
+}
+.slide-content .slide-title d:nth-child(16)
+{
+    animation-delay: 1.75s;
+}
+.slide-content .slide-title d:nth-child(17)
+{
+    animation-delay: 1.8s;
+}
+.slide-content .slide-title d:nth-child(18)
+{
+    animation-delay: 1.85s;
+}
+.slide-content .slide-title d:nth-child(19)
+{
+    animation-delay: 1.9s;
+}
+.slide-content .slide-title d:nth-child(20)
+{
+    animation-delay: 1.95s;
+}
+
+@keyframes title-digit
+{
+    0% {transform: translateY(-40px) rotateZ(45deg); opacity: 1}
+    5% {transform: translateY(0px); opacity: 1}
+    95% {transform: translateY(0px); opacity: 1}
+    100% {transform: translateY(-40px); opacity: 0}
+}
+
+.slick-current .subtitle
+{
+    animation-name: slider-subtitle;
+    animation-duration: 6s;
+}
+
+@keyframes slider-subtitle
+{
+    0%{opacity: 0; scale: .9}
+    50%{opacity: 0; scale: .9}
+    60%{opacity: 1; scale: 1}
+    100%{opacity: 1; scale: 1}
+}
+
+.slick-current .button
+{
+    animation-name: slider-button;
+    animation-duration: 6s;
+}
+
+@keyframes slider-button
+{
+    0%{opacity: 0; scale: .8}
+    60%{opacity: 0; scale: .8}
+    75%{opacity: 1; scale: 1}
+    85%{opacity: 1; scale: 1}
+    100%{opacity: 1 ; scale: 1}
+}
+
+.slick-current .slide-content
+{
+    opacity: 0;
+    animation-name: slide-content;
+    animation-duration: 6s;
+}
+
+@keyframes  slide-content
+{
+    0% {opacity: 100%}
+    90% {opacity: 100%}
+    100% {opacity: 0}
+}
+
+/*/title*/
