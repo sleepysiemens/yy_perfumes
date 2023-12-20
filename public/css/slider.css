@@ -67,22 +67,9 @@
     transition: .8s;
     opacity: 1;
     transform: scale(1,1);
-    /*
-    animation-name: next_slide;
-    animation-duration: 6.4s;
-     */
-
 }
 
-/*
-@keyframes next_slide
-{
-    0%{transform: scale(.8, .8)}
-    5%{transform: scale(1, 1)}
-    95%{transform: scale(1, 1); opacity: 100%}
-    100%{transform: scale(1.2, 1.2); opacity: 50%}
-}
- */
+
 
 .slide-loading
 {

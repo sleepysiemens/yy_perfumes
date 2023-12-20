@@ -7,6 +7,8 @@ $(document).ready(function () {
         let productId = $(this).attr('data-product-id');
         let productPrice = $(this).attr('data-product-price');
         let productCount = 1;
+        if(document.getElementById('product_amount_'+productId)!=null)
+            productCount = document.getElementById('product_amount_'+productId).value;
 
         $.post(
             '/cart/push/' + productId + '/' + productCount,
@@ -76,3 +78,17 @@ $(document).ready(function () {
 
     }
 });
+
+function press_btn()
+{
+    $('.to-cart-btn').trigger("click");
+    console.log('succ');
+}
+
+for(let cnt=1; cnt<=4; cnt++)
+{
+    $('#product_amount_'+cnt).on('change',function (){
+        $('#add_to_card_'+cnt).trigger("click");
+        console.log(cnt);
+    });
+}

@@ -30,7 +30,7 @@
                         <div class="ml-4">
                             <div class="flex">
                                 <h2 class="font-bold text-2xl">{{ $product->getTitle() }}</h2>
-                                <div class="flex items-center justify-center p-1 px-3 rounded-md ml-3 text-sm bg-gray-200">{{ $itemArray }}</div>
+                                <div class="flex items-center justify-center p-1 px-3 rounded-md ml-3 text-sm bg-gray-200" style="width: 32px">{{ $itemArray }}</div>
                             </div>
                             <p class="text-md">{{ $product->getDescription() }}</p>
                             <span class="font-semibold">
