@@ -35,6 +35,6 @@ class CartController extends Controller
     public function remove($id)
     {
         $this->cartService->remove($id);
-        return redirect()->route('cart.view');
+        return redirect(request()->server('HTTP_REFERER'));
     }
 }
