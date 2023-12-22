@@ -16,7 +16,6 @@ $(document).ready(function () {
             function (data) {
                 $('#cart-container *').remove();
                 updateCartDiv();
-                console.log(data);
             }
         );
     });
@@ -82,13 +81,11 @@ $(document).ready(function () {
 function press_btn()
 {
     $('.to-cart-btn').trigger("click");
-    console.log('succ');
 }
 
 for(let cnt=1; cnt<=4; cnt++)
 {
     $('#product_amount_'+cnt).on('change',function (){
         $('#add_to_card_'+cnt).trigger("click");
-        console.log(cnt);
     });
 }

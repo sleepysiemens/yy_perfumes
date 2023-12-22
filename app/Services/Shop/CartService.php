@@ -68,4 +68,12 @@ class CartService
         Arr::forget($cart, $id);
         Session::put('cart', $cart);
     }
+
+    public function clear()
+    {
+        $cart = Session::has('cart') ? Session::get('cart') : [];
+        $cart=null;
+        Session::put('cart', $cart);
+        return redirect(request()->server('HTTP_REFERER'));
+    }
 }

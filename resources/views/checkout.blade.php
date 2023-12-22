@@ -37,9 +37,14 @@
                                         </div>
                                         <p class="text-md">{{ mb_substr($product->getDescription(), 0, 60) }}</p>
                                         <div class="flex border w-fit px-3">
-                                            <button id="plus_{{ $item }}" class="count_edit_minus" data-id="{{ $item }}">-</button>
+                                            {{-- <button id="plus_{{ $item }}" class="count_edit_minus" data-id="{{ $item }}">-</button>
                                             <input type="tel" value="{{ $itemArray }}" id="count_{{ $item }}" style="width: 50px;text-align: center;outline: none !important;">
-                                            <button id="minus_{{ $item }}" class="count_edit_plus" data-id="{{ $item }}">+</button>
+                                            <button id="minus_{{ $item }}" class="count_edit_plus" data-id="{{ $item }}">+</button> --}}
+
+                                            <button id="minus_{{$product->id}}" class="count_edit_minus" onclick='decr({{$product->id}})'>-</button>
+                                            <input id="product_amount_{{$product->id}}" type="number" value="{{ $itemArray }}" style="width: 50px;text-align: center;outline: none !important;" onchange='$("#add_to_card_{{$product->id}}").trigger("click"); reloader = setTimeout(reload, 5);'>
+                                            <button id="plus_{{$product->id}}" class="count_edit_plus" onclick='incr({{$product->id}})'>+</button>
+                                            <button id="add_to_card_{{$product->id}}" class="to-cart-btn reload-page" data-product-price="{{ $product->getPrice() }}" data-product-id="{{ $product->id }}"></button>
                                         </div>
                                     </div>
                                 </div>
@@ -64,6 +69,7 @@
 
 @push('scripts')
     <script>
+
         $('.count_edit_minus').on('click', function () {
             let elementId = $(this).attr('data-id');
             let countInput = $('#count_' + elementId);
@@ -112,6 +118,26 @@
 
         function updateAmount(newAmount) {
             $('#cart_total').html(newAmount);
+        }
+    </script>
+    <script>
+        function reload(){window.location.reload();}
+
+        function decr(id)
+        {
+            let value = document.getElementById("product_amount_"+id).value;
+            if(value>1)
+            {
+                value = document.getElementById("product_amount_"+id).value--;
+                $('#add_to_card_' + id).trigger("click");
+                reloader = setTimeout(reload, 5);
+            }
+        }
+        function incr(id)
+        {
+                value = document.getElementById("product_amount_"+id).value++;
+                $('#add_to_card_' + id).trigger("click");
+                reloader = setTimeout(reload, 5);
         }
     </script>
 @endpush

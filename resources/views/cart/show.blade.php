@@ -56,12 +56,21 @@
                 <span class="">{{ __('Total') }}:</span>
                 <span class="font-bold ml-2">{{ $cartTotals['currency'] }} {{ number_format($cartTotals['total'], 2, ',', ' ') }}</span>
             </div>
-            <div class="sm:w-fit w-full">
-                <a href="{{ route('checkout') }}">
-                    <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-zinc-900 hover:bg-zinc-700 active:scale-95 text-white duration-200 flex items-center">
-                        {{ __('Continue checkout') }}
-                    </button>
-                </a>
+            <div class="flex">
+                <div class="sm:w-fit w-full" style="margin-right: 20px">
+                    <a href="{{ route('cart.clear') }}">
+                        <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-zinc-900 hover:bg-zinc-700 active:scale-95 text-white duration-200 flex items-center">
+                            {{ __('Clear cart') }}
+                        </button>
+                    </a>
+                </div>
+                <div class="sm:w-fit w-full">
+                    <a href="{{ route('checkout') }}">
+                        <button class="to-cart-btn whitespace-nowrap p-2 px-5 bg-zinc-900 hover:bg-zinc-700 active:scale-95 text-white duration-200 flex items-center">
+                            {{ __('Continue checkout') }}
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     @else

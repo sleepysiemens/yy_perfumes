@@ -46,7 +46,7 @@ class OrderController extends Controller
     {
         $shopId = $request->input('shop') ?? 1;
 
-        dd($request->all());
+        //dd($request->all());
 
         $cart = $this->cartService->getCart();
         $shop =  Shop::query()->find($shopId);
@@ -72,9 +72,13 @@ class OrderController extends Controller
             $smsService->sendMessage($order->phone, "Ваш заказ №{$order->id} на сайте принят.");
         }
 
+        $cart = $this->cartService->clear();
+
+
         event(new OrderCreated($order));
 
         return redirect()->route('checkout.success', $order->hash);
+
     }
 
     /**

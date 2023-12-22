@@ -37,4 +37,12 @@ class CartController extends Controller
         $this->cartService->remove($id);
         return redirect(request()->server('HTTP_REFERER'));
     }
+
+    public function clear()
+    {
+        $cart = Session::has('cart') ? Session::get('cart') : [];
+        $cart=null;
+        Session::put('cart', $cart);
+        return redirect(request()->server('HTTP_REFERER'));
+    }
 }

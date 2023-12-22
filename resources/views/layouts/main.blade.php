@@ -158,7 +158,7 @@
 </div>
 @include('components.modals')
 
-@if(Session::exists('cart') && count(Session::get('cart')) > 0)
+@if(Session::exists('cart') && Session::get('cart')!=null && count(Session::get('cart')) > 0)
     <a href="{{ route('checkout') }}">
         <div class="footer-cart">
             <p style="display: flex;align-items: center;">

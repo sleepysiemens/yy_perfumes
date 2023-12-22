@@ -26,7 +26,7 @@
                 @foreach($order->basket['cart'] as $product => $quantity)
                     @if($product != 'undefined')
                         @php
-                            $item = \App\Models\Product::find($product);
+                            $product = $item = \App\Models\Product::find($product);
                         @endphp
                         <tr class="border-b py-4 px-2">
                             <td>
@@ -40,7 +40,8 @@
                             </td>
                             <td class="text-right">
                                 {!! $order->basket['currency'] !!}
-                                {{ $item->cost }}
+                                {{-- $item->cost --}}
+                                {{ $product->getPrice() }}
                             </td>
                         </tr>
                     @endif
