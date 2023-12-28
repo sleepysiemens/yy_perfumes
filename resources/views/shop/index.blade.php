@@ -14,28 +14,28 @@
                 <h1 class="slide-title"><d>N</d><d>e</d><d>w</d><d style="width: 10px"></d><d>n</d><d>o</d><d>w</d></h1>
                 <h1 class="slide-title"><d>O</d><d>u</d><d>r</d><d style="width: 10px"></d><d>n</d><d>e</d><d>w</d><d style="width: 10px"></d><d>p</d><d>r</d><d>o</d><d>d</d><d>u</d><d>c</d><d>u</d><d>c</d><d>t</d><d>s</d></h1>
                 <p class="subtitle">We invite you to see our new products</p>
-                <a class="button"><p>+ SHOP NOW</p></a>
+                <a href="{{ route('catalogue.show', $products[2]->slug) }}" class="button"><p>+ SHOP NOW</p></a>
             </div>
         </div>
         <div id="slide_2" class="slide" style="background: url('https://yaninayakusheva.com/wp-content/uploads/dsc03061.jpg'); background-size:cover;background-position: center center;">
             <span class="slide-loading"></span>
             <div class="slide-content">
                 <h1 class="slide-title"><d>F</d><d>I</d><d>N</d><d>D</d><d style="width: 10px"></d><d>U</d><d>S</d></h1>
-                <a class="button"><p>View</p></a>
+                <a href="{{ route('catalogue.show', $products[1]->slug) }}" class="button"><p>View</p></a>
             </div>
         </div>
         <div id="slide_3" class="slide" style="background: url('https://yaninayakusheva.com/wp-content/uploads/112a6323-scaled-1.jpg'); background-size:cover;background-position: center center;">
             <span class="slide-loading"></span>
             <div class="slide-content">
                 <h1 class="slide-title"><d>A</d><d>R</d><d>T</d><d style="width: 10px"></d><d>I</d><d>N</d><d style="width: 10px"></d><d>O</d><d>B</d><d>J</d><d>E</d><d>C</d><d>T</d><d>S</d></h1>
-                <a class="button"><p>View</p></a>
+                <a href="{{ route('catalogue.show', $products[3]->slug) }}" class="button"><p>View</p></a>
             </div>
         </div>
         <div id="slide_4" class="slide" style="background: url('https://yaninayakusheva.com/wp-content/uploads/1170.jpg'); background-size:cover;background-position: center center;">
             <span class="slide-loading"></span>
             <div class="slide-content">
                 <h1 class="slide-title" style="color: #000"><d>O</d><d>N</d><d>E</d><d style="width: 10px"></d><d>O</d><d>F</d><d style="width: 10px"></d><d>A</d><d style="width: 10px"></d><d>K</d><d>I</d><d>N</d><d>D</d></h1>
-                <a class="button"><p>View</p></a>
+                <a href="{{ route('catalogue.show', $products[0]->slug) }}" class="button"><p>View</p></a>
             </div>
         </div>
     </div>
